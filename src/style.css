@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+:root {
+  --font-placeholder: "Questrial", sans-serif;
+  --font-slogan: "Pacifico", cursive;
+  --color-button: #1a5445;
+  --color-input: #e3e3e3;
+  --color-placeholder: #a89d9d;
+  --color-google: #df4b4b;
+  --font-button-input: #ffffff;
+  --font-link: #3b4ac9;
+}
+
+body {
+  width: 100%;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo p {
+  margin-top: -3px;
+  font-size: 20px;
+  font-family: var(--font-slogan);
+}
+
+.inputlogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputlogin input {
+  height: 25px;
+  border-radius: 25px;
+  border-style: none;
+  background-color: var(--color-input);
+  padding: 3px;
+  margin-top: 8px;
+}
+
+.inputlogin ::-webkit-input-placeholder {
+  color: var(--color-placeholder);
+  padding-left: 13px;
+  font-family: var(--font-placeholder);
+}
+
+.buttonsign {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-placeholder);
+}
+
+.singin {
+  background-color: var(--color-button);
+  color: var(--font-button-input);
+  border-radius: 25px;
+  border-style: none;
+  padding: 3px;
+  margin-top: 8px;
+}
+
+.sing-google {
+  background-color: var(--color-google);
+  color: var(--font-button-input);
+  border-radius: 25px;
+  border-style: none;
+  padding: 3px;
+  margin-top: 8px;
+}
