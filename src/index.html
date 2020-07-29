@@ -15,24 +15,110 @@
     </header>
     <main>
       <!--Registro-->
-      <section>
-        <form action="">
+      <section id="sectionLogin">
+        <form id="formLogin" action="">
           <div class="inputlogin">
-            <input class="user" type="text" placeholder="User" />
-            <input class="email" type="text" placeholder="Email" />
-            <input class="password" type="text" placeholder="Password" />
-            <input class="confirm" type="text" placeholder="Confirm Password" />
+            <input
+              id="user"
+              type="text"
+              placeholder="User"
+              required
+              autocomplete="off"
+            />
+            <input
+              id="email"
+              type="email"
+              placeholder="Email"
+              required
+              autocomplete="off"
+            />
+            <input
+              id="password"
+              type="password"
+              placeholder="Password"
+              required
+              autocomplete="off"
+            />
+            <input
+              id="confirm"
+              type="password"
+              placeholder="Confirm Password"
+              required
+              autocomplete="off"
+            />
           </div>
           <div class="buttonsign">
             <button class="singin">Sign in</button>
             <p>ó</p>
             <button class="sing-google">Sign in with Google</button>
-            <a href="#">Login</a>
+            <a id="loginView" href="#">Login</a>
           </div>
         </form>
       </section>
       <!--Fin registro-->
+
+      <!--Inicio de sesión-->
+      <section id="sectionSignin">
+        <form id="formSignin" action="">
+          <div class="inputlogin">
+            <input
+              class="email"
+              type="email"
+              placeholder="Email"
+              required
+              autocomplete="off"
+            />
+            <input
+              class="password"
+              type="password"
+              placeholder="Password"
+              required
+              autocomplete="off"
+            />
+          </div>
+          <div class="buttonsign">
+            <button>Sign in</button>
+            <p>ó</p>
+            <button>Sign in with Google</button>
+            <a id="signinView" href="#">Sign in</a>
+          </div>
+        </form>
+      </section>
+      <!--Fin inicio de sesión-->
     </main>
-    <script type="module" src="main.js"></script>
+    <footer>
+      <div class="footer-bar">
+        <a href="#">Conocenos</a>
+        <p>
+          &copy; copyright Terra Tour 2020
+        </p>
+      </div>
+    </footer>
+    <script type="module" src="form-view.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBATRlVdU4Jbt8AWCGCfQgrknUQKLAd8aQ",
+        authDomain: "red-social-terra-tour.firebaseapp.com",
+        databaseURL: "https://red-social-terra-tour.firebaseio.com",
+        projectId: "red-social-terra-tour",
+        storageBucket: "red-social-terra-tour.appspot.com",
+        messagingSenderId: "574900626741",
+        appId: "1:574900626741:web:aa5013c0275943f464987c",
+        measurementId: "G-YS6SX5V682",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+      firebase.analytics();
+    </script>
   </body>
 </html>

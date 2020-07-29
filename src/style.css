@@ -14,6 +14,7 @@
 
 body {
   width: 100%;
+  overflow-x: hidden;
 }
 
 .logo {
@@ -34,15 +35,6 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
-/* .inputlogin input {
-  height: 25px;
-  border-radius: 25px;
-  border-style: none;
-  background-color: var(--color-input);
-  padding: 3px;
-  margin-top: 8px;
-} */
 
 .inputlogin input {
   width: 65%;
@@ -80,28 +72,27 @@ body {
   background-color: var(--color-button);
 }
 
-/* .singin {
-  width: 70%;
-  background-color: var(--color-button);
-  color: var(--font-button-input);
-  border-radius: 25px;
-  border-style: none;
-  padding: 3px;
-  margin-top: 8px;
-}
-
-.sing-google {
-  width: 70%;
-  background-color: var(--color-google);
-  color: var(--font-button-input);
-  border-radius: 25px;
-  border-style: none;
-  padding: 3px;
-  margin-top: 8px;
-} */
-
 .buttonsign a {
   margin-top: 5px;
   color: var(--font-link);
   text-decoration: none;
+}
+
+.footer-bar {
+  background-color: var(--color-button);
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0 0 0;
+}
+
+.footer-bar a {
+  color: var(--color-input);
+  text-decoration: none;
+}
+
+.footer-bar p {
+  margin: 5px 0;
 }
