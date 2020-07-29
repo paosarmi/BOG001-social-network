@@ -35,16 +35,25 @@ body {
   align-items: center;
 }
 
-.inputlogin input {
+/* .inputlogin input {
   height: 25px;
   border-radius: 25px;
   border-style: none;
   background-color: var(--color-input);
   padding: 3px;
   margin-top: 8px;
+} */
+
+.inputlogin input {
+  width: 65%;
+  background-color: var(--color-input);
+  border-radius: 25px;
+  border-style: none;
+  padding: 3px;
+  margin-top: 8px;
 }
 
-.inputlogin ::-webkit-input-placeholder {
+.inputlogin input::placeholder {
   color: var(--color-placeholder);
   padding-left: 13px;
   font-family: var(--font-placeholder);
@@ -55,9 +64,24 @@ body {
   flex-direction: column;
   align-items: center;
   font-family: var(--font-placeholder);
+  margin-top: 30px;
 }
 
-.singin {
+.buttonsign button {
+  width: 65%;
+  background-color: var(--color-google);
+  color: var(--font-button-input);
+  border-radius: 25px;
+  border-style: none;
+  padding: 3px;
+}
+
+.buttonsign button:first-child {
+  background-color: var(--color-button);
+}
+
+/* .singin {
+  width: 70%;
   background-color: var(--color-button);
   color: var(--font-button-input);
   border-radius: 25px;
@@ -67,10 +91,17 @@ body {
 }
 
 .sing-google {
+  width: 70%;
   background-color: var(--color-google);
   color: var(--font-button-input);
   border-radius: 25px;
   border-style: none;
   padding: 3px;
   margin-top: 8px;
+} */
+
+.buttonsign a {
+  margin-top: 5px;
+  color: var(--font-link);
+  text-decoration: none;
 }
