@@ -51,6 +51,12 @@ body {
   font-family: var(--font-placeholder);
 }
 
+#warnUser {
+  color: var(--color-google);
+  display: flex;
+  justify-content: center;
+}
+
 .buttonsign {
   display: flex;
   flex-direction: column;

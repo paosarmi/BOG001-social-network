@@ -16,7 +16,7 @@
     <main>
       <!--Registro-->
       <section id="sectionLogin">
-        <form id="formLogin" action="">
+        <div id="formLogin" >
           <div class="inputlogin">
             <input
               id="user"
@@ -47,19 +47,20 @@
               autocomplete="off"
             />
           </div>
+          <p id="warnUser"></p>
           <div class="buttonsign">
-            <button class="singin">Sign in</button>
+           <button type="submit" class="signin" id="signin">Sign in</button>
             <p>ó</p>
-            <button class="sing-google">Sign in with Google</button>
+            <button id="signGoogle"class="sign-google">Sign in with Google</button>
             <a id="loginView" href="#">Login</a>
           </div>
-        </form>
+        </div>
       </section>
       <!--Fin registro-->
 
       <!--Inicio de sesión-->
       <section id="sectionSignin">
-        <form id="formSignin" action="">
+        <div id="formSignin">
           <div class="inputlogin">
             <input
               class="email"
@@ -82,7 +83,7 @@
             <button>Sign in with Google</button>
             <a id="signinView" href="#">Sign in</a>
           </div>
-        </form>
+        </div>
       </section>
       <!--Fin inicio de sesión-->
     </main>
