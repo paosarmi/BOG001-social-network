@@ -35,12 +35,10 @@ function formAuth() {
   const confirm = document.querySelector("#confirm").value;
   auth
     .createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      console.log("sign up");
+    })
     .catch((error) => {
       console.log(error);
-    })
-    .then((userCredential) => {
-      formSignin.reset();
-
-      console.log("sign up");
     });
 }
