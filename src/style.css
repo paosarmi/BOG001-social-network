@@ -11,10 +11,15 @@
   --font-button-input: #ffffff;
   --font-link: #3b4ac9;
 }
+html, body{
+  height:100%; 
+  margin: 0px
+}
 
 body {
   width: 100%;
   overflow-x: hidden;
+  height: 100%;
 }
 
 .logo {
@@ -83,15 +88,23 @@ body {
   color: var(--font-link);
   text-decoration: none;
 }
+ footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+ }
 
 .footer-bar {
+  /* display: flex; */ 
+  width: 100%;
   background-color: var(--color-button);
-  padding: 10px;
+  /* padding: 10px; */
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   flex-direction: column;
   align-items: center;
-  margin: 20px 0 0 0;
+  /* margin: 20px 0 0 0;    */
+  
 }
 
 .footer-bar a {
@@ -102,3 +115,80 @@ body {
 .footer-bar p {
   margin: 5px 0;
 }
+
+/* -------DESKTOP MAX 1200 Y 1800 */
+@media screen 
+  and (min-device-width: 1025px) and (max-device-width: 1800px){
+    
+    .inputlogin input {
+      width: 30%;
+    }
+
+    .buttonsign button {
+      width: 30%;
+    }
+
+    .footer-bar {
+      width: 100%;
+    }
+
+    #warnUser {
+    display: flex;
+    justify-content: center;
+   }
+  }
+
+ /*  table ipad pro */
+@media screen  and (min-device-width:780px) and (max-width:1025px){
+
+  header{
+   height: 500px;
+   }
+
+   .logo {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 50%;
+    justify-content: center; 
+    
+    }
+
+    .logo img{
+    width: 400px;
+    }
+
+  .logo p {
+    margin-top: -3px;
+    font-size: 30px;
+  }
+  
+  .inputlogin input {
+    width: 30%;
+    padding: 1%;
+  }
+
+  .buttonsign button {
+    width: 30%;
+    padding: 1%;
+  }
+
+  #formLogin{
+    font-size: 30px;
+  }
+
+  input{
+    font-size: 30px;
+  }
+
+  .footer-bar {
+    width: 100%; 
+  }
+
+  #warnUser {
+  display: flex;
+  justify-content: center;
+ }
+
+} 
