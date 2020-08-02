@@ -98,42 +98,36 @@
       <!-- Timeline -->
       <section>
         <div id="formPost">
-          <input 
-          id="placePost"
-          class="place-post"
-          type="text" 
-          placeholder="Indicate the place you visited" 
-          autocomplete="off"
-          required 
+          <input
+            id="placePost"
+            class="place-post"
+            type="text"
+            placeholder="Indicate the place you visited"
+            autocomplete="off"
+            required
           />
           <label for="imgPost">Upload image</label>
-          <input 
-          id="imgPost" 
-          class="img-post"
-          type="file"
-          capture="user" 
-          accept="image/*"
-          required
+          <input
+            id="imgPost"
+            class="img-post"
+            type="file"
+            capture="user"
+            accept="image/*"
+            required
           />
-          <textarea 
-          id="descriptionPost"
-          class="description-post"
-          placeholder="Tell us your experience"
-          rows="4"
+          <textarea
+            id="descriptionPost"
+            class="description-post"
+            placeholder="Tell us your experience"
+            rows="4"
           >
           </textarea>
-          <button 
-          id="sendPost"
-          class="send-post"
-          type="submit">
-          Post
+          <button id="sendPost" class="send-post" type="submit">
+            Post
           </button>
-
-
         </div>
       </section>
       <!-- Fin del timeline -->
-
     </main>
     <footer>
       <div class="footer-bar">
@@ -153,7 +147,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
 
     <script>
-      // Your web app's Firebase configuration
+      // Configuración firebase de la página
       var firebaseConfig = {
         apiKey: "AIzaSyBATRlVdU4Jbt8AWCGCfQgrknUQKLAd8aQ",
         authDomain: "red-social-terra-tour.firebaseapp.com",
@@ -164,7 +158,7 @@
         appId: "1:574900626741:web:aa5013c0275943f464987c",
         measurementId: "G-YS6SX5V682",
       };
-      // Initialize Firebase
+      // Inicializando Firebase
       firebase.initializeApp(firebaseConfig);
       const auth = firebase.auth();
       firebase.analytics();

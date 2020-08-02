@@ -49,9 +49,6 @@ function formAuth() {
   const pass = document.getElementById("password").value;
   const confirm = document.getElementById("confirm").value;
 
-
-  
-
   if (user == null || user.length == 0 || /^\s+$/.test(user)) {
     warnUser.innerHTML = "You must enter user";
     return false;
@@ -71,11 +68,11 @@ function formAuth() {
     warnUser.innerHTML = "You must enter confirm password";
     return false;
   }
-  
+
   if (pass != confirm) {
     signin.disables = true;
-      warnUser.innerHTML = "Your password does not match";
-      return false;
+    warnUser.innerHTML = "Your password does not match";
+    return false;
   }
 
   auth
