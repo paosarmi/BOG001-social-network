@@ -99,6 +99,7 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
+  color: var(--color-input);
 }
 
 .footer-bar {

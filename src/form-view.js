@@ -45,6 +45,12 @@ function formAuth() {
   const email = document.querySelector("#email").value;
   const password = document.querySelector("#password").value;
 
+  const pass = document.getElementById("password").value;
+  if (pass == null || pass.length == 0 || /^\s+$/.test(pass)) {
+    warnUser.innerHTML = "You must enter the password";
+    return false;
+  }
+
   auth
     .createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
