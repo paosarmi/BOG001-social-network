@@ -44,11 +44,38 @@ function returnSignin() {
 function formAuth() {
   const email = document.querySelector("#email").value;
   const password = document.querySelector("#password").value;
-
+  const user = document.getElementById("user").value;
+  const em = document.getElementById("email").value;
   const pass = document.getElementById("password").value;
-  if (pass == null || pass.length == 0 || /^\s+$/.test(pass)) {
-    warnUser.innerHTML = "You must enter the password";
+  const confirm = document.getElementById("confirm").value;
+
+
+  
+
+  if (user == null || user.length == 0 || /^\s+$/.test(user)) {
+    warnUser.innerHTML = "You must enter user";
     return false;
+  }
+
+  if (em == null || em.length == 0 || /^\s+$/.test(em)) {
+    warnUser.innerHTML = "You must enter email ";
+    return false;
+  }
+
+  if (pass == null || pass.length == 0 || /^\s+$/.test(pass)) {
+    warnUser.innerHTML = "You must enter password";
+    return false;
+  }
+
+  if (confirm == null || confirm.length == 0 || /^\s+$/.test(confirm)) {
+    warnUser.innerHTML = "You must enter confirm password";
+    return false;
+  }
+  
+  if (pass != confirm) {
+    signin.disables = true;
+      warnUser.innerHTML = "Your password does not match";
+      return false;
   }
 
   auth
@@ -66,6 +93,19 @@ function formAuth() {
 function loginAuth() {
   const email = document.querySelector("#emailLogin").value;
   const password = document.querySelector("#passwordLogin").value;
+  const em = document.getElementById("emailLogin").value;
+  const pass = document.getElementById("passwordLogin").value;
+
+  if (em == null || em.length == 0 || /^\s+$/.test(em)) {
+    warnNoExist.innerHTML = "You must enter email ";
+    return false;
+  }
+
+  if (pass == null || pass.length == 0 || /^\s+$/.test(pass)) {
+    warnNoExist.innerHTML = "You must enter password";
+    return false;
+  }
+
   auth
     .signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
@@ -73,7 +113,7 @@ function loginAuth() {
       console.log("Correcto");
     })
     .catch((error) => {
-      warnNoExist.innerHTML = "Username does not exist.";
+      warnNoExist.innerHTML = "Incorrect";
       console.log(error);
     });
 }
@@ -96,7 +136,7 @@ function googleAuth() {
       const errorCredential = error.credential;
 
       if (errorCode === "auth/account-exists-with-different-credential") {
-        alert("User already exist.");
+        warnUser.innerHTML = "User already exist";
       }
     });
 }

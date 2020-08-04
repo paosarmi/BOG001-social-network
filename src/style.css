@@ -123,6 +123,70 @@ footer {
   margin: 5px 0;
 }
 
+/*  tablet */
+ @media only screen and (min-width: 768px){
+  body{
+    background-image: url("img/fondo.png");
+  }
+  header {
+    height: 500px;
+  }
+
+  .logo {
+    position: absolute;
+    left: 100px;
+    right: 100px;
+    top: 100px;
+    bottom: 50%;
+    justify-content: center;
+    background-color:var(--font-button-input);
+    border-radius: 40px 40px 0 0;
+  }
+
+  .logo img {
+    width: 400px;
+  }
+
+  .logo p {
+    margin-top: -3px;
+    font-size: 30px;
+  }
+  #formLogin {
+    position: absolute;
+    background-color: var(--font-button-input);
+    font-size: 30px;
+    left: 100px;
+    right: 100px;
+    border-radius:0 0 40px 40px ;
+
+  }
+
+  .inputlogin input {
+    width: 50%;
+    padding: 2px;
+  }
+
+  .buttonsign button {
+    width: 30%;
+    padding: 3px;
+  }
+
+  
+
+  input {
+    font-size: 30px;
+  }
+
+  .footer-bar {
+    width: 100%;
+  }
+
+  #warnUser {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 /* -------DESKTOP MAX 1200 Y 1800 */
 @media screen and (min-device-width: 1025px) and (max-device-width: 1800px) {
   .inputlogin input {
@@ -143,54 +207,4 @@ footer {
   }
 }
 
-/*  table ipad pro */
-@media screen and (min-device-width: 780px) and (max-width: 1025px) {
-  header {
-    height: 500px;
-  }
 
-  .logo {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 50%;
-    justify-content: center;
-  }
-
-  .logo img {
-    width: 400px;
-  }
-
-  .logo p {
-    margin-top: -3px;
-    font-size: 30px;
-  }
-
-  .inputlogin input {
-    width: 30%;
-    padding: 1%;
-  }
-
-  .buttonsign button {
-    width: 30%;
-    padding: 1%;
-  }
-
-  #formLogin {
-    font-size: 30px;
-  }
-
-  input {
-    font-size: 30px;
-  }
-
-  .footer-bar {
-    width: 100%;
-  }
-
-  #warnUser {
-    display: flex;
-    justify-content: center;
-  }
-}
