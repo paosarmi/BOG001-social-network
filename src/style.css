@@ -122,9 +122,8 @@ footer {
   margin: 5px 0;
 }
 
- @media only screen and (min-width: 768px){
-
-  body{
+@media only screen and (min-width: 768px) {
+  body {
     background-image: url("img/fondo.png");
   }
 
@@ -139,7 +138,7 @@ footer {
     top: 40px;
     bottom: 50%;
     justify-content: center;
-    background-color:var(--font-button-input);
+    background-color: var(--font-button-input);
     border-radius: 40px 40px 0 0;
   }
 
@@ -150,7 +149,6 @@ footer {
   .logo p {
     margin-top: -3px;
     font-size: 30px;
-
   }
   #formLogin {
     position: absolute;
@@ -158,7 +156,7 @@ footer {
     font-size: 25px;
     left: 100px;
     right: 100px;
-    border-radius:0 0 40px 40px ;
+    border-radius: 0 0 40px 40px;
   }
 
   #formSignin {
@@ -167,7 +165,7 @@ footer {
     font-size: 25px;
     left: 100px;
     right: 100px;
-    border-radius:0 0 40px 40px ;
+    border-radius: 0 0 40px 40px;
   }
 
   .inputlogin input {
@@ -195,9 +193,9 @@ footer {
     width: 100%;
     font-size: 20px;
   }
+}
 
 @media only screen and (min-width: 992px) {
-
   header {
     height: 300px;
   }
@@ -209,7 +207,7 @@ footer {
     top: 10px;
     bottom: 50%;
     justify-content: center;
-    background-color:var(--font-button-input);
+    background-color: var(--font-button-input);
     border-radius: 40px 40px 0 0;
   }
 
@@ -221,7 +219,6 @@ footer {
   .logo p {
     margin-top: -3px;
     font-size: 20px;
-
   }
   #formLogin {
     position: absolute;
@@ -229,7 +226,7 @@ footer {
     font-size: 25px;
     left: 400px;
     right: 400px;
-    border-radius:0 0 40px 40px ;
+    border-radius: 0 0 40px 40px;
     margin-top: -75px;
   }
 
@@ -239,7 +236,7 @@ footer {
     font-size: 25px;
     left: 400px;
     right: 400px;
-    border-radius:0 0 40px 40px ;
+    border-radius: 0 0 40px 40px;
     margin-top: -75px;
   }
 
