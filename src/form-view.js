@@ -18,8 +18,10 @@ const warnUser = document.getElementById("warnUser");
 const warnNoExist = document.getElementById("warnNoExist");
 const signGoogle = document.getElementById("signGoogle");
 const loginGoogle = document.getElementById("loginGoogle");
+const sectionPost = document.getElementById("formPost");
 
 sectionSignin.style.display = "none";
+sectionPost.style.display = "none";
 signinView.addEventListener("click", returnSignin);
 loginView.addEventListener("click", changeView);
 signin.addEventListener("click", formAuth);
@@ -79,7 +81,10 @@ function formAuth() {
     .createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
       warnUser.style.display = "none";
-      console.log("sign up");
+      sectionSignin.style.display = "none";
+      sectionLogin.style.display = "none";
+      sectionPost.style.display = "block";
+      //console.log("sign up");
     })
     .catch((error) => {
       warnUser.innerHTML = "User already exist";
@@ -106,8 +111,11 @@ function loginAuth() {
   auth
     .signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
-      warnNoExist.innerHTML = "";
-      console.log("Correcto");
+      warnNoExist.innerHTML = " ";
+      sectionSignin.style.display = "none";
+      sectionLogin.style.display = "none";
+      sectionPost.style.display = "block";
+      //console.log("Correcto");
     })
     .catch((error) => {
       warnNoExist.innerHTML = "Incorrect";
@@ -124,7 +132,10 @@ function googleAuth() {
     .then(function (result) {
       const token = result.credential.accesstoken;
       const user = result.user;
-      console.log(user);
+      //console.log(user);
+      sectionSignin.style.display = "none";
+      sectionLogin.style.display = "none";
+      sectionPost.style.display = "block";
     })
     .catch(function (error) {
       const errorCode = error.code;
