@@ -1,12 +1,8 @@
 // Este es el punto de entrada de tu aplicacion
 
-//const { auth } = require("firebase");
-
-//const { auth } = require("firebase");
-
-//import { auth } from index.html;
 // import { myFunction } from "./lib/index.js";
 // myFunction();
+import { showPostAfterLogin } from "./post.js";
 
 const sectionLogin = document.getElementById("sectionLogin");
 const sectionSignin = document.getElementById("sectionSignin");
@@ -52,28 +48,28 @@ function formAuth() {
   const confirm = document.getElementById("confirm").value;
 
   if (user == null || user.length == 0 || /^\s+$/.test(user)) {
-    warnUser.innerHTML = "You must enter user";
+    warnUser.innerHTML = "You must enter a valid user name";
     return false;
   }
 
   if (em == null || em.length == 0 || /^\s+$/.test(em)) {
-    warnUser.innerHTML = "You must enter email ";
+    warnUser.innerHTML = "You must enter a valid email ";
     return false;
   }
 
   if (pass == null || pass.length == 0 || /^\s+$/.test(pass)) {
-    warnUser.innerHTML = "You must enter password";
+    warnUser.innerHTML = "You must enter a valid password";
     return false;
   }
 
   if (confirm == null || confirm.length == 0 || /^\s+$/.test(confirm)) {
-    warnUser.innerHTML = "You must enter confirm password";
+    warnUser.innerHTML = "You must enter password confirmation";
     return false;
   }
 
   if (pass != confirm) {
     signin.disables = true;
-    warnUser.innerHTML = "Your password does not match";
+    warnUser.innerHTML = "Passwords don't match";
     return false;
   }
 
@@ -83,7 +79,8 @@ function formAuth() {
       warnUser.style.display = "none";
       sectionSignin.style.display = "none";
       sectionLogin.style.display = "none";
-      sectionPost.style.display = "block";
+      sectionPost.style.display = "flex";
+      showPostAfterLogin();
       //console.log("sign up");
     })
     .catch((error) => {
@@ -99,12 +96,12 @@ function loginAuth() {
   const pass = document.getElementById("passwordLogin").value;
 
   if (em == null || em.length == 0 || /^\s+$/.test(em)) {
-    warnNoExist.innerHTML = "You must enter email ";
+    warnNoExist.innerHTML = "You must enter a valid email ";
     return false;
   }
 
   if (pass == null || pass.length == 0 || /^\s+$/.test(pass)) {
-    warnNoExist.innerHTML = "You must enter password";
+    warnNoExist.innerHTML = "You must enter a valid password";
     return false;
   }
 
@@ -114,11 +111,12 @@ function loginAuth() {
       warnNoExist.innerHTML = " ";
       sectionSignin.style.display = "none";
       sectionLogin.style.display = "none";
-      sectionPost.style.display = "block";
+      sectionPost.style.display = "flex";
+      showPostAfterLogin();
       //console.log("Correcto");
     })
     .catch((error) => {
-      warnNoExist.innerHTML = "Incorrect";
+      warnNoExist.innerHTML = "Incorrect password or email";
       console.log(error);
     });
 }
@@ -132,10 +130,11 @@ function googleAuth() {
     .then(function (result) {
       const token = result.credential.accesstoken;
       const user = result.user;
-      //console.log(user);
+      // console.log(user);
       sectionSignin.style.display = "none";
       sectionLogin.style.display = "none";
-      sectionPost.style.display = "block";
+      sectionPost.style.display = "flex";
+      showPostAfterLogin();
     })
     .catch(function (error) {
       const errorCode = error.code;

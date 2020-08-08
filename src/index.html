@@ -11,17 +11,17 @@
     <link rel="stylesheet" href="post.css" />
   </head>
   <body>
-    <header class="header">
+    <header id="header" class="header">
       <div class="logo">
         <img src="img/Logo.png" alt="Terra Tour" />
-        <p>Tourism on your side</p>
+        <p>Tourism by your side</p>
       </div>
     </header>
     <main>
       <!--Registro-->
       <section id="sectionLogin">
         <div id="formLogin">
-          <div class="inputlogin">
+          <div class="input-login">
             <input
               id="user"
               type="text"
@@ -52,7 +52,7 @@
             />
           </div>
           <p id="warnUser"></p>
-          <div class="buttonsign">
+          <div class="button-sign">
             <button type="submit" class="signin" id="signin">Sign in</button>
             <p>ó</p>
             <button type="submit" id="signGoogle" class="sign-google">
@@ -67,7 +67,7 @@
       <!--Inicio de sesión-->
       <section id="sectionSignin">
         <div id="formSignin">
-          <div class="inputlogin">
+          <div class="input-login">
             <input
               class="email"
               type="email"
@@ -86,7 +86,7 @@
             />
           </div>
           <p id="warnNoExist"></p>
-          <div class="buttonsign">
+          <div class="button-sign">
             <button type="submit" id="login">Login</button>
             <p>ó</p>
             <button type="submit" id="loginGoogle">Login with Google</button>
@@ -96,33 +96,43 @@
       </section>
       <!--Fin inicio de sesión-->
 
+      <!-- timeline -->
+      <!-- <section>
+        <div id="timeline" class="timeline-view">
+          
+        </div>
+      </section> -->
+      <!-- fin timeline -->
+
       <!-- Post -->
       <section>
-        <div id="formPost">
-          <input
-            id="placePost"
-            class="place-post"
-            type="text"
-            placeholder="Indicate the place you visited"
-            autocomplete="off"
-            required
-          />
-          <label for="imgPost">Upload image</label>
-          <input
-            id="imgPost"
-            class="img-post"
-            type="file"
-            capture="user"
-            accept="image/*"
-            required
-          />
-          <textarea
-            id="descriptionPost"
-            class="description-post"
-            placeholder="Tell us your experience"
-            rows="4"
-          >
-          </textarea>
+        <div id="formPost" class="form-post">
+          <div>
+            <input
+              id="placePost"
+              class="place-post"
+              type="text"
+              placeholder="Indicate the place you visited"
+              autocomplete="off"
+              required
+            />
+            <label for="imgPost">Upload image</label>
+            <input
+              id="imgPost"
+              class="img-post"
+              type="file"
+              capture="user"
+              accept="image/*"
+              required
+            />
+            <textarea
+              id="descriptionPost"
+              class="description-post"
+              placeholder="Tell us your experience"
+              rows="4"
+            >
+            </textarea>
+          </div>
           <button id="sendPost" class="send-post" type="submit">
             Post
           </button>
@@ -130,7 +140,7 @@
       </section>
       <!-- Fin del post -->
     </main>
-    <footer>
+    <footer id="footer">
       <div class="footer-bar">
         <a href="#">Know us</a>
         <p>
@@ -138,7 +148,6 @@
         </p>
       </div>
     </footer>
-    <script type="module" src="form-view.js"></script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
 
@@ -146,6 +155,7 @@
      https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
 
     <script>
       // Configuración firebase de la página
@@ -164,5 +174,8 @@
       const auth = firebase.auth();
       firebase.analytics();
     </script>
+
+    <script type="module" src="post.js"></script>
+    <script type="module" src="form-view.js"></script>
   </body>
 </html>
