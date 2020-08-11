@@ -123,13 +123,14 @@
               type="file"
               capture="user"
               accept="image/*"
-              required
             />
             <textarea
               id="descriptionPost"
               class="description-post"
               placeholder="Tell us your experience"
               rows="4"
+              autocomplete="off"
+              required
             >
             </textarea>
           </div>
@@ -172,6 +173,7 @@
       // Inicializando Firebase
       firebase.initializeApp(firebaseConfig);
       const auth = firebase.auth();
+      const store = firebase.firestore();
       firebase.analytics();
     </script>
 
