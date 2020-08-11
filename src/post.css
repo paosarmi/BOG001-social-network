@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+:root {
+  --font-placeholder: "Questrial", sans-serif;
+  --font-slogan: "Pacifico", cursive;
+  --color-button: #1a5445;
+  --color-input: #e3e3e3;
+  --color-placeholder: #a89d9d;
+  --color-google: #df4b4b;
+  --font-button-input: #ffffff;
+  --font-link: #3b4ac9;
+}
+html,
+body {
+  height: 100%;
+  margin: 0px;
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo p {
+  margin-top: -3px;
+  font-size: 20px;
+  font-family: var(--font-slogan);
+}
+
+.form-post {
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  top: 250px;
+}
