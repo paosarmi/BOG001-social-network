@@ -107,7 +107,6 @@
       <!-- Post -->
       <section>
         <div id="formPost" class="form-post">
-          <div>
             <input
               id="placePost"
               class="place-post"
@@ -128,12 +127,11 @@
               id="descriptionPost"
               class="description-post"
               placeholder="Tell us your experience"
-              rows="4"
               autocomplete="off"
               required
             >
             </textarea>
-          </div>
+              <p id="invalidPost"></p>
           <button id="sendPost" class="send-post" type="submit">
             Post
           </button>
@@ -174,6 +172,8 @@
       firebase.initializeApp(firebaseConfig);
       const auth = firebase.auth();
       const store = firebase.firestore();
+      const storage = firebase.storage();
+
       firebase.analytics();
     </script>
 
