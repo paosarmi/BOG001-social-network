@@ -40,24 +40,22 @@ function returnSignin() {
 }
 
 function formAuth() {
+  const user = document.querySelector("#user").value;
   const email = document.querySelector("#email").value;
   const password = document.querySelector("#password").value;
-  const user = document.getElementById("user").value;
-  const em = document.getElementById("email").value;
-  const pass = document.getElementById("password").value;
-  const confirm = document.getElementById("confirm").value;
+  const confirm = document.querySelector("#confirm").value;
 
   if (user == null || user.length == 0 || /^\s+$/.test(user)) {
     warnUser.innerHTML = "You must enter a valid user name";
     return false;
   }
 
-  if (em == null || em.length == 0 || /^\s+$/.test(em)) {
+  if (email == null || email.length == 0 || /^\s+$/.test(email)) {
     warnUser.innerHTML = "You must enter a valid email ";
     return false;
   }
 
-  if (pass == null || pass.length == 0 || /^\s+$/.test(pass)) {
+  if (password == null || password.length == 0 || /^\s+$/.test(password)) {
     warnUser.innerHTML = "You must enter a valid password";
     return false;
   }
@@ -67,7 +65,7 @@ function formAuth() {
     return false;
   }
 
-  if (pass != confirm) {
+  if (password != confirm) {
     signin.disables = true;
     warnUser.innerHTML = "Passwords don't match";
     return false;
@@ -92,15 +90,14 @@ function formAuth() {
 function loginAuth() {
   const email = document.querySelector("#emailLogin").value;
   const password = document.querySelector("#passwordLogin").value;
-  const em = document.getElementById("emailLogin").value;
-  const pass = document.getElementById("passwordLogin").value;
+  
 
-  if (em == null || em.length == 0 || /^\s+$/.test(em)) {
+  if (email == null || email.length == 0 || /^\s+$/.test(email)) {
     warnNoExist.innerHTML = "You must enter a valid email ";
     return false;
   }
 
-  if (pass == null || pass.length == 0 || /^\s+$/.test(pass)) {
+  if (password == null || password.length == 0 || /^\s+$/.test(password)) {
     warnNoExist.innerHTML = "You must enter a valid password";
     return false;
   }

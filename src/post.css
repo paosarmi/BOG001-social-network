@@ -39,6 +39,16 @@ body {
 .form-post {
   justify-content: center;
   flex-direction: column;
+  align-items: center;
   position: relative;
   top: 250px;
+}
+
+.place-post {
+  text-transform: capitalize;
+}
+
+.description-post{
+  text-transform: capitalize;
+  white-space: initial;
 }
