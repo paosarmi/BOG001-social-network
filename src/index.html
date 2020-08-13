@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="form-view.css" />
     <link rel="stylesheet" href="post.css" />
+    <link rel="stylesheet" href="timeline.css" />
   </head>
   <body>
     <header id="header" class="header">
@@ -96,42 +97,44 @@
       </section>
       <!--Fin inicio de sesión-->
 
-      <!-- timeline -->
-      <!-- <section>
+      <!-- Timeline -->
+      <section>
         <div id="timeline" class="timeline-view">
-          
+          <div id="container">
+            <img src="#" alt="Logo" />
+          </div>
+
         </div>
-      </section> -->
-      <!-- fin timeline -->
+      </section>
+      <!-- Fin timeline -->
 
       <!-- Post -->
       <section>
         <div id="formPost" class="form-post">
-            <input
-              id="placePost"
-              class="place-post"
-              type="text"
-              placeholder="Indicate the place you visited"
-              autocomplete="off"
-              required
-            />
-            <label for="imgPost">Upload image</label>
-            <input
-              id="imgPost"
-              class="img-post"
-              type="file"
-              capture="user"
-              accept="image/*"
-            />
-            <textarea
-              id="descriptionPost"
-              class="description-post"
-              placeholder="Tell us your experience"
-              autocomplete="off"
-              required
-            >
-            </textarea>
-              <p id="invalidPost"></p>
+          <input
+            id="placePost"
+            class="place-post"
+            type="text"
+            placeholder="Indicate the place you visited"
+            autocomplete="off"
+            required
+          />
+          <textarea
+            id="descriptionPost"
+            class="description-post"
+            placeholder="Tell us your experience"
+            autocomplete="off"
+            required
+          >
+          </textarea>
+          <input
+            id="imgPost"
+            class="img-post"
+            type="file"
+            capture="user"
+            accept="image/*"
+          />
+          <p id="invalidPost"></p>
           <button id="sendPost" class="send-post" type="submit">
             Post
           </button>
@@ -155,6 +158,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
 
     <script>
       // Configuración firebase de la página
@@ -177,7 +181,8 @@
       firebase.analytics();
     </script>
 
-    <script type="module" src="post.js"></script>
     <script type="module" src="form-view.js"></script>
+    <script type="module" src="post.js"></script>
+    <script type="module" src="timeline.js"></script>
   </body>
 </html>
