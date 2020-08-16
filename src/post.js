@@ -4,11 +4,13 @@ const footer = document.getElementById("footer");
 const sendPost = document.getElementById("sendPost");
 const invalidPost = document.getElementById("invalidPost");
 const imgPost = document.getElementById("imgPost");
+const sectionTimeline = document.getElementById("sectionTimeline");
 
 imgPost.addEventListener("change", collectionImagePost);
 sendPost.addEventListener("click", formPostView);
 
-export const showPostAfterLogin = () => {
+export const showPostUser = () => {
+  sectionTimeline.style.display = "none";
   formPost.style.display = "flex";
   header.style.display = "none";
   footer.style.display = "none";
