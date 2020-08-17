@@ -24,3 +24,15 @@ export const getCardPost = () => {
 //     //al botón le pasamos el evento click
 //     //luego pasamos función (showPostUser) para que funciones el post.js
 // }
+
+const testIrPost = document.getElementById("testIrPost");
+
+testIrPost.addEventListener("click", testParaVerPost);
+
+function testParaVerPost() {
+  sectionTimeline.style.display = "none";
+  testIrPost.style.display = "block";
+  formPost.style.display = "block";
+  header.style.display = "none";
+  footer.style.display = "none";
+}

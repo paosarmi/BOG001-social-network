@@ -82,6 +82,8 @@ function formAuth() {
       sectionPost.style.display = "none";
       sectionTimeline.style.display = "flex";
       showTimelineAfterAuth();
+      const uid = userCredential.user.uid;
+      localStorage.setItem("userUID", uid);
       //console.log("sign up");
     })
     .catch((error) => {
@@ -113,7 +115,8 @@ function loginAuth() {
       sectionPost.style.display = "none";
       sectionTimeline.style.display = "flex";
       showTimelineAfterAuth();
-      //console.log("Correcto");
+      const uid = userCredential.user.uid;
+      localStorage.setItem("userUID", uid);
     })
     .catch((error) => {
       warnNoExist.innerHTML = "Incorrect password or email";
@@ -136,6 +139,8 @@ function googleAuth() {
       sectionPost.style.display = "none";
       sectionTimeline.style.display = "flex";
       showTimelineAfterAuth();
+      const uid = userCredential.user.uid;
+      localStorage.setItem("userUID", uid);
     })
     .catch(function (error) {
       const errorCode = error.code;
