@@ -2,7 +2,7 @@
 
 // import { myFunction } from "./lib/index.js";
 // myFunction();
-import { showPostAfterLogin } from "./post.js";
+import { showTimelineAfterAuth } from "./timeline.js";
 
 const sectionLogin = document.getElementById("sectionLogin");
 const sectionSignin = document.getElementById("sectionSignin");
@@ -15,9 +15,11 @@ const warnNoExist = document.getElementById("warnNoExist");
 const signGoogle = document.getElementById("signGoogle");
 const loginGoogle = document.getElementById("loginGoogle");
 const sectionPost = document.getElementById("formPost");
+const sectionTimeline = document.getElementById("sectionTimeline");
 
 sectionSignin.style.display = "none";
 sectionPost.style.display = "none";
+sectionTimeline.style.display = "none";
 signinView.addEventListener("click", returnSignin);
 loginView.addEventListener("click", changeView);
 signin.addEventListener("click", formAuth);
@@ -77,8 +79,11 @@ function formAuth() {
       warnUser.style.display = "none";
       sectionSignin.style.display = "none";
       sectionLogin.style.display = "none";
-      sectionPost.style.display = "flex";
-      showPostAfterLogin();
+      sectionPost.style.display = "none";
+      sectionTimeline.style.display = "flex";
+      showTimelineAfterAuth();
+      const uid = userCredential.user.uid;
+      localStorage.setItem("userUID", uid);
       //console.log("sign up");
     })
     .catch((error) => {
@@ -90,7 +95,6 @@ function formAuth() {
 function loginAuth() {
   const email = document.querySelector("#emailLogin").value;
   const password = document.querySelector("#passwordLogin").value;
-  
 
   if (email == null || email.length == 0 || /^\s+$/.test(email)) {
     warnNoExist.innerHTML = "You must enter a valid email ";
@@ -108,9 +112,11 @@ function loginAuth() {
       warnNoExist.innerHTML = " ";
       sectionSignin.style.display = "none";
       sectionLogin.style.display = "none";
-      sectionPost.style.display = "flex";
-      showPostAfterLogin();
-      //console.log("Correcto");
+      sectionPost.style.display = "none";
+      sectionTimeline.style.display = "flex";
+      showTimelineAfterAuth();
+      const uid = userCredential.user.uid;
+      localStorage.setItem("userUID", uid);
     })
     .catch((error) => {
       warnNoExist.innerHTML = "Incorrect password or email";
@@ -130,8 +136,11 @@ function googleAuth() {
       // console.log(user);
       sectionSignin.style.display = "none";
       sectionLogin.style.display = "none";
-      sectionPost.style.display = "flex";
-      showPostAfterLogin();
+      sectionPost.style.display = "none";
+      sectionTimeline.style.display = "flex";
+      showTimelineAfterAuth();
+      const uid = userCredential.user.uid;
+      localStorage.setItem("userUID", uid);
     })
     .catch(function (error) {
       const errorCode = error.code;
