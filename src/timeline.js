@@ -1,4 +1,5 @@
-import { showPostUser } from "./post.js";
+import { showPostUser, saveDataPost } from "./post.js";
+
 
 const sectionTimeline = document.getElementById("sectionTimeline");
 const formPost = document.getElementById("formPost");
@@ -13,9 +14,14 @@ export const showTimelineAfterAuth = () => {
 };
 
 export const getCardPost = () => {
-  const placePost = document.querySelector("#placePost").value;
-  const descriptionPost = document.querySelector("#descriptionPost").value;
-  const imgPost = document.querySelector("#imgPost").value;
+  store.collection("userPostsCollection").get().then((snapshot) => {
+    snapshot.docs.forEach(doc => {
+      console.log(doc.data());
+    })
+  });
+  // window.addEventListener("DOMContentLoaded"){
+  //   const
+  // }
 };
 
 // function () {
@@ -31,8 +37,10 @@ testIrPost.addEventListener("click", testParaVerPost);
 
 function testParaVerPost() {
   sectionTimeline.style.display = "none";
-  testIrPost.style.display = "block";
-  formPost.style.display = "block";
+  testIrPost.style.display = "flex";
+  formPost.style.display = "flex";
   header.style.display = "none";
   footer.style.display = "none";
 }
+
+

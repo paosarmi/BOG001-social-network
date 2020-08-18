@@ -16,7 +16,7 @@ export const showPostUser = () => {
   footer.style.display = "none";
 };
 
-const saveDataPost = (placePost, descriptionPost) => {
+export const saveDataPost = (placePost, descriptionPost) => {
   const imgPost = document.querySelector("#imgPost").value;
   const userId = localStorage.getItem("userUID");
   //.replace deja unicamente el nombre del archivo o foto que se subió quitando el path anterior
