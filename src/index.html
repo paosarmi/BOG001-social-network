@@ -208,7 +208,7 @@
       <!-- Fin timeline -->
 
       <!-- Post -->
-      <section>
+      <section id="formPostSection">
         <div id="formPost" class="form-post">
           <input
             id="placePost"
@@ -221,22 +221,31 @@
           <textarea
             id="descriptionPost"
             class="description-post"
+            type="text"
             placeholder="Tell us your experience"
             autocomplete="off"
             required
-          >
-          </textarea>
-          <input
-            id="imgPost"
-            class="img-post"
-            type="file"
-            capture="user"
-            accept="image/*"
-          />
+          ></textarea>
+          <div id="imgChosse">
+          <label class="file">
+            <input
+              id="imgPost"
+              class="img-post"
+              type="file"
+              capture="user"
+              accept="image/*"
+            >Choose image</input>
+          </label>
+          <p id="chosen"> No file chosen</p>
+          </div>
           <p id="invalidPost"></p>
-          <button id="sendPost" class="send-post" type="submit">
+          <button id="sendPost" class="send-Post" type="submit">
             Post
           </button>
+          <img id="imgPost2"
+            src= "img/Logo.png"
+            alt="image post"
+          />
         </div>
       </section>
       <!-- Fin del post -->
