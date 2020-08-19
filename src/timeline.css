@@ -20,7 +20,7 @@ body {
 body {
   width: 100%;
   overflow-x: hidden;
-  height: 100%;
+  height: auto;
   font-family: var(--font-placeholder);
 }
 
@@ -81,4 +81,20 @@ body {
 .header-card,
 .description-card {
   text-align: justify;
+}
+
+.container-like {
+  display: flex;
+  flex-direction: row;
+}
+
+.like-off {
+  width: 20px;
+  height: 20px;
+}
+
+.like-on {
+  width: 20px;
+  height: 20px;
+  display: none;
 }

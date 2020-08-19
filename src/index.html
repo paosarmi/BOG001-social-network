@@ -14,7 +14,8 @@
   <body>
     <header id="header" class="header">
       <div class="logo">
-        <img src="img/Logo.png" alt="Terra Tour" />
+        <img src="img/Logo.png" alt="Terra Tour"/>
+        <h1>TERRA TOUR</h1>
         <p>Tourism by your side</p>
       </div>
     </header>
@@ -109,13 +110,12 @@
               <img src="" alt="profile image" />
             </div>
           </div> -->
+          
           <div id="postTimelineContainer" class="post-timeline-container">
             <div id="headPostTimelineCont" class="head-post-timeline-cont">
               <div id="userProfileContainer" class="user-profile-container">
-                <!--el contenido de los tags se construyen dinamicamente-->
                 <img src="#" alt="profile image" />
                 <span>userNameProfile</span>
-                <!--fin de cambio dinamico-->
               </div>
               <div id="editDots" class="edit-dots">
                 <p><strong>...</strong></p>
@@ -123,28 +123,29 @@
             </div>
             <div id="cardPostContainer" class="card-post-container">
               <div id="headerCard" class="header-card">
-                <!--el contenido de los tags se construyen dinamicamente-->
                 <img
                   src="/fotos perfil terra tour/post1.jpg"
                   alt="image post"
                 />
                 <p>Place name</p>
-                <!--fin de cambio dinamico-->
               </div>
               <div id="descriptionCard" class="description-card">
-                <!--el contenido de los tags se construyen dinamicamente-->
-                <p id="descriptionCardDate">Date photo</p>
+                <p>Date photo</p>
                 <p>
                   Description card. Lorem ipsum dolor sit amet consectetur
                   adipisicing elit. Repellendus facilis error, voluptas
                   reiciendis quas quod praesentium animi fugiat eum optio qui
                   aliquam cupiditate accusantium iure?
                 </p>
-                <!--fin de cambio dinamico-->
+                <div class="container-like">
+                  <img src="/img/LikeOff.png" alt="LikeOff" class="like-off" id="likeOff">
+                  <img src="/img/Likeon.png" alt="LikeOff" class="like-on" id="likeOn">
+                  <p id="numbersLikes"></p>
+                </div>
               </div>
             </div>
           </div>
-          <div id="postTimelineContainer" class="post-timeline-container">
+          <!--<div id="postTimelineContainer" class="post-timeline-container">
             <div id="headPostTimelineCont" class="head-post-timeline-cont">
               <div id="userProfileContainer" class="user-profile-container">
                 <img src="#" alt="profile image" />
@@ -172,36 +173,7 @@
                 </p>
               </div>
             </div>
-          </div>
-          <div id="postTimelineContainer" class="post-timeline-container">
-            <div id="headPostTimelineCont" class="head-post-timeline-cont">
-              <div id="userProfileContainer" class="user-profile-container">
-                <img src="#" alt="profile image" />
-                <span>userNameProfile</span>
-              </div>
-              <div id="editDots" class="edit-dots">
-                <p><strong>...</strong></p>
-              </div>
-            </div>
-            <div id="cardPostContainer" class="card-post-container">
-              <div id="headerCard" class="header-card">
-                <img
-                  src="/fotos perfil terra tour/post1.jpg"
-                  alt="image post"
-                />
-                <p>Place name</p>
-              </div>
-              <div id="descriptionCard" class="description-card">
-                <p>Date photo</p>
-                <p>
-                  Description card. Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Repellendus facilis error, voluptas
-                  reiciendis quas quod praesentium animi fugiat eum optio qui
-                  aliquam cupiditate accusantium iure?
-                </p>
-              </div>
-            </div>
-          </div>
+          </div> -->
           <input id="testIrPost" type="button" value="Ir a post" />
         </div>
       </section>

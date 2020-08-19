@@ -13,25 +13,39 @@
 }
 html,
 body {
-  height: 100%;
+  height: auto;
   margin: 0px;
 }
 
 body {
   width: 100%;
   overflow-x: hidden;
-  height: 100%;
+  height: auto;
 }
 
 .logo {
+  margin-top: 5%;
+}
+
+.logo img {
   display: flex;
+  width: 35%;
+  height: 35%;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
 
+.logo h1 {
+  font-size: 35px;
+  font-weight: bold;
+  font-family: var(--font-placeholder);
+  color: var(--color-button);
+  margin: 0;
+}
+
 .logo p {
-  margin-top: -3px;
+  margin: 0;
   font-size: 20px;
   font-family: var(--font-slogan);
 }
@@ -40,6 +54,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 4%;
 }
 
 .input-login input {
@@ -47,7 +62,7 @@ body {
   background-color: var(--color-input);
   border-radius: 25px;
   border-style: none;
-  padding: 5px;
+  padding: 9px;
   margin-top: 8px;
 }
 
@@ -74,16 +89,16 @@ body {
   flex-direction: column;
   align-items: center;
   font-family: var(--font-placeholder);
-  margin-top: 30px;
+  margin: 0;
 }
 
 .button-sign button {
-  width: 65%;
+  width: 69%;
   background-color: var(--color-google);
   color: var(--font-button-input);
   border-radius: 25px;
   border-style: none;
-  padding: 5px;
+  padding: 8px;
 }
 
 .button-sign button:first-child {
@@ -96,7 +111,7 @@ body {
 }
 
 .button-sign a {
-  margin-top: 20px;
+  margin-top: 3%;
   color: var(--font-link);
   text-decoration: none;
   font-size: 18px;
@@ -104,11 +119,14 @@ body {
 }
 
 footer {
-  position: absolute;
-  margin-top: 10px;
-  /* bottom: 0; */
+  display: flex;
+  margin: 0;
+  padding: 0;
   width: 100%;
   color: var(--color-input);
+  text-align: center;
+  position: fixed;
+  bottom: 0;
 }
 
 .footer-bar {
@@ -119,7 +137,7 @@ footer {
   justify-content: flex-end;
   flex-direction: column;
   align-items: center;
-  margin: 20px 0 0 0;
+  margin: 0 0 0 0;
 }
 
 .footer-bar a {
@@ -301,4 +319,26 @@ footer {
   .footer-bar {
     width: 100%;
   }
+}
+
+@media only screen and (max-width: 600px) {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  ...;
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  ...;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  ...;
 }

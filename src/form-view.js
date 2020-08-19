@@ -133,13 +133,12 @@ function googleAuth() {
     .then(function (result) {
       const token = result.credential.accesstoken;
       const user = result.user;
-      // console.log(user);
       sectionSignin.style.display = "none";
       sectionLogin.style.display = "none";
       sectionPost.style.display = "none";
       sectionTimeline.style.display = "flex";
       showTimelineAfterAuth();
-      const uid = userCredential.user.uid;
+      const uid = user.uid;
       localStorage.setItem("userUID", uid);
     })
     .catch(function (error) {
