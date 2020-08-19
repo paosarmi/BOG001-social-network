@@ -52,7 +52,7 @@ function collectionImagePost(userId, imgPost, fileName) {
   const storageRef = storage.ref(
     "userCollectionMultimedia/" + userId + "/" + fileName
   );
-  const imageRef = storageRef.put(imgPost, file);
+  const imageRef = storageRef.put(imgPost, fileName);
 }
 
 function formPostView() {
