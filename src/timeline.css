@@ -24,22 +24,62 @@ body {
   font-family: var(--font-placeholder);
 }
 
-.head-post-timeline-cont {
+.section-timeline-view {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.head-logo-user-container {
   display: flex;
+  width: 90%;
   justify-content: space-between;
+}
+
+.head-logo-user-container img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.head-logo-user-container p {
+  color: var(--color-button);
+  font-family: var(--font-placeholder);
+  margin-top: 0;
+}
+
+.container-logo-timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-head {
+  display: flex;
   align-items: center;
 }
 
 .post-timeline-container {
   display: flex;
   flex-direction: column;
-  padding: 0 20px 20px 20px;
+  padding: 25px 20px 20px 20px;
 }
 
-.section-timeline-view {
-  flex-direction: column;
+.head-post-timeline-cont {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+}
+
+.user-profile-container {
+  display: flex;
+  align-items: center;
+}
+
+.user-profile-container img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
 }
 
 .card-post-container {
