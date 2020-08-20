@@ -78,5 +78,8 @@ function formPostView() {
     .catch(function (error) {});
 
   getCardPost();
+<<<<<<< HEAD
   //apagar();
+=======
+>>>>>>> ab38e43... Files images
 }
