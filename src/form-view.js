@@ -3,6 +3,7 @@
 // import { myFunction } from "./lib/index.js";
 // myFunction();
 import { showTimelineAfterAuth } from "./timeline.js";
+import { hamburgerFloatMenu } from "./menu.js";
 
 const sectionLogin = document.getElementById("sectionLogin");
 const sectionSignin = document.getElementById("sectionSignin");
