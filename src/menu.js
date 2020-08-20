@@ -13,6 +13,8 @@ export const hamburgerFloatMenu = () => {
   sectionLogin.style.display = "none";
 };
 
-hamburger.addEventListener("click", function () {
+hamburger.addEventListener("click", menuHamburguer);
+
+function menuHamburguer() {
   hamburger.classList.toggle("is-active");
-});
+}
