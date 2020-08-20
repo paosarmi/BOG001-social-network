@@ -10,6 +10,7 @@
   --color-google: #df4b4b;
   --font-button-input: #ffffff;
   --font-link: #3b4ac9;
+  --color-border: #000000;
 }
 html,
 body {
@@ -62,7 +63,7 @@ body {
   background-color: var(--color-input);
   border-radius: 25px;
   border-style: none;
-  padding: 9px;
+  padding: 7px;
   margin-top: 8px;
 }
 
@@ -98,7 +99,7 @@ body {
   color: var(--font-button-input);
   border-radius: 25px;
   border-style: none;
-  padding: 8px;
+  padding: 7px;
 }
 
 .button-sign button:first-child {
@@ -149,75 +150,76 @@ footer {
   margin: 5px 0;
 }
 
-@media only screen and (min-width: 768px) {
-  body {
-    background-image: url("img/fondo.png");
+@media only screen and (min-height: 768px) {
+  .logo {
+    margin-top: 25%;
   }
 
-  header {
-    height: 500px;
+  .input-login input {
+    width: 70%;
+    padding: 12px;
+    margin-top: 9px;
+  }
+
+  .input-login input::placeholder {
+    font-size: 16px;
+  }
+
+  .button-sign button {
+    width: 76%;
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .button-sign a {
+    font-size: 20px;
+  }
+}
+@media only screen and (min-height: 880px) {
+  body {
+    background-image: url(img/background-web3.jpg);
   }
 
   .logo {
-    position: absolute;
-    left: 100px;
-    right: 100px;
-    top: 40px;
-    /* bottom: 50%; */
-    justify-content: center;
-    background-color: var(--font-button-input);
-    border-radius: 40px 40px 0 0;
+    margin-top: 15%;
   }
 
   .logo img {
-    width: 400px;
+    width: 25%;
+    height: 25%;
+  }
+
+  .logo h1 {
+    font-size: 50px;
   }
 
   .logo p {
-    margin-top: -3px;
+    margin-top: -10px;
     font-size: 30px;
   }
-  #formLogin {
-    position: absolute;
-    background-color: var(--font-button-input);
-    font-size: 25px;
-    top: 390px;
-    bottom: 75px;
-    left: 100px;
-    right: 100px;
-    border-radius: 0 0 40px 40px;
-  }
-
-  #formSignin {
-    position: absolute;
-    background-color: var(--font-button-input);
-    font-size: 25px;
-    top: 390px;
-    bottom: 145px;
-    left: 100px;
-    right: 100px;
-    border-radius: 0 0 40px 40px;
-  }
 
   .input-login input {
     width: 50%;
-    padding: 10px;
-    border-radius: 18px;
-  }
-
-  input {
-    font-size: 20px;
+    padding: 15px;
+    margin-top: 10px;
+    border: var(--color-border) 1px solid;
   }
 
   .input-login input::placeholder {
-    padding-left: 13px;
+    font-size: 20px;
   }
 
-  .button-sign button {
-    width: 50%;
-    padding: 10px;
+  #warnUser {
     font-size: 20px;
-    border-radius: 18px;
+  }
+
+  #warnNoExist {
+    font-size: 20px;
+  }
+  .button-sign button {
+    width: 54%;
+    padding: 12px;
+    font-size: 18px;
   }
 
   .button-sign p {
@@ -225,120 +227,126 @@ footer {
   }
 
   .button-sign a {
-    font-size: 22px;
+    font-size: 25px;
   }
 
-  footer {
-    bottom: 0;
-    top: 1000px;
+  .footer-bar a {
+    font-size: 23px;
   }
 
-  .footer-bar {
-    width: 100%;
-    font-size: 20px;
+  .footer-bar p {
+    font-size: 23px;
   }
 }
 
-@media only screen and (min-width: 992px) {
-  header {
-    height: 300px;
+@media only screen and (min-width: 1000px) {
+  body {
+    background-image: url(img/background-web3.jpg);
   }
 
   .logo {
-    position: absolute;
-    left: 400px;
-    right: 400px;
-    top: 10px;
-    bottom: 50%;
-    justify-content: center;
-    background-color: var(--font-button-input);
-    border-radius: 40px 40px 0 0;
+    margin-top: 20%;
   }
 
   .logo img {
-    width: 200px;
-    margin-top: -45px;
+    width: 25%;
+    height: 25%;
+  }
+
+  .logo h1 {
+    font-size: 50px;
   }
 
   .logo p {
-    margin-top: -3px;
-    font-size: 20px;
-  }
-  #formLogin {
-    position: absolute;
-    background-color: var(--font-button-input);
-    font-size: 25px;
-    left: 400px;
-    right: 400px;
-    border-radius: 0 0 40px 40px;
-    margin-top: -75px;
-  }
-
-  #formSignin {
-    position: absolute;
-    background-color: var(--font-button-input);
-    font-size: 25px;
-    left: 400px;
-    right: 400px;
-    border-radius: 0 0 40px 40px;
-    margin-top: -75px;
+    font-size: 30px;
   }
 
   .input-login input {
-    width: 70%;
-  }
-
-  input {
-    font-size: 13px;
+    width: 45%;
+    padding: 20px;
+    margin-top: 10px;
   }
 
   .input-login input::placeholder {
-    padding-left: 10px;
+    font-size: 25px;
+  }
+
+  #warnUser {
+    font-size: 23px;
+  }
+
+  #warnNoExist {
+    font-size: 23px;
   }
 
   .button-sign button {
-    width: 70%;
-    padding: 10px;
-    font-size: 13px;
-    border-radius: 18px;
+    width: 49%;
+    padding: 15px;
+    font-size: 25px;
   }
 
   .button-sign p {
-    font-size: 15px;
+    font-size: 40px;
   }
 
   .button-sign a {
-    font-size: 15px;
-  }
-
-  .footer-bar {
-    width: 100%;
-    font-size: 15px;
-  }
-
-  .footer-bar {
-    width: 100%;
+    font-size: 35px;
   }
 }
 
-@media only screen and (max-width: 600px) {
-}
+@media only screen and (min-width: 1100px) {
+  .logo {
+    margin-top: 2%;
+  }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-  ...;
-}
+  .logo img {
+    width: 8%;
+    height: 8%;
+  }
 
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-  ...;
-}
+  .logo h1 {
+    font-size: 35px;
+  }
 
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-}
+  .logo p {
+    font-size: 25px;
+  }
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-  ...;
+  .input-login {
+    margin-top: 1%;
+  }
+
+  .input-login input {
+    width: 30%;
+    padding: 8px;
+    margin-top: 8px;
+    border: var(--color-border) 1px solid;
+  }
+
+  .input-login input::placeholder {
+    font-size: 13px;
+  }
+
+  #warnUser {
+    font-size: 13px;
+  }
+
+  #warnNoExist {
+    font-size: 13px;
+  }
+
+  .button-sign button {
+    width: 31%;
+    padding: 9px;
+    font-size: 12px;
+  }
+
+  .button-sign p {
+    font-size: 18px;
+  }
+
+  .button-sign a {
+    margin-top: 1%;
+    font-size: 16px;
+  }
 }

@@ -1,5 +1,4 @@
 import { getCardPost } from "./timeline.js";
-import { hamburgerFloatMenu } from "./menu.js";
 
 const formPost = document.getElementById("formPost");
 const header = document.getElementById("header");
@@ -78,8 +77,4 @@ function formPostView() {
     .catch(function (error) {});
 
   getCardPost();
-<<<<<<< HEAD
-  //apagar();
-=======
->>>>>>> ab38e43... Files images
 }
