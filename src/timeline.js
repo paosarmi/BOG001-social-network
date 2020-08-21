@@ -21,9 +21,14 @@ export const showTimelineAfterAuth = () => {
 
 export const getCardPost = () => store.collection("userPostsCollection").get();
 
+const onGetTask = (callback) =>
+  store.collection("userPostsCollection").onSnapshot(callback);
+
 window.addEventListener("DOMContentLoaded", async (e) => {
-  const querySnapshot = await getCardPost();
-  sectionTimeline.innerHTML += `<div id="headLogoUserContainer" class="head-logo-user-container">
+  onGetTask((querySnapshot) => {
+    // const querySnapshot = await getCardPost();
+
+    sectionTimeline.innerHTML += `<div id="headLogoUserContainer" class="head-logo-user-container">
   <div id="containerLogoTimeline" class="container-logo-timeline">
     <img src="/img/Logo.png" alt="Logo" />
     <p>Terra Tour</p>
@@ -34,17 +39,18 @@ window.addEventListener("DOMContentLoaded", async (e) => {
   </div>
 </div>`;
 
-  let numberLikesCounter = 0;
+    let numberLikesCounter = 0;
 
-  querySnapshot.forEach((doc) => {
-    console.log(doc.data());
+    querySnapshot.forEach((doc) => {
+      console.log(doc.data());
 
-    const cardPost = doc.data();
+      const userPostsCollection = doc.data();
+      const cardPost = doc.data();
 
-    const likeOnId = "likeOn" + numberLikesCounter;
-    const likeOffId = "likeOff" + numberLikesCounter;
+      const likeOnId = "likeOn" + numberLikesCounter;
+      const likeOffId = "likeOff" + numberLikesCounter;
 
-    sectionTimeline.innerHTML += `
+      sectionTimeline.innerHTML += `
           <div id="postTimelineContainer" class="post-timeline-container">
             <div id="headPostTimelineCont" class="head-post-timeline-cont">
               <div id="userProfileContainer" class="user-profile-container">
@@ -68,21 +74,27 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                   <img src="/img/Likeon.png" alt="LikeOn" class="like-on" id="${likeOnId}">
                   <p id="numbersLikes${numberLikesCounter}"></p>
                 </div>
+                <div>
+                  <button id="DeleteButton" class="delete-button">Delete</button>      
+                  <button id="EditButton" class="edit-button">Edit</button>
+                </div>
               </div>
             </div>
           </div>
           `;
-    document.getElementById(likeOffId).onclick = function () {
-      likePost(likeOffId, likeOnId);
-    };
-    document.getElementById(likeOnId).onclick = function () {
-      unLikePost(likeOffId, likeOnId);
-    };
-    numberLikesCounter += 1;
-  });
+      document.getElementById(likeOffId).onclick = function () {
+        likePost(likeOffId, likeOnId);
+      };
+      document.getElementById(likeOnId).onclick = function () {
+        unLikePost(likeOffId, likeOnId);
+      };
+      numberLikesCounter += 1;
+    });
 
-  sectionTimeline.innerHTML += `<input id="testIrPost" type="button" value="Ir a post" />`;
-  document.getElementById("testIrPost").onclick = testParaVerPost;
+    //este botón se debe incluir y editar para ponerlo dentro del menú
+    sectionTimeline.innerHTML += `<input id="testIrPost" type="button" value="Ir a post" />`;
+    document.getElementById("testIrPost").onclick = testParaVerPost;
+  });
 });
 
 function testParaVerPost() {
