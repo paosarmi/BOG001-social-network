@@ -36,6 +36,21 @@ body {
   font-family: var(--font-slogan);
 }
 
+.x1{
+  position: absolute;
+  width: 13px;
+  height: 21px;
+  left: 310px;
+  top: 48px;
+  font-family: Questrial;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 21px;
+  text-align: center;
+  color: #000000; 
+}
+
 .form-post {
   justify-content: center;
   flex-direction: column;
@@ -79,6 +94,11 @@ body {
   position: absolute;
   z-index: -1;
 }
+.logo p {
+  margin-top: -3px;
+  font-size: 20px;
+  font-family: var(--font-slogan);
+}
 
 .file{
   font-size: 10px;
@@ -108,9 +128,28 @@ body {
 }
 
 #imgPost2{
-  width:200px;
+  width: 100px;
+  height: 100px;
   
 }
+.logo-up{
+  color: var(--color-button);
+  margin-top: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+  
+}
+
+.slogan-up{
+margin-top: -20px;
+font-family: var(--font-slogan);
+color:#000000
+}
+
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   

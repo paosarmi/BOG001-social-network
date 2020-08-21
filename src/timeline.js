@@ -1,5 +1,6 @@
 import { showPostUser, saveDataPost } from "./post.js";
 
+const dots = document.getElementById("dots");
 const sectionTimeline = document.getElementById("sectionTimeline");
 const formPost = document.getElementById("formPost");
 const header = document.getElementById("header");
@@ -23,22 +24,20 @@ export const getCardPost = () => store.collection("userPostsCollection").get();
 
 window.addEventListener("DOMContentLoaded", async (e) => {
   const querySnapshot = await getCardPost();
+ 
   querySnapshot.forEach((doc) => {
     console.log(doc.data());
 
     const cardPost = doc.data();
-
-    postTimelineContainer.innerHTML += `<div id="cardPostContainer" class="card-post-container">
-      <div id="headerCard" class="header-card">
-        <img src="${cardPost.url}" alt="Post image" />
-        <p>${cardPost.placePost}</p>
-        </div>
-      <div id="descriptionCard" class="description-card">
-        <p id="descriptionCardDate">${cardPost.dateImg}</p>
-        <p>${cardPost.descriptionPost}</p>
-      </div>
-    </div>`;
+    
+    postTimelineContainer.innerHTML += `<p id="cardPostContainer" class="card-post-container">
+      hola
+    </p>`;
+    console.log(dots)
+    dots.addEventListener("click", getDots)
   });
+  
+  
 });
 
 // function () {
@@ -47,6 +46,15 @@ window.addEventListener("DOMContentLoaded", async (e) => {
 //     //al botón le pasamos el evento click
 //     //luego pasamos función (showPostUser) para que funciones el post.js
 // }
+
+
+
+
+
+function getDots() {
+  console.log ("entro");
+  document.getElementById("myDropdown").classList.toggle("show");
+}
 
 const testIrPost = document.getElementById("testIrPost");
 
@@ -72,3 +80,13 @@ function dontLikePost() {
   likeOff.style.display = "flex";
   printNumberLike.style.display = "none";
 }
+
+
+{/* <div id="headerCard" class="header-card">
+        <img src="${cardPost.url}" alt="Post image" />
+        <p>${cardPost.placePost}</p>
+        </div>
+      <div id="descriptionCard" class="description-card">
+        <p id="descriptionCardDate">${cardPost.dateImg}</p>
+        <p>${cardPost.descriptionPost}</p>
+      </div> */}

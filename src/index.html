@@ -118,7 +118,12 @@
                 <span>userNameProfile</span>
               </div>
               <div id="editDots" class="edit-dots">
-                <p><strong>...</strong></p>
+                <p id="dots"><strong>...</strong></p>
+                <div class="dropdown-content" id="myDropdown">
+                  <a href="#">Link 1</a>
+                  <a href="#">Link 2</a>
+                  <a href="#">Link 3</a>
+                </div>
               </div>
             </div>
             <div id="cardPostContainer" class="card-post-container">
@@ -182,6 +187,7 @@
       <!-- Post -->
       <section id="formPostSection">
         <div id="formPost" class="form-post">
+          <div class="x"><p id="x" class="x1">x</p></div>
           <input
             id="placePost"
             class="place-post"
@@ -199,25 +205,29 @@
             required
           ></textarea>
           <div id="imgChosse">
-          <label class="file">
-            <input
-              id="imgPost"
-              class="img-post"
-              type="file"
-              capture="user"
-              accept="image/*"
-            >Choose image</input>
-          </label>
-          <p id="chosen"> No file chosen</p>
+            <label class="file">
+              <input
+                id="imgPost"
+                class="img-post"
+                type="file"
+                capture="user"
+                accept="image/*"
+              >Choose image</input>
+            </label>
+            <p id="chosen"> No file chosen</p>
           </div>
           <p id="invalidPost"></p>
           <button id="sendPost" class="send-Post" type="submit">
             Post
           </button>
-          <img id="imgPost2"
-            src= "img/Logo.png"
-            alt="image post"
-          />
+          <div class="logo-up">
+            <img id="imgPost2"
+              src= "img/Logo.png"
+              alt="image post"
+            />
+            <h1>TERRA TOUR</h1>
+            <p class="slogan-up">Tourism by your side</p>
+          </div>
         </div>
       </section>
       <!-- Fin del post -->

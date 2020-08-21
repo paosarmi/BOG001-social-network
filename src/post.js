@@ -1,5 +1,6 @@
 import { getCardPost } from "./timeline.js";
 
+const x = document.getElementById("x");
 const formPost = document.getElementById("formPost");
 const header = document.getElementById("header");
 const footer = document.getElementById("footer");
@@ -9,6 +10,8 @@ const imgPost = document.getElementById("imgPost");
 const sectionTimeline = document.getElementById("sectionTimeline");
 var image;
 
+
+x.addEventListener("click",getBack);
 imgPost.addEventListener("change", getImage);
 sendPost.addEventListener("click", formPostView);
 
@@ -18,6 +21,14 @@ export const showPostUser = () => {
   header.style.display = "none";
   footer.style.display = "none";
 };
+
+function getBack(){
+  sectionTimeline.style.display = "flex";
+  testIrPost.style.display = "flex";
+  formPost.style.display = "none";
+  header.style.display = "none";
+  footer.style.display = "none";
+}
 
 function getImage(event) {
   image = event.target.files[0];
@@ -77,5 +88,4 @@ function formPostView() {
     .catch(function (error) {});
 
   getCardPost();
-  apagar();
 }
