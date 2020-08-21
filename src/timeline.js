@@ -20,6 +20,8 @@ export const showTimelineAfterAuth = () => {
   footer.style.display = "none";
 };
 
+
+
 export const getCardPost = () => store.collection("userPostsCollection").get();
 
 const onGetTask = (callback) =>
@@ -50,6 +52,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
 
       const likeOnId = "likeOn" + numberLikesCounter;
       const likeOffId = "likeOff" + numberLikesCounter;
+      const dotsID = "dots" + numberLikesCounter;
 
       sectionTimeline.innerHTML += `
           <div id="postTimelineContainer" class="post-timeline-container">
@@ -59,9 +62,11 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                 <span>userNameProfile</span>
               </div>
               <div id="editDots" class="edit-dots">
-                <p id="dots" class="dots-1"><strong>...</strong>
-                <a>Report</a>
-                </p>
+                <p id="dots" class="dots" onclick="DotsMenu(${dotsID})"><strong>...</strong></p>
+                <div class="dropdown-content" id="${dotsID}" onclick="report()">
+                  <a href="#">Report</a>
+                </div>
+                
               </div>
             </div>
             <div id="cardPostContainer" class="card-post-container">
@@ -87,9 +92,6 @@ window.addEventListener("DOMContentLoaded", async (e) => {
           `;
      
 
-      // document.getElementById("dots").onclick = function () {
-      //   console.log("dots")
-      // }
       document.getElementById(likeOffId).onclick = function () {
         likePost(likeOffId, likeOnId);
       };
@@ -111,10 +113,7 @@ function testParaVerPost() {
   header.style.display = "none";
   footer.style.display = "none";
 }
-//  function myFunction() {
-//   document.getElementById("myDropdown").classList.toggle("show");
-//    console.log(dots);
-//       }
+
 
 function likePost(likeOffId, likeOnId) {
   document.getElementById(likeOffId).style.display = "none";

@@ -10,6 +10,31 @@
     <link rel="stylesheet" href="form-view.css" />
     <link rel="stylesheet" href="post.css" />
     <link rel="stylesheet" href="timeline.css" />
+    <link rel="stylesheet" href="404.css" />
+    <script type="text/javascript">
+      function DotsMenu(dotsID) {
+        
+        if (document.getElementById(dotsID.id).style.display == 'none')
+          document.getElementById(dotsID.id).style.display = "block";
+        else
+          document.getElementById(dotsID.id).style.display = "none";
+        
+      }
+      //Oculta el menu si se preciona afuera del menu
+      window.onclick = function(e) {
+        if (e.target.nodeName != 'STRONG') {
+          const myDropdown = document.getElementsByClassName("dropdown-content");
+          for (let index = 0; index < myDropdown.length; index++) {
+            document.getElementById(myDropdown[index].id).style.display = "none";
+          }
+        }
+      }
+
+      function report() {
+        document.getElementById("section404").style.display = 'block';
+        document.getElementById("sectionTimeline").style.display = 'none';
+      }
+    </script>
   </head>
   <body>
     <header id="header" class="header">
@@ -146,7 +171,9 @@
         </div>
       </section>
       <!-- Fin del post -->
-
+      <section>
+        <div id="section404" class="section-404-view">404</div>
+      </section>
       <!--Contenedor Menú-->
       <div>
         <div

@@ -1,4 +1,4 @@
-import { getCardPost, showTimelineAfterAuth } from "./timeline.js";
+import { getCardPost } from "./timeline.js";
 
 const x = document.getElementById("x");
 const formPost = document.getElementById("formPost");
@@ -88,5 +88,4 @@ function formPostView() {
     .catch(function (error) {});
 
   getCardPost();
-  showTimelineAfterAuth();
 }
