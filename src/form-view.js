@@ -1,9 +1,5 @@
-// Este es el punto de entrada de tu aplicacion
-
-// import { myFunction } from "./lib/index.js";
-// myFunction();
 import { showTimelineAfterAuth } from "./timeline.js";
-import { hamburgerFloatMenu } from "./menu.js";
+import { showhHamburgerAfterLogin } from "./menu.js";
 
 const sectionLogin = document.getElementById("sectionLogin");
 const sectionSignin = document.getElementById("sectionSignin");
@@ -83,6 +79,7 @@ function formAuth() {
       sectionPost.style.display = "none";
       sectionTimeline.style.display = "flex";
       showTimelineAfterAuth();
+      showhHamburgerAfterLogin();
       const uid = userCredential.user.uid;
       localStorage.setItem("userUID", uid);
       //console.log("sign up");
@@ -116,6 +113,7 @@ function loginAuth() {
       sectionPost.style.display = "none";
       sectionTimeline.style.display = "flex";
       showTimelineAfterAuth();
+      showhHamburgerAfterLogin();
       const uid = userCredential.user.uid;
       localStorage.setItem("userUID", uid);
     })
@@ -139,6 +137,7 @@ function googleAuth() {
       sectionPost.style.display = "none";
       sectionTimeline.style.display = "flex";
       showTimelineAfterAuth();
+      showhHamburgerAfterLogin();
       const uid = user.uid;
       localStorage.setItem("userUID", uid);
     })

@@ -1,5 +1,5 @@
 import { showPostUser, saveDataPost } from "./post.js";
-import { hamburgerFloatMenu } from "./menu.js";
+import { hideHamburguerBeforePost } from "./menu.js";
 
 const sectionTimeline = document.getElementById("sectionTimeline");
 const formPost = document.getElementById("formPost");
@@ -102,6 +102,7 @@ function testParaVerPost() {
   formPost.style.display = "flex";
   header.style.display = "none";
   footer.style.display = "none";
+  hideHamburguerBeforePost();
 }
 
 function likePost(likeOffId, likeOnId) {
