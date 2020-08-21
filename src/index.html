@@ -13,28 +13,29 @@
     <link rel="stylesheet" href="404.css" />
     <script type="text/javascript">
       function DotsMenu(dotsID) {
-        
-        if (document.getElementById(dotsID.id).style.display == 'none')
+        if (document.getElementById(dotsID.id).style.display == "none")
           document.getElementById(dotsID.id).style.display = "block";
-        else
-          document.getElementById(dotsID.id).style.display = "none";
-        
+        else document.getElementById(dotsID.id).style.display = "none";
       }
       //Oculta el menu si se preciona afuera del menu
-      window.onclick = function(e) {
-        if (e.target.nodeName != 'STRONG') {
-          const myDropdown = document.getElementsByClassName("dropdown-content");
+      window.onclick = function (e) {
+        if (e.target.nodeName != "STRONG") {
+          const myDropdown = document.getElementsByClassName(
+            "dropdown-content"
+          );
           for (let index = 0; index < myDropdown.length; index++) {
-            document.getElementById(myDropdown[index].id).style.display = "none";
+            document.getElementById(myDropdown[index].id).style.display =
+              "none";
           }
         }
-      }
+      };
 
       function report() {
-        document.getElementById("section404").style.display = 'block';
-        document.getElementById("sectionTimeline").style.display = 'none';
+        document.getElementById("section404").style.display = "block";
+        document.getElementById("sectionTimeline").style.display = "none";
       }
     </script>
+    <link rel="stylesheet" href="menu.css" />
   </head>
   <body>
     <header id="header" class="header">
@@ -175,14 +176,8 @@
         <div id="section404" class="section-404-view">404</div>
       </section>
       <!--Contenedor Menú-->
-      <div>
-        <div
-          class="hamburger hamburger--spin"
-          tabindex="0"
-          aria-label="Menu"
-          role="button"
-          aria-controls="navigation"
-        >
+      <div id="menuContainer" class="menu-container">
+        <div class="hamburger hamburger--spin">
           <div class="hamburger-box">
             <div class="hamburger-inner"></div>
           </div>
