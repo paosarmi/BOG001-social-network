@@ -44,9 +44,8 @@ window.addEventListener("DOMContentLoaded", async (e) => {
 
     let numberLikesCounter = 0;
 
+    sectionTimeline.innerHTML = "";
     querySnapshot.forEach((doc) => {
-      console.log(doc.data());
-
       const userPostsCollection = doc.data();
       const cardPost = doc.data();
 
@@ -83,15 +82,15 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                   <p id="numbersLikes${numberLikesCounter}"></p>
                 </div>
                 <div>
-                  <button id="DeleteButton" class="delete-button">Delete</button>      
-                  <button id="EditButton" class="edit-button">Edit</button>
+                  <button id="deleteButton" class="delete-button">Delete</button>      
+                  <button id="editButton" class="edit-button">Edit</button>
                 </div>
               </div>
             </div>
           </div>
           `;
-     
 
+      //const buttonDeleteCard = document.querySelectorAll(".delete-button");
       document.getElementById(likeOffId).onclick = function () {
         likePost(likeOffId, likeOnId);
       };
@@ -105,35 +104,24 @@ window.addEventListener("DOMContentLoaded", async (e) => {
     sectionTimeline.innerHTML += `<input id="testIrPost" type="button" value="Ir a post" />`;
     document.getElementById("testIrPost").onclick = testParaVerPost;
   });
+
+  function testParaVerPost() {
+    sectionTimeline.style.display = "none";
+    formPost.style.display = "flex";
+    header.style.display = "none";
+    footer.style.display = "none";
+  }
+
+  function likePost(likeOffId, likeOnId) {
+    document.getElementById(likeOffId).style.display = "none";
+    document.getElementById(likeOnId).style.display = "flex";
+    // printNumberLike.innerHTML = "1";
+    // printNumberLike.style.display = "flex";
+  }
+
+  function unLikePost(likeOffId, likeOnId) {
+    document.getElementById(likeOnId).style.display = "none";
+    document.getElementById(likeOffId).style.display = "flex";
+    // printNumberLike.style.display = "none";
+  }
 });
-
-function testParaVerPost() {
-  sectionTimeline.style.display = "none";
-  formPost.style.display = "flex";
-  header.style.display = "none";
-  footer.style.display = "none";
-}
-
-
-function likePost(likeOffId, likeOnId) {
-  document.getElementById(likeOffId).style.display = "none";
-  document.getElementById(likeOnId).style.display = "flex";
-  // printNumberLike.innerHTML = "1";
-  // printNumberLike.style.display = "flex";
-}
-
-function unLikePost(likeOffId, likeOnId) {
-  document.getElementById(likeOnId).style.display = "none";
-  document.getElementById(likeOffId).style.display = "flex";
-  // printNumberLike.style.display = "none";
-}
-
-
-{/* <div id="headerCard" class="header-card">
-        <img src="${cardPost.url}" alt="Post image" />
-        <p>${cardPost.placePost}</p>
-        </div>
-      <div id="descriptionCard" class="description-card">
-        <p id="descriptionCardDate">${cardPost.dateImg}</p>
-        <p>${cardPost.descriptionPost}</p>
-      </div> */}

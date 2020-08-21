@@ -10,6 +10,7 @@
   --color-google: #df4b4b;
   --font-button-input: #ffffff;
   --font-link: #3b4ac9;
+  --color-background: #f3f3f3;
 }
 html,
 body {
@@ -25,6 +26,7 @@ body {
 }
 
 .section-timeline-view {
+  background-color: var(--color-background);
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -87,7 +89,6 @@ body {
 }
 
 .card-post-container {
-  background: aquamarine;
   border-radius: 25px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -125,6 +126,7 @@ body {
 .header-card,
 .description-card {
   text-align: justify;
+  border-radius: 0px 0px 25px 25px;
 }
 
 .container-like {
