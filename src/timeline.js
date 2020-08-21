@@ -1,17 +1,17 @@
 import { showPostUser, saveDataPost } from "./post.js";
+import { hamburgerFloatMenu } from "./menu.js";
 
 const dots = document.getElementById("dots");
 const sectionTimeline = document.getElementById("sectionTimeline");
 const formPost = document.getElementById("formPost");
 const header = document.getElementById("header");
 const footer = document.getElementById("footer");
-const likeOff = document.getElementById("likeOff");
-const likeOn = document.getElementById("likeOn");
-const printNumberLike = document.getElementById("numbersLikes");
-const postTimelineContainer = document.getElementById("postTimelineContainer");
+// const likeOff = document.getElementById("likeOff");
+// const likeOn = document.getElementById("likeOn");
+// const printNumberLike = document.getElementById("numbersLikes");
 
-likeOff.addEventListener("click", likePost);
-likeOn.addEventListener("click", dontLikePost);
+// likeOff.addEventListener("click", likePost);
+// likeOn.addEventListener("click", unLikePost);
 
 export const showTimelineAfterAuth = () => {
   sectionTimeline.style.display = "flex";
@@ -22,63 +22,111 @@ export const showTimelineAfterAuth = () => {
 
 export const getCardPost = () => store.collection("userPostsCollection").get();
 
+const onGetTask = (callback) =>
+  store.collection("userPostsCollection").onSnapshot(callback);
+
 window.addEventListener("DOMContentLoaded", async (e) => {
-  const querySnapshot = await getCardPost();
- 
-  querySnapshot.forEach((doc) => {
-    console.log(doc.data());
+  onGetTask((querySnapshot) => {
+    // const querySnapshot = await getCardPost();
 
-    const cardPost = doc.data();
-    
-    postTimelineContainer.innerHTML += `<p id="cardPostContainer" class="card-post-container">
-      hola
-    </p>`;
-    console.log(dots)
-    dots.addEventListener("click", getDots)
+    sectionTimeline.innerHTML += `<div id="headLogoUserContainer" class="head-logo-user-container">
+  <div id="containerLogoTimeline" class="container-logo-timeline">
+    <img src="/img/Logo.png" alt="Logo" />
+    <p>Terra Tour</p>
+  </div>
+  <div id="userHead" class="user-head">
+    <span>userNameProfile</span>
+    <img src="/img/fotos de prueba/profile.jpeg" alt="profile image" />
+  </div>
+</div>`;
+
+    let numberLikesCounter = 0;
+
+    querySnapshot.forEach((doc) => {
+      console.log(doc.data());
+
+      const userPostsCollection = doc.data();
+      const cardPost = doc.data();
+
+      const likeOnId = "likeOn" + numberLikesCounter;
+      const likeOffId = "likeOff" + numberLikesCounter;
+
+      sectionTimeline.innerHTML += `
+          <div id="postTimelineContainer" class="post-timeline-container">
+            <div id="headPostTimelineCont" class="head-post-timeline-cont">
+              <div id="userProfileContainer" class="user-profile-container">
+                <img src="/img/fotos de prueba/post1.jpg" alt="profile image" />
+                <span>userNameProfile</span>
+              </div>
+              <div id="editDots" class="edit-dots">
+                <p id="dots" class="dots-1"><strong>...</strong>
+                <a>Report</a>
+                </p>
+              </div>
+            </div>
+            <div id="cardPostContainer" class="card-post-container">
+              <div id="headerCard" class="header-card">
+              <img src="${cardPost.url}" alt="Post image" />
+              <p>${cardPost.placePost}</p>
+              </div>
+              <div id="descriptionCard" class="description-card">
+              <p id="descriptionCardDate">${cardPost.dateImg}</p>
+              <p>${cardPost.descriptionPost}</p>
+                <div class="container-like">
+                  <img src="/img/LikeOff.png" alt="LikeOff" class="like-off" id="${likeOffId}">
+                  <img src="/img/Likeon.png" alt="LikeOn" class="like-on" id="${likeOnId}">
+                  <p id="numbersLikes${numberLikesCounter}"></p>
+                </div>
+                <div>
+                  <button id="DeleteButton" class="delete-button">Delete</button>      
+                  <button id="EditButton" class="edit-button">Edit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          `;
+     
+
+      // document.getElementById("dots").onclick = function () {
+      //   console.log("dots")
+      // }
+      document.getElementById(likeOffId).onclick = function () {
+        likePost(likeOffId, likeOnId);
+      };
+      document.getElementById(likeOnId).onclick = function () {
+        unLikePost(likeOffId, likeOnId);
+      };
+      numberLikesCounter += 1;
+    });
+
+    //este botón se debe incluir y editar para ponerlo dentro del menú
+    sectionTimeline.innerHTML += `<input id="testIrPost" type="button" value="Ir a post" />`;
+    document.getElementById("testIrPost").onclick = testParaVerPost;
   });
-  
-  
 });
-
-// function () {
-//     //acá vamos de las publicaciones a publicar
-//     //traemos el botón (menú postear)
-//     //al botón le pasamos el evento click
-//     //luego pasamos función (showPostUser) para que funciones el post.js
-// }
-
-
-
-
-
-function getDots() {
-  console.log ("entro");
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-
-const testIrPost = document.getElementById("testIrPost");
-
-testIrPost.addEventListener("click", testParaVerPost);
 
 function testParaVerPost() {
   sectionTimeline.style.display = "none";
-  testIrPost.style.display = "flex";
   formPost.style.display = "flex";
   header.style.display = "none";
   footer.style.display = "none";
 }
+//  function myFunction() {
+//   document.getElementById("myDropdown").classList.toggle("show");
+//    console.log(dots);
+//       }
 
-function likePost() {
-  likeOff.style.display = "none";
-  likeOn.style.display = "flex";
-  printNumberLike.innerHTML = "1";
-  printNumberLike.style.display = "flex";
+function likePost(likeOffId, likeOnId) {
+  document.getElementById(likeOffId).style.display = "none";
+  document.getElementById(likeOnId).style.display = "flex";
+  // printNumberLike.innerHTML = "1";
+  // printNumberLike.style.display = "flex";
 }
 
-function dontLikePost() {
-  likeOn.style.display = "none";
-  likeOff.style.display = "flex";
-  printNumberLike.style.display = "none";
+function unLikePost(likeOffId, likeOnId) {
+  document.getElementById(likeOnId).style.display = "none";
+  document.getElementById(likeOffId).style.display = "flex";
+  // printNumberLike.style.display = "none";
 }
 
 
