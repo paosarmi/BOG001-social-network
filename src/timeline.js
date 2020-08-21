@@ -1,6 +1,7 @@
 import { showPostUser, saveDataPost } from "./post.js";
 import { hamburgerFloatMenu } from "./menu.js";
 
+const dots = document.getElementById("dots");
 const sectionTimeline = document.getElementById("sectionTimeline");
 const formPost = document.getElementById("formPost");
 const header = document.getElementById("header");
@@ -18,6 +19,8 @@ export const showTimelineAfterAuth = () => {
   header.style.display = "none";
   footer.style.display = "none";
 };
+
+
 
 export const getCardPost = () => store.collection("userPostsCollection").get();
 
@@ -48,6 +51,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
 
       const likeOnId = "likeOn" + numberLikesCounter;
       const likeOffId = "likeOff" + numberLikesCounter;
+      const dotsID = "dots" + numberLikesCounter;
 
       sectionTimeline.innerHTML += `
           <div id="postTimelineContainer" class="post-timeline-container">
@@ -57,7 +61,11 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                 <span>userNameProfile</span>
               </div>
               <div id="editDots" class="edit-dots">
-                <p><strong>...</strong></p>
+                <p id="dots" class="dots" onclick="DotsMenu(${dotsID})"><strong>...</strong></p>
+                <div class="dropdown-content" id="${dotsID}" onclick="report()">
+                  <a href="#">Report</a>
+                </div>
+                
               </div>
             </div>
             <div id="cardPostContainer" class="card-post-container">
