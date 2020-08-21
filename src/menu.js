@@ -5,12 +5,22 @@ const sectionSignin = document.querySelector("#sectionSignin");
 const sectionLogin = document.querySelector("#sectionLogin");
 const hamburger = document.querySelector(".hamburger");
 
-export const hamburgerFloatMenu = () => {
+export const showhHamburgerAfterLogin = () => {
   menuContainer.style.display = "flex";
-  sectionTimeline.style.display = "flex";
-  formPost.style.display = "none";
   sectionSignin.style.display = "none";
   sectionLogin.style.display = "none";
+};
+
+export const hideHamburguerBeforePost = () => {
+  menuContainer.style.display = "none";
+  formPost.style.display = "flex";
+  sectionTimeline.style.display = "none";
+};
+
+export const showHamburguerAfterPost = () => {
+  menuContainer.style.display = "flex";
+  formPost.style.display = "none";
+  sectionTimeline.style.display = "flex";
 };
 
 hamburger.addEventListener("click", menuHamburguer);

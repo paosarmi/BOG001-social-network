@@ -1,5 +1,5 @@
 import { showPostUser, saveDataPost } from "./post.js";
-import { hamburgerFloatMenu } from "./menu.js";
+import { hideHamburguerBeforePost } from "./menu.js";
 
 const dots = document.getElementById("dots");
 const sectionTimeline = document.getElementById("sectionTimeline");
@@ -19,8 +19,6 @@ export const showTimelineAfterAuth = () => {
   header.style.display = "none";
   footer.style.display = "none";
 };
-
-
 
 export const getCardPost = () => store.collection("userPostsCollection").get();
 
@@ -104,24 +102,25 @@ window.addEventListener("DOMContentLoaded", async (e) => {
     sectionTimeline.innerHTML += `<input id="testIrPost" type="button" value="Ir a post" />`;
     document.getElementById("testIrPost").onclick = testParaVerPost;
   });
-
-  function testParaVerPost() {
-    sectionTimeline.style.display = "none";
-    formPost.style.display = "flex";
-    header.style.display = "none";
-    footer.style.display = "none";
-  }
-
-  function likePost(likeOffId, likeOnId) {
-    document.getElementById(likeOffId).style.display = "none";
-    document.getElementById(likeOnId).style.display = "flex";
-    // printNumberLike.innerHTML = "1";
-    // printNumberLike.style.display = "flex";
-  }
-
-  function unLikePost(likeOffId, likeOnId) {
-    document.getElementById(likeOnId).style.display = "none";
-    document.getElementById(likeOffId).style.display = "flex";
-    // printNumberLike.style.display = "none";
-  }
 });
+
+function testParaVerPost() {
+  sectionTimeline.style.display = "none";
+  formPost.style.display = "flex";
+  header.style.display = "none";
+  footer.style.display = "none";
+  hideHamburguerBeforePost();
+}
+
+function likePost(likeOffId, likeOnId) {
+  document.getElementById(likeOffId).style.display = "none";
+  document.getElementById(likeOnId).style.display = "flex";
+  // printNumberLike.innerHTML = "1";
+  // printNumberLike.style.display = "flex";
+}
+
+function unLikePost(likeOffId, likeOnId) {
+  document.getElementById(likeOnId).style.display = "none";
+  document.getElementById(likeOffId).style.display = "flex";
+  // printNumberLike.style.display = "none";
+}
