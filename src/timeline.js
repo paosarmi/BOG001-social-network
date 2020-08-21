@@ -20,16 +20,18 @@ export const showTimelineAfterAuth = () => {
   footer.style.display = "none";
 };
 
-export const getCardPost = () => store.collection("userPostsCollection").get();
+export const loadTimeline = async () => {
+  const getCardPost = () => store.collection("userPostsCollection").get();
 
-const onGetTask = (callback) =>
-  store.collection("userPostsCollection").onSnapshot(callback);
+  const onGetTask = (callback) =>
+    store.collection("userPostsCollection").onSnapshot(callback);
 
-window.addEventListener("DOMContentLoaded", async (e) => {
-  onGetTask((querySnapshot) => {
-    // const querySnapshot = await getCardPost();
+  console.log("antes");
+  const querySnapshot = await store.collection("userPostsCollection").get();
+  console.log("despues");
 
-    sectionTimeline.innerHTML += `<div id="headLogoUserContainer" class="head-logo-user-container">
+  //onGetTask((querySnapshot) => {
+  sectionTimeline.innerHTML = `<div id="headLogoUserContainer" class="head-logo-user-container">
   <div id="containerLogoTimeline" class="container-logo-timeline">
     <img src="/img/Logo.png" alt="Logo" />
     <p>Terra Tour</p>
@@ -40,18 +42,15 @@ window.addEventListener("DOMContentLoaded", async (e) => {
   </div>
 </div>`;
 
-    let numberLikesCounter = 0;
+  let numberLikesCounter = 0;
 
-    sectionTimeline.innerHTML = "";
-    querySnapshot.forEach((doc) => {
-      const userPostsCollection = doc.data();
-      const cardPost = doc.data();
+  querySnapshot.forEach((doc) => {
+    const cardPost = doc.data();
+    const likeOnId = "likeOn" + numberLikesCounter;
+    const likeOffId = "likeOff" + numberLikesCounter;
+    const dotsID = "dots" + numberLikesCounter;
 
-      const likeOnId = "likeOn" + numberLikesCounter;
-      const likeOffId = "likeOff" + numberLikesCounter;
-      const dotsID = "dots" + numberLikesCounter;
-
-      sectionTimeline.innerHTML += `
+    sectionTimeline.innerHTML += `
           <div id="postTimelineContainer" class="post-timeline-container">
             <div id="headPostTimelineCont" class="head-post-timeline-cont">
               <div id="userProfileContainer" class="user-profile-container">
@@ -68,17 +67,17 @@ window.addEventListener("DOMContentLoaded", async (e) => {
             </div>
             <div id="cardPostContainer" class="card-post-container">
               <div id="headerCard" class="header-card">
-              <img src="${cardPost.url}" alt="Post image" />
-              <p>${cardPost.placePost}</p>
+                <img src="${cardPost.url}" alt="Post image" />
+                <p>${cardPost.placePost}</p>
               </div>
               <div id="descriptionCard" class="description-card">
-              <p id="descriptionCardDate">${cardPost.dateImg}</p>
-              <p>${cardPost.descriptionPost}</p>
-                <div class="container-like">
-                  <img src="/img/LikeOff.png" alt="LikeOff" class="like-off" id="${likeOffId}">
-                  <img src="/img/Likeon.png" alt="LikeOn" class="like-on" id="${likeOnId}">
-                  <p id="numbersLikes${numberLikesCounter}"></p>
-                </div>
+                <p id="descriptionCardDate">${cardPost.dateImg}</p>
+                <p>${cardPost.descriptionPost}</p>
+              <div class="container-like">
+                <img src="/img/LikeOff.png" alt="LikeOff" class="like-off" id="${likeOffId}">
+                <img src="/img/Likeon.png" alt="LikeOn" class="like-on" id="${likeOnId}">
+                <p id="numbersLikes${numberLikesCounter}"></p>
+              </div>
                 <div>
                   <button id="deleteButton" class="delete-button">Delete</button>      
                   <button id="editButton" class="edit-button">Edit</button>
@@ -87,22 +86,35 @@ window.addEventListener("DOMContentLoaded", async (e) => {
             </div>
           </div>
           `;
-
-      //const buttonDeleteCard = document.querySelectorAll(".delete-button");
-      document.getElementById(likeOffId).onclick = function () {
-        likePost(likeOffId, likeOnId);
-      };
-      document.getElementById(likeOnId).onclick = function () {
-        unLikePost(likeOffId, likeOnId);
-      };
-      numberLikesCounter += 1;
-    });
-
-    //este botón se debe incluir y editar para ponerlo dentro del menú
-    sectionTimeline.innerHTML += `<input id="testIrPost" type="button" value="Ir a post" />`;
-    document.getElementById("testIrPost").onclick = testParaVerPost;
+    document.getElementById(likeOffId).onclick = function () {
+      likePost(likeOffId, likeOnId);
+    };
+    document.getElementById(likeOnId).onclick = function () {
+      unLikePost(likeOffId, likeOnId);
+    };
+    numberLikesCounter += 1;
   });
-});
+
+  // const likeOffImgs = document.querySelectorAll(".like-off-img-select");
+  // const likeOnImgs = document.querySelectorAll(".like-on-img-select");
+
+  // document.getElementById("likeOn0").onclick = test;
+  // document.getElementById("likeOff0").onclick = test;
+
+  // likeOffImgs.forEach((img) => {
+  //   img.onclick = test;
+  // });
+
+  // likeOnImgs.forEach((img) => {
+  //   img.onclick = test;
+  // });
+
+  //este botón se debe incluir y editar para ponerlo dentro del menú
+  sectionTimeline.innerHTML += `<input id="testIrPost" type="button" value="Ir a post" />`;
+  document.getElementById("testIrPost").onclick = testParaVerPost;
+};
+
+export const getCardPost = () => store.collection("userPostsCollection").get();
 
 function testParaVerPost() {
   sectionTimeline.style.display = "none";

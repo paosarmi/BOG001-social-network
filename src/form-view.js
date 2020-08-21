@@ -1,4 +1,4 @@
-import { showTimelineAfterAuth } from "./timeline.js";
+import { showTimelineAfterAuth, loadTimeline } from "./timeline.js";
 import { showhHamburgerAfterLogin } from "./menu.js";
 
 const sectionLogin = document.getElementById("sectionLogin");
@@ -116,6 +116,7 @@ function loginAuth() {
       showhHamburgerAfterLogin();
       const uid = userCredential.user.uid;
       localStorage.setItem("userUID", uid);
+      loadTimeline();
     })
     .catch((error) => {
       warnNoExist.innerHTML = "Incorrect password or email";
