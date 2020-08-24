@@ -11,15 +11,12 @@
     <link rel="stylesheet" href="post.css" />
     <link rel="stylesheet" href="timeline.css" />
     <link rel="stylesheet" href="404.css" />
+    <link rel="stylesheet" href="my-profile.css" />
     <script type="text/javascript">
       function DotsMenu(dotsID) {
         if (document.getElementById(dotsID.id).style.display == "none")
           document.getElementById(dotsID.id).style.display = "block";
         else document.getElementById(dotsID.id).style.display = "none";
-      }
-
-      function likePost(likeOffId) {
-        console.log("like post");
       }
 
       //Oculta el menu si se preciona afuera del menu
@@ -34,7 +31,6 @@
           }
         }
       };
-
       function report() {
         document.getElementById("section404").style.display = "block";
         document.getElementById("sectionTimeline").style.display = "none";
@@ -177,9 +173,31 @@
         </div>
       </section>
       <!-- Fin del post -->
+
+      <!--My profile-->
+      <!-- <section>
+        <div id="myProfile">
+          <div id="profileImageAndName" class="profile-image-name">
+            <img src="#" alt="profile image" />
+            <span>user name</span>
+          </div>
+          <div id="personalInformation" class="personal-information">
+            <span>Correo:</span>
+            <p>userNameProfile@gmail.com</p>
+            <span>País:</span>
+            <p>Colombia</p>
+          </div>
+          <div>
+            <button>My post</button>
+          </div>
+        </div>
+      </section> -->
+      <!--Fin my profile-->
+
       <section>
         <div id="section404" class="section-404-view">404</div>
       </section>
+
       <!--Contenedor Menú-->
       <div id="menuContainer" class="menu-container">
         <div class="hamburger hamburger--spin">
@@ -237,5 +255,6 @@
     <script type="module" src="post.js"></script>
     <script type="module" src="timeline.js"></script>
     <script type="module" src="menu.js"></script>
+    <script type="module" src="my-profile.js"></script>
   </body>
 </html>

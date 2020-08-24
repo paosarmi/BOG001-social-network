@@ -6,8 +6,8 @@ const sectionTimeline = document.getElementById("sectionTimeline");
 const formPost = document.getElementById("formPost");
 const header = document.getElementById("header");
 const footer = document.getElementById("footer");
-// const likeOff = document.getElementById("likeOff");
-// const likeOn = document.getElementById("likeOn");
+const likeOff = document.getElementById("likeOff");
+const likeOn = document.getElementById("likeOn");
 // const printNumberLike = document.getElementById("numbersLikes");
 
 // likeOff.addEventListener("click", likePost);
@@ -42,11 +42,11 @@ export const loadTimeline = async () => {
 
   // let numberLikesCounter = 0;
 
-  querySnapshot.forEach((doc) => {
+  querySnapshot.docs.forEach((doc, index) => {
     const cardPost = doc.data();
     const likeOnId = "likeOn";
     const likeOffId = "likeOff";
-    const dotsID = "dots";
+    const dotsID = "dots" + index;
 
     sectionTimeline.innerHTML += `
           <div id="postTimelineContainer" class="post-timeline-container">
@@ -73,8 +73,8 @@ export const loadTimeline = async () => {
                 <p>${cardPost.descriptionPost}</p>
               <div class="container-like">
                 <img src="/img/LikeOff.png" alt="LikeOff" class="like-off" onclick="likePost(${likeOffId})">
-                <img src="/img/Likeon.png" alt="LikeOn" class="like-on" id="${likeOnId}">
-                <p id="numbersLikes${numberLikesCounter}"></p>
+                <img src="/img/Likeon.png" alt="LikeOn" class="like-on" onclick="unLikePost${likeOnId}">
+                
               </div>
                 <div>
                   <button id="deleteButton" class="delete-button">Delete</button>      
@@ -94,6 +94,8 @@ export const loadTimeline = async () => {
     // numberLikesCounter += 1;
   });
 
+  // <p id="numbersLikes${numberLikesCounter}"></p>
+
   //este botón se debe incluir y editar para ponerlo dentro del menú
   sectionTimeline.innerHTML += `<input id="testIrPost" type="button" value="Ir a post" />`;
   document.getElementById("testIrPost").onclick = testParaVerPost;
@@ -107,17 +109,4 @@ function testParaVerPost() {
   header.style.display = "none";
   footer.style.display = "none";
   hideHamburguerBeforePost();
-}
-
-function likePost(likeOffId, likeOnId) {
-  document.getElementById(likeOffId).style.display = "none";
-  document.getElementById(likeOnId).style.display = "flex";
-  // printNumberLike.innerHTML = "1";
-  // printNumberLike.style.display = "flex";
-}
-
-function unLikePost(likeOffId, likeOnId) {
-  document.getElementById(likeOnId).style.display = "none";
-  document.getElementById(likeOffId).style.display = "flex";
-  // printNumberLike.style.display = "none";
 }
