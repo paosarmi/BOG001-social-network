@@ -1,5 +1,4 @@
 import { getCardPost, showTimelineAfterAuth } from "./timeline.js";
-//import { hideHamburguerBeforePost, showHamburguerAfterPost } from "./menu.js";
 
 const x = document.getElementById("x");
 const formPost = document.getElementById("formPost");
