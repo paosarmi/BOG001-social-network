@@ -4,6 +4,7 @@
 // myFunction();
 import { showTimelineAfterAuth } from "./timeline.js";
 import { hamburgerFloatMenu } from "./menu.js";
+import {showMyPostAfterAuth} from "./mypost.js";
 
 const sectionLogin = document.getElementById("sectionLogin");
 const sectionSignin = document.getElementById("sectionSignin");
@@ -17,10 +18,12 @@ const signGoogle = document.getElementById("signGoogle");
 const loginGoogle = document.getElementById("loginGoogle");
 const sectionPost = document.getElementById("formPost");
 const sectionTimeline = document.getElementById("sectionTimeline");
+const sectionMyPost = document.getElementById("sectionMyPost")
 
 sectionSignin.style.display = "none";
 sectionPost.style.display = "none";
 sectionTimeline.style.display = "none";
+sectionMyPost.style.display="none";
 signinView.addEventListener("click", returnSignin);
 loginView.addEventListener("click", changeView);
 signin.addEventListener("click", formAuth);
@@ -137,8 +140,12 @@ function googleAuth() {
       sectionSignin.style.display = "none";
       sectionLogin.style.display = "none";
       sectionPost.style.display = "none";
-      sectionTimeline.style.display = "flex";
-      showTimelineAfterAuth();
+      // // Se ve Timelin
+      // sectionTimeline.style.display = "flex";
+      // showTimelineAfterAuth();
+      // Se ve my post
+      sectionTimeline.style.display = "none";
+      showMyPostAfterAuth();
       const uid = user.uid;
       localStorage.setItem("userUID", uid);
     })
