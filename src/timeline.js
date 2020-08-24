@@ -6,8 +6,8 @@ const sectionTimeline = document.getElementById("sectionTimeline");
 const formPost = document.getElementById("formPost");
 const header = document.getElementById("header");
 const footer = document.getElementById("footer");
-const likeOff = document.getElementById("likeOff");
-const likeOn = document.getElementById("likeOn");
+// const likeOff = document.getElementById("likeOff");
+// const likeOn = document.getElementById("likeOn");
 // const printNumberLike = document.getElementById("numbersLikes");
 
 // likeOff.addEventListener("click", likePost);
@@ -44,8 +44,8 @@ export const loadTimeline = async () => {
 
   querySnapshot.docs.forEach((doc, index) => {
     const cardPost = doc.data();
-    const likeOnId = "likeOn";
-    const likeOffId = "likeOff";
+    const likeOnId = "likeOn" + index;
+    const likeOffId = "likeOff" + index;
     const dotsID = "dots" + index;
 
     sectionTimeline.innerHTML += `
@@ -72,8 +72,8 @@ export const loadTimeline = async () => {
                 <p id="descriptionCardDate">${cardPost.dateImg}</p>
                 <p>${cardPost.descriptionPost}</p>
               <div class="container-like">
-                <img src="/img/LikeOff.png" alt="LikeOff" class="like-off" onclick="likePost(${likeOffId})">
-                <img src="/img/Likeon.png" alt="LikeOn" class="like-on" onclick="unLikePost${likeOnId}">
+              <button id="${likeOffId}" onclick="likePost('${likeOffId}', '${likeOnId}')"> <img src="/img/LikeOff.png" alt="LikeOff" class="like-off"></button>
+              <button id="${likeOnId}" onclick="unLikePost('${likeOnId}', '${likeOffId}')"> <img src="/img/LikeOn.png" alt="LikeOn" class="like-on" ></button>
                 
               </div>
                 <div>

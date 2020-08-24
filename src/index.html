@@ -31,9 +31,25 @@
           }
         }
       };
+
       function report() {
         document.getElementById("section404").style.display = "block";
         document.getElementById("sectionTimeline").style.display = "none";
+      }
+
+      function likePost(likeOffId, likeOnId) {
+        console.log(likeOffId);
+        console.log(document.getElementById(likeOffId));
+        document.getElementById(likeOffId).style.display = "none";
+        document.getElementById(likeOnId).style.display = "flex";
+        // printNumberLike.innerHTML = "1";
+        // printNumberLike.style.display = "flex";
+      }
+
+      function unLikePost(likeOnId, likeOffId) {
+        document.getElementById(likeOnId).style.display = "none";
+        document.getElementById(likeOffId).style.display = "flex";
+        // printNumberLike.style.display = "none";
       }
     </script>
     <link rel="stylesheet" href="menu.css" />
