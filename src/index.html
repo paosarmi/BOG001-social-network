@@ -7,35 +7,12 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="form-view.css" />
-    <link rel="stylesheet" href="post.css" />
-    <link rel="stylesheet" href="timeline.css" />
-    <link rel="stylesheet" href="404.css" />
-    <script type="text/javascript">
-      function DotsMenu(dotsID) {
-        if (document.getElementById(dotsID.id).style.display == "none")
-          document.getElementById(dotsID.id).style.display = "block";
-        else document.getElementById(dotsID.id).style.display = "none";
-      }
-      //Oculta el menu si se preciona afuera del menu
-      window.onclick = function (e) {
-        if (e.target.nodeName != "STRONG") {
-          const myDropdown = document.getElementsByClassName(
-            "dropdown-content"
-          );
-          for (let index = 0; index < myDropdown.length; index++) {
-            document.getElementById(myDropdown[index].id).style.display =
-              "none";
-          }
-        }
-      };
-
-      function report() {
-        document.getElementById("section404").style.display = "block";
-        document.getElementById("sectionTimeline").style.display = "none";
-      }
-    </script>
-    <link rel="stylesheet" href="menu.css" />
+    <link rel="stylesheet" href="/styles-pages/form-view.css" />
+    <link rel="stylesheet" href="/styles-pages/post.css" />
+    <link rel="stylesheet" href="/styles-pages/timeline.css" />
+    <link rel="stylesheet" href="/styles-pages/404.css" />
+    <link rel="stylesheet" href="/styles-pages/my-profile.css" />
+    <link rel="stylesheet" href="/styles-pages/menu.css" />
   </head>
   <body>
     <header id="header" class="header">
@@ -172,9 +149,31 @@
         </div>
       </section>
       <!-- Fin del post -->
+
+      <!--My profile-->
+      <!-- <section>
+        <div id="myProfile">
+          <div id="profileImageAndName" class="profile-image-name">
+            <img src="#" alt="profile image" />
+            <span>user name</span>
+          </div>
+          <div id="personalInformation" class="personal-information">
+            <span>Correo:</span>
+            <p>userNameProfile@gmail.com</p>
+            <span>País:</span>
+            <p>Colombia</p>
+          </div>
+          <div>
+            <button>My post</button>
+          </div>
+        </div>
+      </section> -->
+      <!--Fin my profile-->
+
       <section>
         <div id="section404" class="section-404-view">404</div>
       </section>
+
       <!--Contenedor Menú-->
       <div id="menuContainer" class="menu-container">
         <div class="hamburger hamburger--spin">
@@ -228,9 +227,14 @@
       firebase.analytics();
     </script>
 
-    <script type="module" src="form-view.js"></script>
-    <script type="module" src="post.js"></script>
-    <script type="module" src="timeline.js"></script>
-    <script type="module" src="menu.js"></script>
+    <script type="module" src="/pages-javascript/form-view.js"></script>
+    <script type="module" src="/pages-javascript/post.js"></script>
+    <script type="module" src="/pages-javascript/timeline.js"></script>
+    <script type="module" src="/pages-javascript/menu.js"></script>
+    <script type="module" src="/pages-javascript/my-profile.js"></script>
+    <script
+      type="module"
+      src="/pages-javascript/click-card-function.js"
+    ></script>
   </body>
 </html>
