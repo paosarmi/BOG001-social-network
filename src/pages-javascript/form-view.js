@@ -1,4 +1,9 @@
+// Este es el punto de entrada de tu aplicacion
+
+// import { myFunction } from "./lib/index.js";
+// myFunction();
 import { showTimelineAfterAuth, loadTimeline } from "./timeline.js";
+import {showMyPostAfterAuth} from "./mypost.js";
 import { showhHamburgerAfterLogin } from "./menu.js";
 
 const sectionLogin = document.getElementById("sectionLogin");
@@ -13,11 +18,13 @@ const signGoogle = document.getElementById("signGoogle");
 const loginGoogle = document.getElementById("loginGoogle");
 const sectionPost = document.getElementById("formPost");
 const sectionTimeline = document.getElementById("sectionTimeline");
+const sectionMyPost = document.getElementById("sectionMyPost")
 const myProfile = document.getElementById("myProfile");
 
 sectionSignin.style.display = "none";
 sectionPost.style.display = "none";
 sectionTimeline.style.display = "none";
+sectionMyPost.style.display="none";
 signinView.addEventListener("click", returnSignin);
 loginView.addEventListener("click", changeView);
 signin.addEventListener("click", formAuth);
@@ -137,6 +144,12 @@ function googleAuth() {
       sectionSignin.style.display = "none";
       sectionLogin.style.display = "none";
       sectionPost.style.display = "none";
+      // // Se ve Timelin
+      // sectionTimeline.style.display = "flex";
+      // showTimelineAfterAuth();
+      // Se ve my post
+      sectionTimeline.style.display = "none";
+      showMyPostAfterAuth();
       sectionTimeline.style.display = "flex";
       showTimelineAfterAuth();
       showhHamburgerAfterLogin();
