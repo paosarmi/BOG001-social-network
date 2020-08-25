@@ -36,7 +36,7 @@ body {
   font-family: var(--font-slogan);
 }
 
-.x1{
+.closePost {
   position: absolute;
   width: 13px;
   height: 21px;
@@ -48,7 +48,7 @@ body {
   font-size: 20px;
   line-height: 21px;
   text-align: center;
-  color: #000000; 
+  color: #000000;
 }
 
 .form-post {
@@ -70,7 +70,7 @@ body {
   border-style: none;
 }
 
-.description-post{
+.description-post {
   background-color: var(--color-input);
   text-transform: capitalize;
   white-space: initial;
@@ -79,14 +79,12 @@ body {
   margin-bottom: 25px;
   height: 100px;
   width: 200px;
-  
-  
 }
-.img-post.file{
+.img-post.file {
   border-radius: 100px;
 }
 
-.img-post{
+.img-post {
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
@@ -100,69 +98,68 @@ body {
   font-family: var(--font-slogan);
 }
 
-.file{
+.file {
   font-size: 10px;
   border-radius: 25px;
   background-color: var(--color-input);
-  padding: 10px 10px ;
+  padding: 10px 10px;
   text-transform: uppercase;
   text-align: center;
   width: 125px;
   /* height: 100px; */
 }
-.send-Post{
+.send-Post {
   background-color: var(--color-button);
   color: var(--color-input);
-  border-radius:25px;
+  border-radius: 25px;
   width: 250px;
   height: 40px;
 }
-#imgChosse{
+#imgChosse {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-#chosen{
+#chosen {
   margin-left: 5px;
 }
 
-#imgPost2{
+#imgPost2 {
   width: 100px;
   height: 100px;
-  
 }
-.logo-up{
+.logo-up {
   color: var(--color-button);
   margin-top: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  
-  
 }
 
-.slogan-up{
-margin-top: -20px;
-font-family: var(--font-slogan);
-color:#000000
+.slogan-up {
+  margin-top: -20px;
+  font-family: var(--font-slogan);
+  color: #000000;
 }
-
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-  
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {}
+@media only screen and (min-width: 600px) {
+}
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {}
+@media only screen and (min-width: 768px) {
+}
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {}
+@media only screen and (min-width: 992px) {
+}
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {}
+@media only screen and (min-width: 1200px) {
+}
