@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/styles-pages/404.css" />
     <link rel="stylesheet" href="/styles-pages/my-profile.css" />
     <link rel="stylesheet" href="/styles-pages/menu.css" />
-    <link rel="stylesheet" href="/styles-pages/my-post.css"/>
+    <link rel="stylesheet" href="/styles-pages/my-post.css" />
   </head>
   <body>
     <header id="header" class="header">
@@ -142,7 +142,6 @@
                 image
               />
             </label>
-            <p id="chosen">No file chosen</p>
           </div>
           <p id="invalidPost"></p>
           <button id="sendPost" class="send-Post" type="submit">
@@ -155,30 +154,16 @@
 
       <!--My profile-->
       <section>
-        <div id="myProfile">
+        <div id="myProfile" class="my-profile">
           <div id="profileImageAndName" class="profile-image-name">
             <img src="#" alt="profile image" />
             <span>user name</span>
-          </div>
-          <div id="personalInformation" class="personal-information">
-            <span>Correo:</span>
-            <p>userNameProfile@gmail.com</p>
-            <span>País:</span>
-            <p>Colombia</p>
-          </div>
-          <div>
-            <button>My post</button>
           </div>
           <div id="imgFooter" class="img-footer">
             <img src="img/Logo.png" alt="image footer" />
           </div>
         </div>
       </section>
-      <!-- my post -->
-      <section>
-        <div id="sectionMyPost" class="section-My-Post"></div>
-      </section>
-      <!-- fin my post -->
       <!--Fin my profile-->
 
       <!--Error 404-->
@@ -248,10 +233,5 @@
     <script type="module" src="/pages-javascript/timeline.js"></script>
     <script type="module" src="/pages-javascript/menu.js"></script>
     <script type="module" src="/pages-javascript/my-profile.js"></script>
-    <script
-      type="module"
-      src="/pages-javascript/click-card-function.js"
-    ></script>
-    <script type="module" src="/pages-javascript/my-profile.js"></script>
-    </body>
+  </body>
 </html>

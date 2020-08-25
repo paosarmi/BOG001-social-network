@@ -61,7 +61,6 @@ body {
 
 .place-post {
   background-color: var(--color-input);
-  text-transform: capitalize;
   padding: 0px 25px 0px 25px;
   border-radius: 25px;
   margin-bottom: 25px;
@@ -72,7 +71,8 @@ body {
 
 .description-post {
   background-color: var(--color-input);
-  text-transform: capitalize;
+  font-family: var(--font-placeholder);
+  border-style: none;
   white-space: initial;
   padding: 0px 25px 0px 25px;
   border-radius: 25px;

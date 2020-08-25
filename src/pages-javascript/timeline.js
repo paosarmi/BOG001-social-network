@@ -1,12 +1,5 @@
 import { showPostUser, saveDataPost } from "./post.js";
 import { hideHamburguerBeforePost } from "./menu.js";
-// import {
-//   dotsMenu,
-//   report,
-//   likePost,
-//   unLikePost,
-//   dropDown,
-// } from "./click-card-function.js";
 
 const dots = document.getElementById("dots");
 const sectionTimeline = document.getElementById("sectionTimeline");

@@ -5,7 +5,7 @@ const sectionSignin = document.querySelector("#sectionSignin");
 const sectionLogin = document.querySelector("#sectionLogin");
 const hamburger = document.querySelector(".hamburger");
 
-export const showhHamburgerAfterLogin = () => {
+export const showHamburgerAfterLogin = () => {
   menuContainer.style.display = "flex";
   sectionSignin.style.display = "none";
   sectionLogin.style.display = "none";
