@@ -1,31 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+:root {
+  --font-placeholder: "Questrial", sans-serif;
+  --font-slogan: "Pacifico", cursive;
+  --color-menu-button: #0b2849;
+  --color-button: #1a5445;
+  --color-input: #e3e3e3;
+  --color-placeholder: #a89d9d;
+  --color-google: #df4b4b;
+  --font-button-input: #ffffff;
+  --font-link: #3b4ac9;
+  --color-border: #000000;
+}
+
+.menu-container {
+  display: none;
+  flex-direction: row-reverse;
+}
+
 .hamburger {
   padding: 15px 15px;
-  display: inline-block;
+  display: flex;
   cursor: pointer;
   transition-property: opacity, filter;
   transition-duration: 0.15s;
   transition-timing-function: linear;
-  font: inherit;
-  color: inherit;
-  text-transform: none;
-  background-color: transparent;
+  background-color: var(--color-menu-button);
   border: 0;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
   margin: 0;
   overflow: visible;
-}
-
-.hamburger:hover {
-  opacity: 0.7;
-}
-
-.hamburger.is-active:hover {
-  opacity: 0.7;
 }
 
 .hamburger.is-active .hamburger-inner,
 .hamburger.is-active .hamburger-inner::before,
 .hamburger.is-active .hamburger-inner::after {
-  background-color: #000;
+  background-color: var(--font-button-input);
 }
 
 .hamburger-box {
@@ -46,7 +59,7 @@
 .hamburger-inner::after {
   width: 40px;
   height: 4px;
-  background-color: #000;
+  background-color: var(--font-button-input);
   border-radius: 4px;
   position: absolute;
   transition-property: transform;
@@ -93,35 +106,6 @@
 .hamburger--spin.is-active .hamburger-inner::after {
   bottom: 0;
   transform: rotate(-90deg);
-  transition: bottom 0.1s ease-out,
-    transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-
-.hamburger--spin-r .hamburger-inner {
-  transition-duration: 0.22s;
-  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
-}
-.hamburger--spin-r .hamburger-inner::before {
-  transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in;
-}
-.hamburger--spin-r .hamburger-inner::after {
-  transition: bottom 0.1s 0.25s ease-in,
-    transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
-}
-
-.hamburger--spin-r.is-active .hamburger-inner {
-  transform: rotate(-225deg);
-  transition-delay: 0.12s;
-  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-.hamburger--spin-r.is-active .hamburger-inner::before {
-  top: 0;
-  opacity: 0;
-  transition: top 0.1s ease-out, opacity 0.1s 0.12s ease-out;
-}
-.hamburger--spin-r.is-active .hamburger-inner::after {
-  bottom: 0;
-  transform: rotate(90deg);
   transition: bottom 0.1s ease-out,
     transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
 }

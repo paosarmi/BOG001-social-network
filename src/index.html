@@ -7,35 +7,13 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="form-view.css" />
-    <link rel="stylesheet" href="post.css" />
-    <link rel="stylesheet" href="timeline.css" />
-    <link rel="stylesheet" href="404.css" />
-    <link rel="stylesheet" href="My-Post.css" />
-    <script type="text/javascript">
-      function DotsMenu(dotsID) {
-        
-        if (document.getElementById(dotsID.id).style.display == 'none')
-          document.getElementById(dotsID.id).style.display = "block";
-        else
-          document.getElementById(dotsID.id).style.display = "none";
-        
-      }
-      //Oculta el menu si se preciona afuera del menu
-      window.onclick = function(e) {
-        if (e.target.nodeName != 'STRONG') {
-          const myDropdown = document.getElementsByClassName("dropdown-content");
-          for (let index = 0; index < myDropdown.length; index++) {
-            document.getElementById(myDropdown[index].id).style.display = "none";
-          }
-        }
-      }
-
-      function report() {
-        document.getElementById("section404").style.display = 'block';
-        document.getElementById("sectionTimeline").style.display = 'none';
-      }
-    </script>
+    <link rel="stylesheet" href="/styles-pages/form-view.css" />
+    <link rel="stylesheet" href="/styles-pages/post.css" />
+    <link rel="stylesheet" href="/styles-pages/timeline.css" />
+    <link rel="stylesheet" href="/styles-pages/404.css" />
+    <link rel="stylesheet" href="/styles-pages/my-profile.css" />
+    <link rel="stylesheet" href="/styles-pages/menu.css" />
+    <link rel="stylesheet" href="/styles-pages/my-post.css"/>
   </head>
   <body>
     <header id="header" class="header">
@@ -133,7 +111,9 @@
       <!-- Post -->
       <section id="formPostSection">
         <div id="formPost" class="form-post">
-          <div class="x"><p id="x" class="x1">x</p></div>
+          <div id="closePagePost" class="close-page-post">
+            <p class="closePost">X</p>
+          </div>
           <input
             id="placePost"
             class="place-post"
@@ -172,23 +152,47 @@
         </div>
       </section>
       <!-- Fin del post -->
+
+      <!--My profile-->
       <section>
-        <div id="section404" class="section-404-view">404</div>
+        <div id="myProfile">
+          <div id="profileImageAndName" class="profile-image-name">
+            <img src="#" alt="profile image" />
+            <span>user name</span>
+          </div>
+          <div id="personalInformation" class="personal-information">
+            <span>Correo:</span>
+            <p>userNameProfile@gmail.com</p>
+            <span>País:</span>
+            <p>Colombia</p>
+          </div>
+          <div>
+            <button>My post</button>
+          </div>
+          <div id="imgFooter" class="img-footer">
+            <img src="img/Logo.png" alt="image footer" />
+          </div>
+        </div>
       </section>
       <!-- my post -->
       <section>
         <div id="sectionMyPost" class="section-My-Post"></div>
       </section>
       <!-- fin my post -->
+      <!--Fin my profile-->
+
+      <!--Error 404-->
+      <section>
+        <div id="error404" class="error-404" style="display: none;">
+          <div id="section404" class="section-404-view">
+            404
+          </div>
+        </div>
+      </section>
+
       <!--Contenedor Menú-->
-      <div>
-        <div
-          class="hamburger hamburger--spin"
-          tabindex="0"
-          aria-label="Menu"
-          role="button"
-          aria-controls="navigation"
-        >
+      <div id="menuContainer" class="menu-container">
+        <div class="hamburger hamburger--spin">
           <div class="hamburger-box">
             <div class="hamburger-inner"></div>
           </div>
@@ -239,10 +243,15 @@
       firebase.analytics();
     </script>
 
-    <script type="module" src="form-view.js"></script>
-    <script type="module" src="post.js"></script>
-    <script type="module" src="timeline.js"></script>
-    <script type="module" src="menu.js"></script>
-    <script type="module" src="mypost.js"></script>
-  </body>
+    <script type="module" src="/pages-javascript/form-view.js"></script>
+    <script type="module" src="/pages-javascript/post.js"></script>
+    <script type="module" src="/pages-javascript/timeline.js"></script>
+    <script type="module" src="/pages-javascript/menu.js"></script>
+    <script type="module" src="/pages-javascript/my-profile.js"></script>
+    <script
+      type="module"
+      src="/pages-javascript/click-card-function.js"
+    ></script>
+    <script type="module" src="/pages-javascript/my-profile.js"></script>
+    </body>
 </html>

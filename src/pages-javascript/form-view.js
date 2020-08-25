@@ -2,9 +2,9 @@
 
 // import { myFunction } from "./lib/index.js";
 // myFunction();
-import { showTimelineAfterAuth } from "./timeline.js";
-import { hamburgerFloatMenu } from "./menu.js";
+import { showTimelineAfterAuth, loadTimeline } from "./timeline.js";
 import {showMyPostAfterAuth} from "./mypost.js";
+import { showhHamburgerAfterLogin } from "./menu.js";
 
 const sectionLogin = document.getElementById("sectionLogin");
 const sectionSignin = document.getElementById("sectionSignin");
@@ -19,6 +19,7 @@ const loginGoogle = document.getElementById("loginGoogle");
 const sectionPost = document.getElementById("formPost");
 const sectionTimeline = document.getElementById("sectionTimeline");
 const sectionMyPost = document.getElementById("sectionMyPost")
+const myProfile = document.getElementById("myProfile");
 
 sectionSignin.style.display = "none";
 sectionPost.style.display = "none";
@@ -86,6 +87,7 @@ function formAuth() {
       sectionPost.style.display = "none";
       sectionTimeline.style.display = "flex";
       showTimelineAfterAuth();
+      showhHamburgerAfterLogin();
       const uid = userCredential.user.uid;
       localStorage.setItem("userUID", uid);
       //console.log("sign up");
@@ -119,8 +121,10 @@ function loginAuth() {
       sectionPost.style.display = "none";
       sectionTimeline.style.display = "flex";
       showTimelineAfterAuth();
+      showhHamburgerAfterLogin();
       const uid = userCredential.user.uid;
       localStorage.setItem("userUID", uid);
+      loadTimeline();
     })
     .catch((error) => {
       warnNoExist.innerHTML = "Incorrect password or email";
@@ -146,6 +150,9 @@ function googleAuth() {
       // Se ve my post
       sectionTimeline.style.display = "none";
       showMyPostAfterAuth();
+      sectionTimeline.style.display = "flex";
+      showTimelineAfterAuth();
+      showhHamburgerAfterLogin();
       const uid = user.uid;
       localStorage.setItem("userUID", uid);
     })
