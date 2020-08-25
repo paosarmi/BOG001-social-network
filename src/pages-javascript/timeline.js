@@ -13,6 +13,7 @@ const sectionTimeline = document.getElementById("sectionTimeline");
 const formPost = document.getElementById("formPost");
 const header = document.getElementById("header");
 const footer = document.getElementById("footer");
+const myProfile = document.getElementById("myProfile");
 
 export const showTimelineAfterAuth = () => {
   sectionTimeline.style.display = "flex";

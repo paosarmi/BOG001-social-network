@@ -1,6 +1,6 @@
 import { getCardPost, showTimelineAfterAuth } from "./timeline.js";
 
-const x = document.getElementById("x");
+const closePagePost = document.getElementById("closePagePost");
 const formPost = document.getElementById("formPost");
 const header = document.getElementById("header");
 const footer = document.getElementById("footer");
@@ -8,9 +8,10 @@ const sendPost = document.getElementById("sendPost");
 const invalidPost = document.getElementById("invalidPost");
 const imgPost = document.getElementById("imgPost");
 const sectionTimeline = document.getElementById("sectionTimeline");
+const myProfile = document.getElementById("myProfile");
 var image;
 
-x.addEventListener("click", getBack);
+closePagePost.addEventListener("click", getBackToTimeline);
 imgPost.addEventListener("change", getImage);
 sendPost.addEventListener("click", formPostView);
 
@@ -21,7 +22,7 @@ export const showPostUser = () => {
   footer.style.display = "none";
 };
 
-function getBack() {
+function getBackToTimeline() {
   sectionTimeline.style.display = "flex";
   testIrPost.style.display = "flex";
   formPost.style.display = "none";
