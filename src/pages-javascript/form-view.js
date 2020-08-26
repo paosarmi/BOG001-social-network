@@ -141,11 +141,9 @@ function googleAuth() {
       sectionPost.style.display = "none";
       sectionTimeline.style.display = "flex";
       showTimelineAfterAuth();
-
       showHamburgerAfterLogin();
       const uid = user.uid;
       localStorage.setItem("userUID", uid);
-      
     })
     .catch(function (error) {
       const errorCode = error.code;

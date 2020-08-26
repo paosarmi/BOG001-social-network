@@ -7,6 +7,7 @@ const formPost = document.getElementById("formPost");
 const header = document.getElementById("header");
 const footer = document.getElementById("footer");
 const myProfile = document.getElementById("myProfile");
+const deleteButtonId = document.getElementById("deleteButton");
 
 export const showTimelineAfterAuth = () => {
   sectionTimeline.style.display = "flex";
@@ -41,6 +42,7 @@ export const loadTimeline = async () => {
     const likeOffId = "likeOff" + index;
     const dotsID = "dots" + index;
     const dotsButtonId = "dotsButton" + index;
+    const deleteButtonId = "deleteButton" + index;
 
     sectionTimeline.innerHTML += `
           <div id="postTimelineContainer" class="post-timeline-container">
@@ -71,7 +73,7 @@ export const loadTimeline = async () => {
                 
               </div>
                 <div>
-                  <button id="deleteButton" class="delete-button">Delete</button>      
+                  <button id="${deleteButtonId}" class="delete-button">Delete</button>      
                   <button id="editButton" class="edit-button">Edit</button>
                 </div>
               </div>
@@ -80,7 +82,18 @@ export const loadTimeline = async () => {
           `;
     index += 1;
   }
-
+  function deletePost(deleteButtonId) {
+    store
+      .collection("userPostCollection")
+      .doc()
+      .delete()
+      .then(function () {
+        console.log("Document successfully deleted!");
+      })
+      .catch(function (error) {
+        console.error("Error removing document: ", error);
+      });
+  }
   sectionTimeline.innerHTML += `<input id="testIrPost" type="button" value="Ir a post" />`;
   document.getElementById("testIrPost").onclick = testParaVerPost;
 
@@ -89,6 +102,7 @@ export const loadTimeline = async () => {
     const likeOffId = "likeOff" + i;
     const dotsID = "dots" + i;
     const dotsButtonId = "dotsButton" + i;
+    const deleteButtonId = "deleteButton" + i;
 
     document.getElementById(likeOnId).addEventListener("click", function () {
       unLikePost(likeOnId, likeOffId);
@@ -100,6 +114,11 @@ export const loadTimeline = async () => {
       .getElementById(dotsButtonId)
       .addEventListener("click", function () {
         dotsMenu(dotsID);
+      });
+    document
+      .getElementById(deleteButtonId)
+      .addEventListener("click", function () {
+        deletePost(deleteButtonId);
       });
   }
 
