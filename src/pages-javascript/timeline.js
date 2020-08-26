@@ -1,6 +1,7 @@
 import { showPostUser, saveDataPost } from "./post.js";
 import { hideHamburguerBeforePost } from "./menu.js";
 
+const USER_POSTS_COLLECTION = "userPostsCollection";
 const dots = document.getElementById("dots");
 const sectionTimeline = document.getElementById("sectionTimeline");
 const formPost = document.getElementById("formPost");
@@ -17,12 +18,12 @@ export const showTimelineAfterAuth = () => {
 };
 
 export const loadTimeline = async () => {
-  const getCardPost = () => store.collection("userPostsCollection").get();
+  const getCardPost = () => store.collection(USER_POSTS_COLLECTION).get();
 
   const onGetTask = (callback) =>
-    store.collection("userPostsCollection").onSnapshot(callback);
+    store.collection(USER_POSTS_COLLECTION).onSnapshot(callback);
 
-  const querySnapshot = await store.collection("userPostsCollection").get();
+  const querySnapshot = await store.collection(USER_POSTS_COLLECTION).get();
 
   sectionTimeline.innerHTML = `<div id="headLogoUserContainer" class="head-logo-user-container">
   <div id="containerLogoTimeline" class="container-logo-timeline">
@@ -73,7 +74,7 @@ export const loadTimeline = async () => {
                 
               </div>
                 <div>
-                  <button id="${deleteButtonId}" class="delete-button">Delete</button>      
+                  <button id="${deleteButtonId}" post-id="${querySnapshot.docs[i].id}" class="delete-button">Delete</button>      
                   <button id="editButton" class="edit-button">Edit</button>
                 </div>
               </div>
@@ -82,18 +83,7 @@ export const loadTimeline = async () => {
           `;
     index += 1;
   }
-  function deletePost(deleteButtonId) {
-    store
-      .collection("userPostCollection")
-      .doc()
-      .delete()
-      .then(function () {
-        console.log("Document successfully deleted!");
-      })
-      .catch(function (error) {
-        console.error("Error removing document: ", error);
-      });
-  }
+
   sectionTimeline.innerHTML += `<input id="testIrPost" type="button" value="Ir a post" />`;
   document.getElementById("testIrPost").onclick = testParaVerPost;
 
@@ -115,10 +105,13 @@ export const loadTimeline = async () => {
       .addEventListener("click", function () {
         dotsMenu(dotsID);
       });
+    const postId = document
+      .getElementById(deleteButtonId)
+      .getAttribute("post-id");
     document
       .getElementById(deleteButtonId)
       .addEventListener("click", function () {
-        deletePost(deleteButtonId);
+        deletePost(postId);
       });
   }
 
@@ -129,8 +122,31 @@ export const loadTimeline = async () => {
       .addEventListener("click", report);
   }
 };
+function deletePost(postId) {
+  //cargar gif
+  store
+    .collection(USER_POSTS_COLLECTION)
+    .doc(postId)
+    .get()
+    .then(function (sfDoc) {
+      if (sfDoc.exists) {
+        store
+          .collection(USER_POSTS_COLLECTION)
+          .doc(postId)
+          .delete()
+          .then(function () {
+            console.log("Document successfully deleted!");
+            loadTimeline();
+          })
+          .catch(function (error) {
+            console.error("Error removing document: ", error);
+          });
+      }
+    });
+  //quitar gif
+}
 
-export const getCardPost = () => store.collection("userPostsCollection").get();
+export const getCardPost = () => store.collection(USER_POSTS_COLLECTION).get();
 
 function testParaVerPost() {
   sectionTimeline.style.display = "none";
