@@ -9,11 +9,16 @@ const invalidPost = document.getElementById("invalidPost");
 const imgPost = document.getElementById("imgPost");
 const sectionTimeline = document.getElementById("sectionTimeline");
 const myProfile = document.getElementById("myProfile");
+const descriptionPost = document.getElementById("descriptionPost");
+const placePost = document.getElementById("placePost");
+const imageSelect = document.getElementById("imageSelect");
 var image;
 
 closePagePost.addEventListener("click", getBackToTimeline);
 imgPost.addEventListener("change", getImage);
 sendPost.addEventListener("click", formPostView);
+descriptionPost.addEventListener("input", capitalize);
+placePost.addEventListener("input", capitalize);
 
 export const showPostUser = () => {
   sectionTimeline.style.display = "none";
@@ -21,6 +26,13 @@ export const showPostUser = () => {
   header.style.display = "none";
   footer.style.display = "none";
 };
+
+function capitalize(stringc){
+  if (descriptionPost.value.length == 1)
+    descriptionPost.value = descriptionPost.value.toUpperCase()
+  if (placePost.value.length == 1)
+    placePost.value = placePost.value.toUpperCase()
+}
 
 function getBackToTimeline() {
   sectionTimeline.style.display = "flex";
@@ -31,6 +43,16 @@ function getBackToTimeline() {
 }
 
 function getImage(event) {
+  // console.log(event.target.value)
+  if (event.target.value)
+  {
+    let fileName = event.target.value // Se carga la ruta que contiene el nombre del archivo
+    fileName = event.target.value.split("\\") // Se separa la ruta por \
+    fileName = fileName[fileName.length-1] // Obtengo el ultimo elemento que es el nombre del archivo
+    imageSelect.innerHTML= 'File loaded: '+fileName
+  }
+  else
+    imageSelect.innerHTML= 'No file'
   image = event.target.files[0];
 }
 

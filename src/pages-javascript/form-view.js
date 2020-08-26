@@ -133,6 +133,7 @@ function googleAuth() {
   auth
     .signInWithPopup(provider)
     .then(function (result) {
+      loadTimeline();
       const token = result.credential.accesstoken;
       const user = result.user;
       sectionSignin.style.display = "none";
@@ -144,6 +145,7 @@ function googleAuth() {
       showHamburgerAfterLogin();
       const uid = user.uid;
       localStorage.setItem("userUID", uid);
+      
     })
     .catch(function (error) {
       const errorCode = error.code;
