@@ -1,4 +1,8 @@
-import { getCardPost, showTimelineAfterAuth } from "./timeline.js";
+import {
+  getCardPost,
+  showTimelineAfterAuth,
+  loadTimeline,
+} from "./timeline.js";
 
 const closePagePost = document.getElementById("closePagePost");
 const formPost = document.getElementById("formPost");
@@ -53,7 +57,13 @@ function getImage(event) {
   image = event.target.files[0];
 }
 
-export const saveDataPost = (placePost, descriptionPost, userId, url) => {
+export const saveDataPost = (
+  placePost,
+  descriptionPost,
+  userId,
+  url,
+  photoURL
+) => {
   const datePost = new Date();
   const dateImg = datePost.toISOString().slice(0, 10);
   const docData = store
@@ -66,9 +76,11 @@ export const saveDataPost = (placePost, descriptionPost, userId, url) => {
       dateImg: dateImg,
       url: url,
       like: true,
-      //photoURL: Google URL email: null
+      photoURL: photoURL,
     })
-    .then((docRef) => {})
+    .then((docRef) => {
+      showTimelineAfterAuth();
+    })
     .catch((error) => {});
 };
 
