@@ -25,8 +25,8 @@ export const loadTimeline = async () => {
   const onGetTask = (callback) =>
     store.collection(USER_POSTS_COLLECTION).onSnapshot(callback);
 
-  const querySnapshot = await store.collection(USER_POSTS_COLLECTION).get();
-
+  const querySnapshot = await store.collection(USER_POSTS_COLLECTION).orderBy("dateImg", "desc").limit(20).get();
+  
   sectionTimeline.innerHTML = `<div id="headLogoUserContainer" class="head-logo-user-container">
   <div id="containerLogoTimeline" class="container-logo-timeline">
     <img src="/img/Logo.png" alt="Logo" />
