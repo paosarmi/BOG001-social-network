@@ -2,13 +2,11 @@ import { showPostUser, saveDataPost } from "./post.js";
 import { hideHamburguerBeforePost } from "./menu.js";
 
 const USER_POSTS_COLLECTION = "userPostsCollection";
-const dots = document.getElementById("dots");
 const sectionTimeline = document.getElementById("sectionTimeline");
 const formPost = document.getElementById("formPost");
 const header = document.getElementById("header");
 const footer = document.getElementById("footer");
 const myProfile = document.getElementById("myProfile");
-const deleteButtonId = document.getElementById("deleteButton");
 
 export const showTimelineAfterAuth = () => {
   sectionTimeline.style.display = "flex";
@@ -34,7 +32,7 @@ export const loadTimeline = async () => {
     <span>userNameProfile</span>
     <img src="/img/fotos de prueba/profile.jpeg" alt="profile image" />
   </div>
-</div>`;
+ </div>`;
 
   let index = 0;
   for (let i = 0; i < querySnapshot.docs.length; i++) {

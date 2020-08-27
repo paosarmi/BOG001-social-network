@@ -34,7 +34,7 @@
   border: 0;
   border-radius: 50%;
   width: 40px;
-  height: 40px;
+  height: 100%;
   margin: 0;
   overflow: visible;
 }
@@ -116,7 +116,7 @@
 }
 nav ul {
   width: 100%;
-  background-color: var(--color-menu-button);
+  /* background-color: var(--color-menu-button); */
   overflow: hidden;
   color: #fff;
   padding: 0;
@@ -132,26 +132,30 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;
+  color: #252323;
+  border-radius: 20px;
+  height: 25px;
+  width: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 235, 204, 0.97);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+nav ul li img {
+  text-decoration: none;
   color: inherit;
-  background-color: var(--color-menu-button);
   border-radius: 20%;
-  height: 15px;
-  width: 87px;
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-nav ul li img {
-  display: flex;
-  width: 50px;
-  height: 50px;
-  background-color: var(--color-menu-button);
-  border-radius: 50%;
-}
-
 nav ul li:hover {
-  background-color: #ac5480;
+  background-color: #ffffff;
 }
 
 .menu-bars {
@@ -178,11 +182,11 @@ nav ul li:hover {
 
   nav ul li {
     box-sizing: border-box;
-    width: 300px;
+    width: 105%;
     padding: 15px;
-    text-align: right;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    align-items: center;
   }
 
   .menu-bars {
@@ -192,7 +196,7 @@ nav ul li:hover {
   }
 
   .showing {
-    max-height: 300px;
+    max-height: 100%;
     display: flex;
     flex-direction: column;
     position: fixed;

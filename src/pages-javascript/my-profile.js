@@ -1,7 +1,8 @@
 import { showPostUser, saveDataPost } from "./post.js";
 //import { hideHamburguerBeforePost, showHamburgerAfterLogin } from "./menu.js";
 
-const dots = document.getElementById("dots");
+const USER_POSTS_COLLECTION = "userPostsCollection";
+const sectionTimeline = document.getElementById("sectionTimeline");
 const myProfile = document.getElementById("myProfile");
 const formPost = document.getElementById("formPost");
 const header = document.getElementById("header");
@@ -16,16 +17,10 @@ export const showMyProfile = () => {
 };
 
 export const loadTimeline = async () => {
-  const getCardPost = () =>
-    store.collection("userPostsCollection").where("userId", "==", userId).get();
-
-  const onGetTask = (callback) =>
-    store
-      .collection("userPostsCollection")
-      .where("userId", "==", userId)
-      .onSnapshot(callback);
-
-  const querySnapshot = await store.collection("userPostsCollection").get();
+  const querySnapshot = await store
+    .collection(USER_POSTS_COLLECTION)
+    .where("userId", "==", userId)
+    .get();
 
   sectionTimeline.innerHTML = `<div id="headLogoUserContainer" class="head-logo-user-container">
   <div id="containerLogoTimeline" class="container-logo-timeline">
@@ -45,6 +40,7 @@ export const loadTimeline = async () => {
     const likeOffId = "likeOff" + index;
     const dotsID = "dots" + index;
     const dotsButtonId = "dotsButton" + index;
+    const deleteButtonId = "deleteButton" + index;
 
     sectionTimeline.innerHTML += `
           <div id="postTimelineContainer" class="post-timeline-container">
@@ -75,7 +71,7 @@ export const loadTimeline = async () => {
                 
               </div>
                 <div>
-                  <button id="deleteButton" class="delete-button">Delete</button>      
+                  <button id="${deleteButtonId}" post-id="${querySnapshot.docs[i].id}" class="delete-button">Delete</button>      
                   <button id="editButton" class="edit-button">Edit</button>
                 </div>
               </div>
@@ -93,6 +89,7 @@ export const loadTimeline = async () => {
     const likeOffId = "likeOff" + i;
     const dotsID = "dots" + i;
     const dotsButtonId = "dotsButton" + i;
+    const deleteButtonId = "deleteButton" + i;
 
     document.getElementById(likeOnId).addEventListener("click", function () {
       unLikePost(likeOnId, likeOffId);
@@ -105,6 +102,14 @@ export const loadTimeline = async () => {
       .addEventListener("click", function () {
         dotsMenu(dotsID);
       });
+    const postId = document
+      .getElementById(deleteButtonId)
+      .getAttribute("post-id");
+    document
+      .getElementById(deleteButtonId)
+      .addEventListener("click", function () {
+        deletePost(postId);
+      });
   }
 
   const myDropdown = document.getElementsByClassName("dropdown-content");
@@ -114,8 +119,33 @@ export const loadTimeline = async () => {
       .addEventListener("click", report);
   }
 };
+async function deletePost(postId) {
+  const loader = document.querySelector(".loader-gif");
+  loader.style.display = "flex";
 
-export const getCardPost = () => store.collection("userPostsCollection").get();
+  await store
+    .collection(USER_POSTS_COLLECTION)
+    .doc(postId)
+    .get()
+    .then(async function (sfDoc) {
+      if (sfDoc.exists) {
+        await store
+          .collection(USER_POSTS_COLLECTION)
+          .doc(postId)
+          .delete()
+          .then(async function () {
+            console.log("Document successfully deleted!");
+            await loadTimeline();
+          })
+          .catch(function (error) {
+            console.error("Error removing document: ", error);
+          });
+      }
+    });
+  loader.style.display = "none";
+}
+
+export const getCardPost = () => store.collection(USER_POSTS_COLLECTION).get();
 
 function testParaVerPost() {
   sectionTimeline.style.display = "none";
