@@ -13,12 +13,12 @@ const signGoogle = document.getElementById("signGoogle");
 const loginGoogle = document.getElementById("loginGoogle");
 const sectionPost = document.getElementById("formPost");
 const sectionTimeline = document.getElementById("sectionTimeline");
-const myProfile = document.getElementById("myProfile");
+const sectionMyProfile = document.getElementById("sectionMyProfile");
 
 sectionSignin.style.display = "none";
 sectionPost.style.display = "none";
 sectionTimeline.style.display = "none";
-myProfile.style.display = "none";
+sectionMyProfile.style.display = "none";
 signinView.addEventListener("click", returnSignin);
 loginView.addEventListener("click", changeView);
 signin.addEventListener("click", formAuth);
@@ -126,7 +126,6 @@ function loginAuth() {
     })
     .catch((error) => {
       warnNoExist.innerHTML = "Incorrect password or email";
-      console.log(error);
     });
 }
 

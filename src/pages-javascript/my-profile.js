@@ -3,60 +3,41 @@ import { showPostUser, saveDataPost } from "./post.js";
 
 const USER_POSTS_COLLECTION = "userPostsCollection";
 const sectionTimeline = document.getElementById("sectionTimeline");
-const myProfile = document.getElementById("myProfile");
+const sectionMyProfile = document.getElementById("sectionMyProfile");
 const formPost = document.getElementById("formPost");
 const header = document.getElementById("header");
 const footer = document.getElementById("footer");
 const userId = localStorage.getItem("userUID");
 
 export const showMyProfile = () => {
-  myProfile.style.display = "flex";
+  sectionMyProfile.style.display = "flex";
+  sectionTimeline.style.display = "none";
   formPost.style.display = "none";
   header.style.display = "none";
   footer.style.display = "none";
+  loadMyProfile();
 };
 
-export const loadTimeline = async () => {
+export const loadMyProfile = async () => {
   const querySnapshot = await store
     .collection(USER_POSTS_COLLECTION)
     .where("userId", "==", userId)
     .get();
 
-  sectionTimeline.innerHTML = `<div id="headLogoUserContainer" class="head-logo-user-container">
-  <div id="containerLogoTimeline" class="container-logo-timeline">
-    <img src="/img/Logo.png" alt="Logo" />
-    <p>Terra Tour</p>
-  </div>
-  <div id="userHead" class="user-head">
-    <span>userNameProfile</span>
-    <img src="/img/fotos de prueba/profile.jpeg" alt="profile image" />
-  </div>
-</div>`;
+  sectionMyProfile.innerHTML = ` 
+            <div id="userHead" class="user-head"> 
+                  <img src="/img/fotos de prueba/profile.jpeg" alt="profile image" />
+                  <span>userNameProfile</span>
+            </div>`;
 
   let index = 0;
   for (let i = 0; i < querySnapshot.docs.length; i++) {
     const cardPost = querySnapshot.docs[i].data();
     const likeOnId = "likeOn" + index;
     const likeOffId = "likeOff" + index;
-    const dotsID = "dots" + index;
-    const dotsButtonId = "dotsButton" + index;
     const deleteButtonId = "deleteButton" + index;
 
-    sectionTimeline.innerHTML += `
-          <div id="postTimelineContainer" class="post-timeline-container">
-            <div id="headPostTimelineCont" class="head-post-timeline-cont">
-              <div id="userProfileContainer" class="user-profile-container">
-                <img src="/img/fotos de prueba/post1.jpg" alt="profile image" />
-                <span>userNameProfile</span>
-              </div>
-              <div id="editDots" class="edit-dots">
-                <button id="${dotsButtonId}" class="dots"><strong>...</strong></button>
-                <div class="dropdown-content" id="${dotsID}" style="display: none;">
-                  <a href="#">Report</a>
-                </div>
-                
-              </div>
-            </div>
+    sectionMyProfile.innerHTML += `
             <div id="cardPostContainer" class="card-post-container">
               <div id="headerCard" class="header-card">
                 <img src="${cardPost.url}" alt="Post image" />
@@ -81,14 +62,12 @@ export const loadTimeline = async () => {
     index += 1;
   }
 
-  sectionTimeline.innerHTML += `<input id="testIrPost" type="button" value="Ir a post" />`;
+  sectionMyProfile.innerHTML += `<input id="testIrPost" type="button" value="Ir a post" />`;
   document.getElementById("testIrPost").onclick = testParaVerPost;
 
   for (let i = 0; i < index; i++) {
     const likeOnId = "likeOn" + i;
     const likeOffId = "likeOff" + i;
-    const dotsID = "dots" + i;
-    const dotsButtonId = "dotsButton" + i;
     const deleteButtonId = "deleteButton" + i;
 
     document.getElementById(likeOnId).addEventListener("click", function () {
@@ -97,11 +76,6 @@ export const loadTimeline = async () => {
     document.getElementById(likeOffId).addEventListener("click", function () {
       likePost(likeOffId, likeOnId);
     });
-    document
-      .getElementById(dotsButtonId)
-      .addEventListener("click", function () {
-        dotsMenu(dotsID);
-      });
     const postId = document
       .getElementById(deleteButtonId)
       .getAttribute("post-id");
@@ -110,13 +84,6 @@ export const loadTimeline = async () => {
       .addEventListener("click", function () {
         deletePost(postId);
       });
-  }
-
-  const myDropdown = document.getElementsByClassName("dropdown-content");
-  for (let index = 0; index < myDropdown.length; index++) {
-    document
-      .getElementById(myDropdown[index].id)
-      .addEventListener("click", report);
   }
 };
 async function deletePost(postId) {
@@ -135,7 +102,7 @@ async function deletePost(postId) {
           .delete()
           .then(async function () {
             console.log("Document successfully deleted!");
-            await loadTimeline();
+            await loadMyProfile();
           })
           .catch(function (error) {
             console.error("Error removing document: ", error);
@@ -168,10 +135,4 @@ function unLikePost(likeOnId, likeOffId) {
 function report() {
   document.getElementById("error404").style.display = "flex";
   document.getElementById("sectionTimeline").style.display = "none";
-}
-
-function dotsMenu(dotsID) {
-  if (document.getElementById(dotsID).style.display == "none")
-    document.getElementById(dotsID).style.display = "block";
-  else document.getElementById(dotsID).style.display = "none";
 }
