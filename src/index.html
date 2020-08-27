@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/styles-pages/my-profile.css" />
     <link rel="stylesheet" href="/styles-pages/menu.css" />
     <link rel="stylesheet" href="/styles-pages/my-post.css" />
+    <link rel="stylesheet" href="/styles-pages/loading-gif.css" />
   </head>
   <body>
     <header id="header" class="header">
@@ -108,6 +109,14 @@
       </section>
       <!-- Fin timeline -->
 
+      <!--Gift loading-->
+      <section>
+        <div class="loader-gif" style="display: none">
+          <img src="/img/loadign.gif" alt="Loading" />
+        </div>
+      </section>
+      <!--Fin gift loading-->
+
       <!-- Post -->
       <section id="formPostSection">
         <div id="formPost" class="form-post">
@@ -160,46 +169,61 @@
 
       <!--My profile-->
       <section>
-        <div id="myProfile" class="my-profile">
-          <div id="profileImageAndName" class="profile-image-name">
-            <img src="#" alt="profile image" />
-            <span>user name</span>
-          </div>
-          <div id="imgFooter" class="img-footer">
-            <img src="img/Logo.png" alt="image footer" />
-          </div>
-        </div>
+        <div id="sectionMyProfile" class="my-profile-view"></div>
       </section>
       <!--Fin my profile-->
 
       <!--Error 404-->
       <section>
-        <div id="error404" class="error-404" style="display: none;">
-          <div id="section404" class="section-404-view">
-            404
-          </div>
+        <div id="error404" class="error-404" style="display: none">
+          <div id="section404" class="section-404-view">404</div>
         </div>
       </section>
 
       <!--Contenedor Menú-->
-      <div id="menuContainer" class="menu-container">
-        <div class="hamburger hamburger--spin">
-          <div class="hamburger-box">
-            <div class="hamburger-inner"></div>
+      <div>
+        <nav>
+          <div id="menuContainer" class="menu-container">
+            <div class="hamburger hamburger--spin">
+              <div class="hamburger-box">
+                <div class="hamburger-inner"></div>
+              </div>
+            </div>
+            <ul id="menuUList">
+              <li name="menuItem">
+                <a href="#">Log out</a>
+                <div class="hamburger">
+                  <img src="/img/boton-de-encendido.png" alt="Log out" />
+                </div>
+              </li>
+              <li name="menuItem">
+                <a href="#">My profile</a>
+                <div class="hamburger">
+                  <img src="/img/usuario.png" alt="My profile" />
+                </div>
+              </li>
+              <li name="menuItem">
+                <a href="#">Timeline</a>
+                <div class="hamburger">
+                  <img src="/img/noticias.png" alt="Timeline" />
+                </div>
+              </li>
+              <li name="menuItem">
+                <a href="#">Post</a>
+                <div class="hamburger">
+                  <img src="/img/altavoz.png" alt="Post" />
+                </div>
+              </li>
+            </ul>
           </div>
-        </div>
+        </nav>
       </div>
-      <nav id="navigation">
-        <!--navigation goes here-->
-      </nav>
       <!--Fin contenedor Menú-->
     </main>
     <footer id="footer">
       <div class="footer-bar">
         <a href="#">Know us</a>
-        <p>
-          &copy; Copyright Terra Tour 2020
-        </p>
+        <p>&copy; Copyright Terra Tour 2020</p>
       </div>
     </footer>
 

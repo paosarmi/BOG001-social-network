@@ -17,6 +17,10 @@
 .menu-container {
   display: none;
   flex-direction: row-reverse;
+  position: fixed;
+  bottom: 0;
+  width: 340px;
+  margin-bottom: 25px;
 }
 
 .hamburger {
@@ -30,7 +34,7 @@
   border: 0;
   border-radius: 50%;
   width: 40px;
-  height: 40px;
+  height: 100%;
   margin: 0;
   overflow: visible;
 }
@@ -46,6 +50,7 @@
   height: 24px;
   display: inline-block;
   position: relative;
+  padding-top: 13px;
 }
 
 .hamburger-inner {
@@ -108,4 +113,95 @@
   transform: rotate(-90deg);
   transition: bottom 0.1s ease-out,
     transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+nav ul {
+  width: 100%;
+  /* background-color: var(--color-menu-button); */
+  overflow: hidden;
+  color: #fff;
+  padding: 0;
+  text-align: center;
+  margin: 0;
+  transition: all 1s ease-in-out;
+}
+
+nav ul li {
+  display: inline-block;
+  padding: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #252323;
+  border-radius: 20px;
+  height: 25px;
+  width: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 235, 204, 0.97);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+nav ul li img {
+  text-decoration: none;
+  color: inherit;
+  border-radius: 20%;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul li:hover {
+  background-color: #ffffff;
+}
+
+.menu-bars {
+  width: 100%;
+  background-color: #005c48;
+  text-align: right;
+  box-shadow: border-box;
+  padding: 20px 0px;
+  cursor: pointer;
+  color: #fff;
+  display: none;
+}
+
+.menu-bars .fas {
+  margin-right: 20px;
+}
+
+@media screen and (max-width: 812px) {
+  nav ul {
+    max-height: 0px;
+    position: fixed;
+    bottom: 4.5em;
+  }
+
+  nav ul li {
+    box-sizing: border-box;
+    width: 105%;
+    padding: 15px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .menu-bars {
+    display: block;
+    position: fixed;
+    bottom: 0;
+  }
+
+  .showing {
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 4.5em;
+    margin-bottom: 25px;
+    width: 300px;
+  }
 }

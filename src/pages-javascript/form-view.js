@@ -13,12 +13,12 @@ const signGoogle = document.getElementById("signGoogle");
 const loginGoogle = document.getElementById("loginGoogle");
 const sectionPost = document.getElementById("formPost");
 const sectionTimeline = document.getElementById("sectionTimeline");
-const myProfile = document.getElementById("myProfile");
+const sectionMyProfile = document.getElementById("sectionMyProfile");
 
 sectionSignin.style.display = "none";
 sectionPost.style.display = "none";
 sectionTimeline.style.display = "none";
-myProfile.style.display = "none";
+sectionMyProfile.style.display = "none";
 signinView.addEventListener("click", returnSignin);
 loginView.addEventListener("click", changeView);
 signin.addEventListener("click", formAuth);
@@ -108,7 +108,7 @@ function loginAuth() {
 
   auth
     .signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
+    .then(async (userCredential) => {
       warnNoExist.innerHTML = " ";
       sectionSignin.style.display = "none";
       sectionLogin.style.display = "none";
@@ -118,11 +118,14 @@ function loginAuth() {
       showHamburgerAfterLogin();
       const uid = userCredential.user.uid;
       localStorage.setItem("userUID", uid);
-      loadTimeline();
+      //mostrar gif
+      const loader = document.querySelector(".loader-gif");
+      loader.style.display = "flex";
+      await loadTimeline();
+      loader.style.display = "none";
     })
     .catch((error) => {
       warnNoExist.innerHTML = "Incorrect password or email";
-      console.log(error);
     });
 }
 
@@ -141,11 +144,9 @@ function googleAuth() {
       sectionPost.style.display = "none";
       sectionTimeline.style.display = "flex";
       showTimelineAfterAuth();
-
       showHamburgerAfterLogin();
       const uid = user.uid;
       localStorage.setItem("userUID", uid);
-      
     })
     .catch(function (error) {
       const errorCode = error.code;

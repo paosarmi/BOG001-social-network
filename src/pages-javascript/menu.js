@@ -4,6 +4,7 @@ const formPost = document.querySelector("#formPost");
 const sectionSignin = document.querySelector("#sectionSignin");
 const sectionLogin = document.querySelector("#sectionLogin");
 const hamburger = document.querySelector(".hamburger");
+const menu = document.getElementById("menuUList");
 
 export const showHamburgerAfterLogin = () => {
   menuContainer.style.display = "flex";
@@ -28,3 +29,21 @@ hamburger.addEventListener("click", menuHamburguer);
 function menuHamburguer() {
   hamburger.classList.toggle("is-active");
 }
+
+document.addEventListener("DOMContentLoaded", function (event) {
+  document
+    .querySelector(".menu-container")
+    .addEventListener("click", function () {
+      if (menu.classList[0] === "showing") {
+        document.getElementById("menuUList").classList.remove("showing");
+      } else {
+        document.getElementById("menuUList").className = "showing";
+      }
+    });
+
+  document.querySelectorAll('li[name="menuItem"').forEach((item) => {
+    item.addEventListener("click", function () {
+      document.getElementById("menuUList").classList.remove("showing");
+    });
+  });
+});
