@@ -21,7 +21,8 @@ export const loadTimeline = async () => {
   const onGetTask = (callback) =>
     store.collection("userPostsCollection").onSnapshot(callback);
 
-  const querySnapshot = await store.collection("userPostsCollection").get();
+  // se coloco el orderBy para organizar por la fecha del post y en orden descendiente, ademas se coloco un limit para limitar el numero de elementos.
+  const querySnapshot = await store.collection("userPostsCollection").orderBy("dateImg", "desc").limit(20).get();
 
   sectionTimeline.innerHTML = `<div id="headLogoUserContainer" class="head-logo-user-container">
   <div id="containerLogoTimeline" class="container-logo-timeline">
