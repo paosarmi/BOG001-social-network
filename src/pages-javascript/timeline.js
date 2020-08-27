@@ -122,28 +122,30 @@ export const loadTimeline = async () => {
       .addEventListener("click", report);
   }
 };
-function deletePost(postId) {
-  //cargar gif
-  store
+async function deletePost(postId) {
+  const loader = document.querySelector(".loader-gif");
+  loader.style.display = "flex";
+
+  await store
     .collection(USER_POSTS_COLLECTION)
     .doc(postId)
     .get()
-    .then(function (sfDoc) {
+    .then(async function (sfDoc) {
       if (sfDoc.exists) {
-        store
+        await store
           .collection(USER_POSTS_COLLECTION)
           .doc(postId)
           .delete()
-          .then(function () {
+          .then(async function () {
             console.log("Document successfully deleted!");
-            loadTimeline();
+            await loadTimeline();
           })
           .catch(function (error) {
             console.error("Error removing document: ", error);
           });
       }
     });
-  //quitar gif
+  loader.style.display = "none";
 }
 
 export const getCardPost = () => store.collection(USER_POSTS_COLLECTION).get();

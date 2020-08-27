@@ -108,7 +108,7 @@ function loginAuth() {
 
   auth
     .signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
+    .then(async (userCredential) => {
       warnNoExist.innerHTML = " ";
       sectionSignin.style.display = "none";
       sectionLogin.style.display = "none";
@@ -118,7 +118,11 @@ function loginAuth() {
       showHamburgerAfterLogin();
       const uid = userCredential.user.uid;
       localStorage.setItem("userUID", uid);
-      loadTimeline();
+      //mostrar gif
+      const loader = document.querySelector(".loader-gif");
+      loader.style.display = "flex";
+      await loadTimeline();
+      loader.style.display = "none";
     })
     .catch((error) => {
       warnNoExist.innerHTML = "Incorrect password or email";
