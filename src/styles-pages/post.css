@@ -23,6 +23,10 @@ body {
   height: 100%;
 }
 
+#formPost{
+  display: none;
+}
+
 .closePost {
   position: absolute;
   width: 13px;

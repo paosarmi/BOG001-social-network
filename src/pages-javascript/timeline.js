@@ -17,7 +17,6 @@ export const showTimelineAfterAuth = () => {
 
 export const loadTimeline = async () => {
   const getCardPost = () => store.collection("userPostsCollection").get();
-
   const onGetTask = (callback) =>
     store.collection("userPostsCollection").onSnapshot(callback);
 
