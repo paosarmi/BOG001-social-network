@@ -1,7 +1,6 @@
 import {
   getCardPost,
   showTimelineAfterAuth,
-  loadTimeline,
 } from "./timeline.js";
 
 const closePagePost = document.getElementById("closePagePost");
@@ -21,8 +20,9 @@ var image;
 closePagePost.addEventListener("click", getBackToTimeline);
 imgPost.addEventListener("change", getImage);
 sendPost.addEventListener("click", formPostView);
-descriptionPost.addEventListener("input", capitalize);
 placePost.addEventListener("input", capitalize);
+descriptionPost.addEventListener("input", capitalize);
+
 
 export const showPostUser = () => {
   sectionTimeline.style.display = "none";
@@ -62,7 +62,7 @@ export const saveDataPost = (
   descriptionPost,
   userId,
   url,
-  photoURL
+  //photoURL
 ) => {
   const datePost = new Date();
   const dateImg = datePost.toISOString().slice(0, 10);
@@ -75,13 +75,15 @@ export const saveDataPost = (
       image: image.name,
       dateImg: dateImg,
       url: url,
-      like: true,
-      photoURL: photoURL,
+      like: [],
+      //photoURL: photoURL,
     })
     .then((docRef) => {
       showTimelineAfterAuth();
     })
-    .catch((error) => {});
+    .catch((error) => {
+      console.log(error);
+    });
 };
 
 function formPostView() {
@@ -118,7 +120,8 @@ function formPostView() {
     .then((url) => {
       saveDataPost(placePost, descriptionPost, userId, url);
     })
-    .catch(function (error) {});
-
+    .catch(function (error) {
+      console.log("error", error);
+    });
   getCardPost();
 }
