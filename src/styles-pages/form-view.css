@@ -24,6 +24,14 @@ body {
   height: auto;
 }
 
+#sectionLogin{
+  display: none;
+}
+
+#sectionSignin{
+  display: none;
+}
+
 .logo {
   margin-top: 5%;
   display: flex;

@@ -14,10 +14,23 @@ const loginGoogle = document.getElementById("loginGoogle");
 const sectionPost = document.getElementById("formPost");
 const sectionTimeline = document.getElementById("sectionTimeline");
 const sectionMyProfile = document.getElementById("sectionMyProfile");
+const userId = localStorage.getItem("userUID");
+
+// console.log(userId)
+if (userId)
+{
+  sectionTimeline.style.display = "flex";
+  loadTimeline();
+  showTimelineAfterAuth();
+  showHamburgerAfterLogin();
+}
+else
+{
+  sectionLogin.style.display = "block";
+}
 
 sectionSignin.style.display = "none";
 sectionPost.style.display = "none";
-sectionTimeline.style.display = "none";
 sectionMyProfile.style.display = "none";
 signinView.addEventListener("click", returnSignin);
 loginView.addEventListener("click", changeView);
