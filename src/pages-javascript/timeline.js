@@ -24,17 +24,30 @@ export const loadTimeline = async () => {
 
   const onGetTask = (callback) =>
     store.collection(USER_POSTS_COLLECTION).onSnapshot(callback);
+  
+  let userPhoto = localStorage.getItem("userPhoto"); // Traemos la foto del usuario del local storage
+  let userName = localStorage.getItem("userName"); // Traemos el nombre del usuario del local storage
 
-  const querySnapshot = await store.collection(USER_POSTS_COLLECTION).orderBy("dateImg").limit(20).get();
+  if (!userPhoto) // Si no hay foto ponemos la por defecto
+  {
+    userPhoto = "/img/fotos de prueba/profile.jpeg"
+  }
 
+  if (!userName) // Si no hay nombre de usuario se coloca uno por defecto
+  {
+    userName = "userNameProfile"
+  }
+
+  const querySnapshot = await store.collection(USER_POSTS_COLLECTION).orderBy("dateImg", "desc").limit(20).get();
+  
   sectionTimeline.innerHTML = `<div id="headLogoUserContainer" class="head-logo-user-container">
   <div id="containerLogoTimeline" class="container-logo-timeline">
     <img src="/img/Logo.png" alt="Logo" />
     <p>Terra Tour</p>
   </div>
   <div id="userHead" class="user-head">
-    <span>userNameProfile</span>
-    <img src="/img/fotos de prueba/profile.jpeg" alt="profile image" />
+    <span>${userName}</span>
+    <img src="${userPhoto}" alt="profile image" />
   </div>
  </div>`;
 
