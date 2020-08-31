@@ -151,7 +151,7 @@ function googleAuth() {
     .then(function (result) {
       loadTimeline();
       const token = result.credential.accesstoken;
-      const user = result.user;
+      const user = result.user; // Esta variable contiene la data del usuario
       sectionSignin.style.display = "none";
       sectionLogin.style.display = "none";
       sectionPost.style.display = "none";
@@ -160,6 +160,8 @@ function googleAuth() {
       showHamburgerAfterLogin();
       const uid = user.uid;
       localStorage.setItem("userUID", uid);
+      localStorage.setItem("userPhoto", user.photoURL); // Guardamos en el Local Storage la foto
+      localStorage.setItem("userName", user.displayName); // Guardamos en el Local Storage el nombre del usuario
     })
     .catch(function (error) {
       const errorCode = error.code;
