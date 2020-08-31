@@ -52,6 +52,7 @@ body {
 
 .place-post {
   background-color: var(--color-input);
+  font-family: var(--font-placeholder);
   padding: 0px 25px 0px 25px;
   border-radius: 25px;
   margin-bottom: 25px;
@@ -102,7 +103,7 @@ body {
   margin-block-start: 0em;
   margin-block-end: 0em;
   margin-top: 7px;
-  color:#a89d9d;
+  color: #a89d9d;
   font-weight: bold;
 }
 
@@ -123,7 +124,6 @@ body {
 #chosen {
   margin-left: 5px;
   margin-left: 20px;
-
 }
 
 .logo-dow {
@@ -137,7 +137,7 @@ body {
 
 .logo-dow img {
   width: 50px;
-  margin-top:20px;
+  margin-top: 20px;
 }
 
 .logo-dow h1 {
@@ -150,7 +150,7 @@ body {
 
 .logo-dow p {
   margin: 0;
-  font-size:10px;
+  font-size: 10px;
   font-family: var(--font-slogan);
 }
 

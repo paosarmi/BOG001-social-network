@@ -24,7 +24,7 @@ export const loadTimeline = async () => {
 
   const onGetTask = (callback) =>
     store.collection(USER_POSTS_COLLECTION).onSnapshot(callback);
-
+  
   let userPhoto = localStorage.getItem("userPhoto"); // Traemos la foto del usuario del local storage
   let userName = localStorage.getItem("userName"); // Traemos el nombre del usuario del local storage
 
@@ -40,7 +40,6 @@ export const loadTimeline = async () => {
 
   const querySnapshot = await store.collection(USER_POSTS_COLLECTION).orderBy("dateImg", "desc").limit(20).get();
   
-  // Colocamos las variables userName y userPhoto en esta parte para que aparezcan
   sectionTimeline.innerHTML = `<div id="headLogoUserContainer" class="head-logo-user-container">
   <div id="containerLogoTimeline" class="container-logo-timeline">
     <img src="/img/Logo.png" alt="Logo" />
