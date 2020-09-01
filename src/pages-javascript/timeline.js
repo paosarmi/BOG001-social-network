@@ -8,6 +8,7 @@ const formPost = document.getElementById("formPost");
 const header = document.getElementById("header");
 const footer = document.getElementById("footer");
 const sectionMyProfile = document.getElementById("sectionMyProfile");
+const userId = localStorage.getItem("userUID");
 
 export const showTimelineAfterAuth = () => {
   sectionTimeline.style.display = "flex";
@@ -24,7 +25,7 @@ export const loadTimeline = async () => {
 
   const onGetTask = (callback) =>
     store.collection(USER_POSTS_COLLECTION).onSnapshot(callback);
-  
+
   let userPhoto = localStorage.getItem("userPhoto"); // Traemos la foto del usuario del local storage
   let userName = localStorage.getItem("userName"); // Traemos el nombre del usuario del local storage
 
@@ -39,7 +40,7 @@ export const loadTimeline = async () => {
   }
 
   const querySnapshot = await store.collection(USER_POSTS_COLLECTION).orderBy("dateImg", "desc").limit(20).get();
-  
+
   sectionTimeline.innerHTML = `<div id="headLogoUserContainer" class="head-logo-user-container">
   <div id="containerLogoTimeline" class="container-logo-timeline">
     <img src="/img/Logo.png" alt="Logo" />
@@ -52,12 +53,26 @@ export const loadTimeline = async () => {
  </div>`;
 
   let index = 0;
+  let displayOff = "display: flex;"
+  let displayOn = "display: none;"
+
   for (let i = 0; i < querySnapshot.docs.length; i++) {
     const cardPost = querySnapshot.docs[i].data();
     const likeOnId = "likeOn" + index;
     const likeOffId = "likeOff" + index;
     const dotsID = "dots" + index;
     const dotsButtonId = "dotsButton" + index;
+    displayOff = "display: flex;"
+    displayOn = "display: none;"
+
+    for (let i = 0; i < cardPost.like.length; i++) {
+      if (cardPost.like[i] == userId) {
+        displayOff = "display: none;"
+        displayOn = "display: flex;"
+        break;
+      }
+    }
+
 
     sectionTimeline.innerHTML += `
           <div id="postTimelineContainer" class="post-timeline-container">
@@ -83,9 +98,10 @@ export const loadTimeline = async () => {
                   <p id="descriptionCardDate">${cardPost.dateImg}</p>
                   <p>${cardPost.descriptionPost}</p>
                 <div class="container-like">
-                  <button id="${likeOffId}" > <img src="/img/LikeOff.png" alt="LikeOff" class="like-off" ></button>
-                  <button id="${likeOnId}" style="display: none;" > <img src="/img/LikeOn.png" alt="LikeOn" class="like-on" ></button>
+                  <button id="${likeOffId}" post-id="${querySnapshot.docs[i].id}" style="${displayOff}" > <img src="/img/LikeOff.png" alt="LikeOff" class="like-off" ></button>
+                  <button id="${likeOnId}" post-id="${querySnapshot.docs[i].id}" style="${displayOn}" > <img src="/img/LikeOn.png" alt="LikeOn" class="like-on" ></button>
                 </div>
+                <p>${cardPost.like.length}</p>
               </div>
             </div>
           </div>
@@ -135,12 +151,54 @@ function testParaVerPost() {
   hideHamburguerBeforePost();
 }
 
-function likePost(likeOffId, likeOnId) {
+async function likePost(likeOffId, likeOnId) {
+  const postId = document
+    .getElementById(likeOffId)
+    .getAttribute("post-id");
+  console.log(postId)
+  const postObject = await store
+    .collection(USER_POSTS_COLLECTION)
+    .doc(postId)
+    .get().
+    then((post) => {
+      let likesContainer = post.data().like;
+      likesContainer.push(userId)
+      console.log(post.data())
+      store
+        .collection(USER_POSTS_COLLECTION)
+        .doc(postId).update({
+          like: likesContainer,
+        })
+    })
   document.getElementById(likeOffId).style.display = "none";
   document.getElementById(likeOnId).style.display = "flex";
 }
 
-function unLikePost(likeOnId, likeOffId) {
+async function unLikePost(likeOnId, likeOffId) {
+  const postId = document
+    .getElementById(likeOffId)
+    .getAttribute("post-id");
+  console.log(postId)
+  const postObject = await store
+    .collection(USER_POSTS_COLLECTION)
+    .doc(postId)
+    .get().
+    then((post) => {
+      let likesContainer = post.data().like;
+      for (let i = 0; i < likesContainer.length; i++) {
+        if (likesContainer[i] == userId) {
+          likesContainer.splice(i, 1);
+          console.log(likesContainer)
+          break;
+        }
+      }
+      //console.log(likesContainer)
+      store
+        .collection(USER_POSTS_COLLECTION)
+        .doc(postId).update({
+          like: likesContainer,
+        })
+    })
   document.getElementById(likeOnId).style.display = "none";
   document.getElementById(likeOffId).style.display = "flex";
 }
