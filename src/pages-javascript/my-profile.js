@@ -24,21 +24,47 @@ export const loadMyProfile = async () => {
     .where("userId", "==", userId)
     .get();
 
+  let userPhoto = localStorage.getItem("userPhoto"); // Traemos la foto del usuario del local storage
+  let userName = localStorage.getItem("userName");
+
+  if (!userPhoto) // Si no hay foto ponemos la por defecto
+  {
+    userPhoto = "/img/fotos de prueba/profile.jpeg"
+  }
+
+  if (!userName) // Si no hay nombre de usuario se coloca uno por defecto
+  {
+    userName = "userNameProfile"
+  }
+
   sectionMyProfile.innerHTML = ` 
-            <div id="userHead" class="user-head"> 
-                  <img src="/img/fotos de prueba/profile.jpeg" alt="profile image" />
-                  <span>userNameProfile</span>
+            <div id="userHead" class="user-head-profile"> 
+                  <img src="${userPhoto}" alt="profile image" />
+                  <span>${userName}</span>
             </div>`;
 
   let index = 0;
+  let displayOff = "display: flex;"
+  let displayOn = "display: none;"
+
   for (let i = 0; i < querySnapshot.docs.length; i++) {
     const cardPost = querySnapshot.docs[i].data();
     const likeOnId = "likeOn" + index;
     const likeOffId = "likeOff" + index;
     const deleteButtonId = "deleteButton" + index;
+    displayOff = "display: flex;"
+    displayOn = "display: none;"
+
+    for (let i = 0; i < cardPost.like.length; i++) {
+      if (cardPost.like[i] == userId) {
+        displayOff = "display: none;"
+        displayOn = "display: flex;"
+        break;
+      }
+    }
 
     sectionMyProfile.innerHTML += `
-            <div id="cardPostContainer" class="card-post-container">
+            <div id="cardPostContainer" class="card-post-container-profile">
               <div id="headerCard" class="header-card">
                 <img src="${cardPost.url}" alt="Post image" />
                 <p>${cardPost.placePost}</p>
@@ -47,9 +73,9 @@ export const loadMyProfile = async () => {
                 <p id="descriptionCardDate">${cardPost.dateImg}</p>
                 <p>${cardPost.descriptionPost}</p>
               <div class="container-like">
-              <button id="${likeOffId}" > <img src="/img/LikeOff.png" alt="LikeOff" class="like-off" ></button>
-              <button id="${likeOnId}" style="display: none;" > <img src="/img/LikeOn.png" alt="LikeOn" class="like-on" ></button>
-                
+                <button class = "btn-like" id="${likeOffId}" post-id="${querySnapshot.docs[i].id}" style="${displayOff}" > <img src="/img/LikeOff.png" alt="LikeOff" class="like-off" ></button>
+                <button class = "btn-like" id="${likeOnId}" post-id="${querySnapshot.docs[i].id}" style="${displayOn}" > <img src="/img/LikeOn.png" alt="LikeOn" class="like-on" ></button>
+                <p>${cardPost.like.length}</p>
               </div>
                 <div>
                   <button id="${deleteButtonId}" post-id="${querySnapshot.docs[i].id}" class="delete-button">Delete</button>      
@@ -76,6 +102,7 @@ export const loadMyProfile = async () => {
     document.getElementById(likeOffId).addEventListener("click", function () {
       likePost(likeOffId, likeOnId);
     });
+
     const postId = document
       .getElementById(deleteButtonId)
       .getAttribute("post-id");
@@ -86,6 +113,58 @@ export const loadMyProfile = async () => {
       });
   }
 };
+
+async function likePost(likeOffId, likeOnId) {
+  const postId = document
+    .getElementById(likeOffId)
+    .getAttribute("post-id");
+  console.log(postId)
+  const postObject = await store
+    .collection(USER_POSTS_COLLECTION)
+    .doc(postId)
+    .get().
+    then((post) => {
+      let likesContainer = post.data().like;
+      likesContainer.push(userId)
+      console.log(post.data())
+      store
+        .collection(USER_POSTS_COLLECTION)
+        .doc(postId).update({
+          like: likesContainer,
+        })
+    })
+  document.getElementById(likeOffId).style.display = "none";
+  document.getElementById(likeOnId).style.display = "flex";
+}
+
+async function unLikePost(likeOnId, likeOffId) {
+  const postId = document
+    .getElementById(likeOffId)
+    .getAttribute("post-id");
+  console.log(postId)
+  const postObject = await store
+    .collection(USER_POSTS_COLLECTION)
+    .doc(postId)
+    .get().
+    then((post) => {
+      let likesContainer = post.data().like;
+      for (let i = 0; i < likesContainer.length; i++) {
+        if (likesContainer[i] == userId) {
+          likesContainer.splice(i, 1);
+          console.log(likesContainer)
+          break;
+        }
+      }
+      store
+        .collection(USER_POSTS_COLLECTION)
+        .doc(postId).update({
+          like: likesContainer,
+        })
+    })
+  document.getElementById(likeOnId).style.display = "none";
+  document.getElementById(likeOffId).style.display = "flex";
+}
+
 async function deletePost(postId) {
   const loader = document.querySelector(".loader-gif");
   loader.style.display = "flex";
@@ -112,6 +191,7 @@ async function deletePost(postId) {
   loader.style.display = "none";
 }
 
+
 export const getCardPost = () => store.collection(USER_POSTS_COLLECTION).get();
 
 function testParaVerPost() {
@@ -121,17 +201,6 @@ function testParaVerPost() {
   footer.style.display = "none";
   hideHamburguerBeforePost();
 }
-
-function likePost(likeOffId, likeOnId) {
-  document.getElementById(likeOffId).style.display = "none";
-  document.getElementById(likeOnId).style.display = "flex";
-}
-
-function unLikePost(likeOnId, likeOffId) {
-  document.getElementById(likeOnId).style.display = "none";
-  document.getElementById(likeOffId).style.display = "flex";
-}
-
 function report() {
   document.getElementById("error404").style.display = "flex";
   document.getElementById("sectionTimeline").style.display = "none";

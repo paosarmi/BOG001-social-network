@@ -192,7 +192,6 @@ async function unLikePost(likeOnId, likeOffId) {
           break;
         }
       }
-      //console.log(likesContainer)
       store
         .collection(USER_POSTS_COLLECTION)
         .doc(postId).update({

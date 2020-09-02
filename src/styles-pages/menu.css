@@ -19,7 +19,7 @@
   flex-direction: row-reverse;
   position: fixed;
   bottom: 0;
-  width: 340px;
+  /*width: 340px;*/
   margin-bottom: 25px;
 }
 
