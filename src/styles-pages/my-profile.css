@@ -33,6 +33,23 @@ body {
   justify-content: center;
 }
 
+.header-profile {
+  display: flex;
+  flex-direction: row;
+}
+
+.header-profile img {
+  width: 15%;
+  height: 5%;
+  margin: 10px 72px 4px 25px;
+}
+
+.header-profile h1 {
+  font-size: 22px;
+  color: var(--color-button);
+  font-weight: lighter;
+}
+
 .user-head-profile {
   display: flex;
   align-items: center;
@@ -40,7 +57,6 @@ body {
   align-content: center;
   width: 55%;
   justify-content: space-between;
-  margin-top: 25px;
 }
 
 .user-head-profile img {
@@ -50,8 +66,9 @@ body {
 }
 
 .user-head-profile span {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
+  margin-bottom: 25px;
 }
 
 .card-post-container-profile {
@@ -83,7 +100,7 @@ body {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  background-color: black;
+  background-color: var(--color-button);
   color: white;
   padding-left: 20px;
   padding-right: 20px;
@@ -125,3 +142,24 @@ body {
   font-weight: bold;
   margin-top: 5px;
 }
+
+@media only screen and (min-height: 768px) {
+
+  .header-profile img {
+    border-radius: 10px 91px 4px 25px;
+  }
+
+  .header-card, .description-card {
+  font-size: 20px;
+}
+
+.like-on {
+  width: 25px;
+  height: 25px;
+}
+
+.container-like p {
+  font-size: 16px;
+}
+}
+

@@ -38,6 +38,10 @@ export const loadMyProfile = async () => {
   }
 
   sectionMyProfile.innerHTML = ` 
+            <div class = "header-profile">
+              <img src="/img/Logo.png" alt="Logo" class="logo-profile" >
+              <h1>Profile</h1>
+            </div>
             <div id="userHead" class="user-head-profile"> 
                   <img src="${userPhoto}" alt="profile image" />
                   <span>${userName}</span>
@@ -87,9 +91,6 @@ export const loadMyProfile = async () => {
           `;
     index += 1;
   }
-
-  sectionMyProfile.innerHTML += `<input id="testIrPost" type="button" value="Ir a post" />`;
-  document.getElementById("testIrPost").onclick = testParaVerPost;
 
   for (let i = 0; i < index; i++) {
     const likeOnId = "likeOn" + i;
