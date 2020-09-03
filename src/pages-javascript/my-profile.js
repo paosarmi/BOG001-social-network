@@ -27,14 +27,14 @@ export const loadMyProfile = async () => {
   let userPhoto = localStorage.getItem("userPhoto"); // Traemos la foto del usuario del local storage
   let userName = localStorage.getItem("userName");
 
-  if (!userPhoto) // Si no hay foto ponemos la por defecto
-  {
-    userPhoto = "/img/fotos de prueba/profile.jpeg"
+  if (!userPhoto) {
+    // Si no hay foto ponemos la por defecto
+    userPhoto = "/img/fotos de prueba/profile.jpeg";
   }
 
-  if (!userName) // Si no hay nombre de usuario se coloca uno por defecto
-  {
-    userName = "userNameProfile"
+  if (!userName) {
+    // Si no hay nombre de usuario se coloca uno por defecto
+    userName = "userNameProfile";
   }
 
   sectionMyProfile.innerHTML = ` 
@@ -48,21 +48,21 @@ export const loadMyProfile = async () => {
             </div>`;
 
   let index = 0;
-  let displayOff = "display: flex;"
-  let displayOn = "display: none;"
+  let displayOff = "display: flex;";
+  let displayOn = "display: none;";
 
   for (let i = 0; i < querySnapshot.docs.length; i++) {
     const cardPost = querySnapshot.docs[i].data();
     const likeOnId = "likeOn" + index;
     const likeOffId = "likeOff" + index;
     const deleteButtonId = "deleteButton" + index;
-    displayOff = "display: flex;"
-    displayOn = "display: none;"
+    displayOff = "display: flex;";
+    displayOn = "display: none;";
 
     for (let i = 0; i < cardPost.like.length; i++) {
       if (cardPost.like[i] == userId) {
-        displayOff = "display: none;"
-        displayOn = "display: flex;"
+        displayOff = "display: none;";
+        displayOn = "display: flex;";
         break;
       }
     }
@@ -116,52 +116,44 @@ export const loadMyProfile = async () => {
 };
 
 async function likePost(likeOffId, likeOnId) {
-  const postId = document
-    .getElementById(likeOffId)
-    .getAttribute("post-id");
-  console.log(postId)
+  const postId = document.getElementById(likeOffId).getAttribute("post-id");
+  console.log(postId);
   const postObject = await store
     .collection(USER_POSTS_COLLECTION)
     .doc(postId)
-    .get().
-    then((post) => {
+    .get()
+    .then((post) => {
       let likesContainer = post.data().like;
-      likesContainer.push(userId)
-      console.log(post.data())
-      store
-        .collection(USER_POSTS_COLLECTION)
-        .doc(postId).update({
-          like: likesContainer,
-        })
-    })
+      likesContainer.push(userId);
+      console.log(post.data());
+      store.collection(USER_POSTS_COLLECTION).doc(postId).update({
+        like: likesContainer,
+      });
+    });
   document.getElementById(likeOffId).style.display = "none";
   document.getElementById(likeOnId).style.display = "flex";
 }
 
 async function unLikePost(likeOnId, likeOffId) {
-  const postId = document
-    .getElementById(likeOffId)
-    .getAttribute("post-id");
-  console.log(postId)
+  const postId = document.getElementById(likeOffId).getAttribute("post-id");
+  console.log(postId);
   const postObject = await store
     .collection(USER_POSTS_COLLECTION)
     .doc(postId)
-    .get().
-    then((post) => {
+    .get()
+    .then((post) => {
       let likesContainer = post.data().like;
       for (let i = 0; i < likesContainer.length; i++) {
         if (likesContainer[i] == userId) {
           likesContainer.splice(i, 1);
-          console.log(likesContainer)
+          console.log(likesContainer);
           break;
         }
       }
-      store
-        .collection(USER_POSTS_COLLECTION)
-        .doc(postId).update({
-          like: likesContainer,
-        })
-    })
+      store.collection(USER_POSTS_COLLECTION).doc(postId).update({
+        like: likesContainer,
+      });
+    });
   document.getElementById(likeOnId).style.display = "none";
   document.getElementById(likeOffId).style.display = "flex";
 }
@@ -192,16 +184,15 @@ async function deletePost(postId) {
   loader.style.display = "none";
 }
 
-
 export const getCardPost = () => store.collection(USER_POSTS_COLLECTION).get();
 
-function testParaVerPost() {
+/* function testParaVerPost() {
   sectionTimeline.style.display = "none";
   formPost.style.display = "flex";
   header.style.display = "none";
   footer.style.display = "none";
   hideHamburguerBeforePost();
-}
+} */
 function report() {
   document.getElementById("error404").style.display = "flex";
   document.getElementById("sectionTimeline").style.display = "none";

@@ -29,17 +29,21 @@ export const loadTimeline = async () => {
   let userPhoto = localStorage.getItem("userPhoto"); // Traemos la foto del usuario del local storage
   let userName = localStorage.getItem("userName"); // Traemos el nombre del usuario del local storage
 
-  if (!userPhoto) // Si no hay foto ponemos la por defecto
-  {
-    userPhoto = "/img/fotos de prueba/profile.jpeg"
+  if (!userPhoto) {
+    // Si no hay foto ponemos la por defecto
+    userPhoto = "/img/fotos de prueba/profile.jpeg";
   }
 
-  if (!userName) // Si no hay nombre de usuario se coloca uno por defecto
-  {
-    userName = "userNameProfile"
+  if (!userName) {
+    // Si no hay nombre de usuario se coloca uno por defecto
+    userName = "userNameProfile";
   }
 
-  const querySnapshot = await store.collection(USER_POSTS_COLLECTION).orderBy("dateImg", "desc").limit(20).get();
+  const querySnapshot = await store
+    .collection(USER_POSTS_COLLECTION)
+    .orderBy("dateImg", "desc")
+    .limit(20)
+    .get();
 
   sectionTimeline.innerHTML = `<div id="headLogoUserContainer" class="head-logo-user-container">
   <div id="containerLogoTimeline" class="container-logo-timeline">
@@ -53,8 +57,8 @@ export const loadTimeline = async () => {
  </div>`;
 
   let index = 0;
-  let displayOff = "display: flex;"
-  let displayOn = "display: none;"
+  let displayOff = "display: flex;";
+  let displayOn = "display: none;";
 
   for (let i = 0; i < querySnapshot.docs.length; i++) {
     const cardPost = querySnapshot.docs[i].data();
@@ -62,17 +66,16 @@ export const loadTimeline = async () => {
     const likeOffId = "likeOff" + index;
     const dotsID = "dots" + index;
     const dotsButtonId = "dotsButton" + index;
-    displayOff = "display: flex;"
-    displayOn = "display: none;"
+    displayOff = "display: flex;";
+    displayOn = "display: none;";
 
     for (let i = 0; i < cardPost.like.length; i++) {
       if (cardPost.like[i] == userId) {
-        displayOff = "display: none;"
-        displayOn = "display: flex;"
+        displayOff = "display: none;";
+        displayOn = "display: flex;";
         break;
       }
     }
-
 
     sectionTimeline.innerHTML += `
           <div id="postTimelineContainer" class="post-timeline-container">
@@ -109,11 +112,6 @@ export const loadTimeline = async () => {
     index += 1;
   }
 
-  sectionTimeline.innerHTML += `<input id="testIrPost" type="button" value="Ir a post" /> 
-  <input id="testIrMyProfile" type="button" value="Ir a My profile" />`;
-  document.getElementById("testIrPost").onclick = testParaVerPost;
-  document.getElementById("testIrMyProfile").onclick = showMyProfile;
-
   for (let i = 0; i < index; i++) {
     const likeOnId = "likeOn" + i;
     const likeOffId = "likeOff" + i;
@@ -143,61 +141,45 @@ export const loadTimeline = async () => {
 
 export const getCardPost = () => store.collection(USER_POSTS_COLLECTION).get();
 
-function testParaVerPost() {
-  sectionTimeline.style.display = "none";
-  formPost.style.display = "flex";
-  header.style.display = "none";
-  footer.style.display = "none";
-  hideHamburguerBeforePost();
-}
-
 async function likePost(likeOffId, likeOnId) {
-  const postId = document
-    .getElementById(likeOffId)
-    .getAttribute("post-id");
-  console.log(postId)
+  const postId = document.getElementById(likeOffId).getAttribute("post-id");
+  console.log(postId);
   const postObject = await store
     .collection(USER_POSTS_COLLECTION)
     .doc(postId)
-    .get().
-    then((post) => {
+    .get()
+    .then((post) => {
       let likesContainer = post.data().like;
-      likesContainer.push(userId)
-      console.log(post.data())
-      store
-        .collection(USER_POSTS_COLLECTION)
-        .doc(postId).update({
-          like: likesContainer,
-        })
-    })
+      likesContainer.push(userId);
+      console.log(post.data());
+      store.collection(USER_POSTS_COLLECTION).doc(postId).update({
+        like: likesContainer,
+      });
+    });
   document.getElementById(likeOffId).style.display = "none";
   document.getElementById(likeOnId).style.display = "flex";
 }
 
 async function unLikePost(likeOnId, likeOffId) {
-  const postId = document
-    .getElementById(likeOffId)
-    .getAttribute("post-id");
-  console.log(postId)
+  const postId = document.getElementById(likeOffId).getAttribute("post-id");
+  console.log(postId);
   const postObject = await store
     .collection(USER_POSTS_COLLECTION)
     .doc(postId)
-    .get().
-    then((post) => {
+    .get()
+    .then((post) => {
       let likesContainer = post.data().like;
       for (let i = 0; i < likesContainer.length; i++) {
         if (likesContainer[i] == userId) {
           likesContainer.splice(i, 1);
-          console.log(likesContainer)
+          console.log(likesContainer);
           break;
         }
       }
-      store
-        .collection(USER_POSTS_COLLECTION)
-        .doc(postId).update({
-          like: likesContainer,
-        })
-    })
+      store.collection(USER_POSTS_COLLECTION).doc(postId).update({
+        like: likesContainer,
+      });
+    });
   document.getElementById(likeOnId).style.display = "none";
   document.getElementById(likeOffId).style.display = "flex";
 }
