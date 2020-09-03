@@ -3,12 +3,12 @@ import { hideHamburguerBeforePost, showHamburguerAfterPost } from "./menu.js";
 import { showMyProfile } from "./my-profile.js";
 
 const USER_POSTS_COLLECTION = "userPostsCollection";
+const USER_PROFILE_COLLECTION = "userProfileCollection";
 const sectionTimeline = document.getElementById("sectionTimeline");
 const formPost = document.getElementById("formPost");
 const header = document.getElementById("header");
 const footer = document.getElementById("footer");
 const sectionMyProfile = document.getElementById("sectionMyProfile");
-const userId = localStorage.getItem("userUID");
 
 export const showTimelineAfterAuth = () => {
   sectionTimeline.style.display = "flex";
@@ -21,23 +21,22 @@ export const showTimelineAfterAuth = () => {
 };
 
 export const loadTimeline = async () => {
-  const getCardPost = () => store.collection(USER_POSTS_COLLECTION).get();
-
-  const onGetTask = (callback) =>
-    store.collection(USER_POSTS_COLLECTION).onSnapshot(callback);
-
-  let userPhoto = localStorage.getItem("userPhoto"); // Traemos la foto del usuario del local storage
-  let userName = localStorage.getItem("userName"); // Traemos el nombre del usuario del local storage
-
-  if (!userPhoto) // Si no hay foto ponemos la por defecto
-  {
-    userPhoto = "/img/fotos de prueba/profile.png"
-  }
-
-  if (!userName) {
-    // Si no hay nombre de usuario se coloca uno por defecto
-    userName = "userNameProfile";
-  }
+  const userId = localStorage.getItem("userUID");
+  let userName = "";
+  let userPhoto = "/img/Profile_placeholder.png";
+  await store
+    .collection(USER_PROFILE_COLLECTION)
+    .where("userId", "==", userId)
+    .get()
+    .then((querySnapshot) => {
+      if (!querySnapshot.empty) {
+        const dataProfile = querySnapshot.docs[0].data();
+        userName = dataProfile.userName;
+        if (dataProfile.picture) {
+          userPhoto = dataProfile.picture;
+        }
+      }
+    });
 
   const querySnapshot = await store
     .collection(USER_POSTS_COLLECTION)
@@ -77,12 +76,28 @@ export const loadTimeline = async () => {
       }
     }
 
+    let userNamePost = "";
+    let userPhotoPost = "/img/Profile_placeholder.png";
+    await store
+      .collection(USER_PROFILE_COLLECTION)
+      .where("userId", "==", cardPost.userId)
+      .get()
+      .then((querySnapshot) => {
+        if (!querySnapshot.empty) {
+          const dataProfile = querySnapshot.docs[0].data();
+          userNamePost = dataProfile.userName;
+          if (dataProfile.picture) {
+            userPhotoPost = dataProfile.picture;
+          }
+        }
+      });
+
     sectionTimeline.innerHTML += `
           <div id="postTimelineContainer" class="post-timeline-container">
             <div id="headPostTimelineCont" class="head-post-timeline-cont">
               <div id="userProfileContainer" class="user-profile-container">
-                <img src="/img/fotos de prueba/profile.jpeg" alt="profile image" />
-                <span>userNameProfile</span>
+                <img src="${userPhotoPost}" />
+                <span>${userNamePost}</span>
               </div>
               <div id="editDots" class="edit-dots">
                 <button id="${dotsButtonId}" class="dots"><strong>...</strong></button>
