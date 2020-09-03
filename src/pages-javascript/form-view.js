@@ -13,6 +13,7 @@ const signGoogle = document.getElementById("signGoogle");
 const loginGoogle = document.getElementById("loginGoogle");
 const sectionPost = document.getElementById("formPost");
 const sectionTimeline = document.getElementById("sectionTimeline");
+// const sectionPost = Document.getElementById("sectionPost"); 
 const sectionMyProfile = document.getElementById("sectionMyProfile");
 const userId = localStorage.getItem("userUID");
 

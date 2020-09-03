@@ -26,6 +26,23 @@ export const showPostUser = () => {
   formPost.style.display = "flex";
   header.style.display = "none";
   footer.style.display = "none";
+
+  let userPhoto = localStorage.getItem("userPhoto"); // Traemos la foto del usuario del local storage
+  let userName = localStorage.getItem("userName"); // Traemos el nombre del usuario del local storage
+
+  if (!userName) // Si no hay foto ponemos la por defecto
+  {
+    document.getElementById("UserNamePost").innerHTML = "userNameProfile"
+  }
+  else
+  {
+    document.getElementById("UserNamePost").innerHTML = userName
+  }
+
+  if (userPhoto) // Si no hay nombre de usuario se coloca uno por defecto
+  {
+    document.getElementById('imagePostUser').src = userPhoto
+  }
 };
 
 function capitalize(stringc) {
