@@ -199,6 +199,6 @@ async function deletePost(postId) {
 
 export const getCardPost = () => store.collection(USER_POSTS_COLLECTION).get();
 
-function modal() {
-  let closeModal = 
-}
+/*function modal() {
+  let closeModal =
+}*/
