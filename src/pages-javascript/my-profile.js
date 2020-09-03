@@ -1,6 +1,7 @@
 import { showPostUser, saveDataPost } from "./post.js";
 //import { hideHamburguerBeforePost, showHamburgerAfterLogin } from "./menu.js";
 
+const USER_PROFILE_COLLECTION = "userProfileCollection";
 const USER_POSTS_COLLECTION = "userPostsCollection";
 const sectionTimeline = document.getElementById("sectionTimeline");
 const sectionMyProfile = document.getElementById("sectionMyProfile");
@@ -24,18 +25,21 @@ export const loadMyProfile = async () => {
     .where("userId", "==", userId)
     .get();
 
-  let userPhoto = localStorage.getItem("userPhoto"); // Traemos la foto del usuario del local storage
-  let userName = localStorage.getItem("userName");
-
-  if (!userPhoto) {
-    // Si no hay foto ponemos la por defecto
-    userPhoto = "/img/fotos de prueba/profile.jpeg";
-  }
-
-  if (!userName) {
-    // Si no hay nombre de usuario se coloca uno por defecto
-    userName = "userNameProfile";
-  }
+  let userName = "";
+  let userPhoto = "/img/Profile_placeholder.png";
+  const userProfile = await store
+    .collection(USER_PROFILE_COLLECTION)
+    .where("userId", "==", userId)
+    .get()
+    .then((querySnapshot) => {
+      if (!querySnapshot.empty) {
+        const dataProfile = querySnapshot.docs[0].data();
+        userName = dataProfile.userName;
+        if (dataProfile.picture) {
+          userPhoto = dataProfile.picture;
+        }
+      }
+    });
 
   sectionMyProfile.innerHTML = ` 
             <div class = "header-profile">

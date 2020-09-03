@@ -13,9 +13,10 @@ const signGoogle = document.getElementById("signGoogle");
 const loginGoogle = document.getElementById("loginGoogle");
 const sectionPost = document.getElementById("formPost");
 const sectionTimeline = document.getElementById("sectionTimeline");
-// const sectionPost = Document.getElementById("sectionPost"); 
+// const sectionPost = Document.getElementById("sectionPost");
 const sectionMyProfile = document.getElementById("sectionMyProfile");
 const userId = localStorage.getItem("userUID");
+const USER_PROFILE_COLLECTION = "userProfileCollection";
 
 // console.log(userId)
 if (userId) {
@@ -91,10 +92,23 @@ function formAuth() {
       sectionLogin.style.display = "none";
       sectionPost.style.display = "none";
       sectionTimeline.style.display = "flex";
-      showTimelineAfterAuth();
-      showHamburgerAfterLogin();
       const uid = userCredential.user.uid;
       localStorage.setItem("userUID", uid);
+      store
+        .collection(USER_PROFILE_COLLECTION)
+        .add({
+          userId: uid,
+          userName: user,
+          picture: "",
+          //photoURL: photoURL,
+        })
+        .then((docRef) => {
+          showTimelineAfterAuth();
+          showHamburgerAfterLogin();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       //console.log("sign up");
     })
     .catch((error) => {
@@ -125,16 +139,15 @@ function loginAuth() {
       sectionLogin.style.display = "none";
       sectionPost.style.display = "none";
       sectionTimeline.style.display = "flex";
-      showTimelineAfterAuth();
-      showHamburgerAfterLogin();
       const uid = userCredential.user.uid;
       localStorage.setItem("userUID", uid);
+      showTimelineAfterAuth();
+      showHamburgerAfterLogin();
       localStorage.setItem("userPhoto", user.photoURL); // Guardamos en el Local Storage la foto
       localStorage.setItem("userName", user.displayName);
       //mostrar gif
       const loader = document.querySelector(".loader-gif");
       loader.style.display = "flex";
-      await loadTimeline();
       loader.style.display = "none";
     })
     .catch((error) => {
@@ -149,17 +162,29 @@ function googleAuth() {
   auth
     .signInWithPopup(provider)
     .then(function (result) {
-      loadTimeline();
       const token = result.credential.accesstoken;
       const user = result.user; // Esta variable contiene la data del usuario
       sectionSignin.style.display = "none";
       sectionLogin.style.display = "none";
       sectionPost.style.display = "none";
       sectionTimeline.style.display = "flex";
-      showTimelineAfterAuth();
-      showHamburgerAfterLogin();
       const uid = user.uid;
       localStorage.setItem("userUID", uid);
+      store
+        .collection(USER_PROFILE_COLLECTION)
+        .add({
+          userId: uid,
+          userName: user.displayName,
+          picture: user.photoURL,
+          //photoURL: photoURL,
+        })
+        .then((docRef) => {
+          showTimelineAfterAuth();
+          showHamburgerAfterLogin();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       localStorage.setItem("userPhoto", user.photoURL); // Guardamos en el Local Storage la foto
       localStorage.setItem("userName", user.displayName); // Guardamos en el Local Storage el nombre del usuario
     })

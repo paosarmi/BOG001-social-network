@@ -8,6 +8,7 @@ const sectionLogin = document.querySelector("#sectionLogin");
 const sectionMyProfile = document.getElementById("sectionMyProfile");
 const hamburger = document.querySelector(".hamburger");
 const menu = document.getElementById("menuUList");
+const USER_PROFILE_COLLECTION = "userProfileCollection";
 
 export const showHamburgerAfterLogin = () => {
   menuContainer.style.display = "flex";
@@ -55,16 +56,30 @@ document.addEventListener("DOMContentLoaded", function (event) {
   });
 });
 
-export function showPost() {
+export async function showPost() {
   sectionTimeline.style.display = "none";
   formPost.style.display = "flex";
   sectionMyProfile.style.display = "none";
   header.style.display = "none";
   footer.style.display = "none";
   hideHamburguerBeforePost();
-}
 
-/*   sectionTimeline.innerHTML += `<input id="testIrPost" type="button" value="Ir a post" /> 
-  <input id="testIrMyProfile" type="button" value="Ir a My profile" />`;
-   document.getElementById("testIrPost").onclick = testParaVerPost;
-  document.getElementById("testIrMyProfile").onclick = showMyProfile; */
+  const userId = localStorage.getItem("userUID");
+  let userName = "";
+  let userPhoto = "/img/Profile_placeholder.png";
+  const userProfile = await store
+    .collection(USER_PROFILE_COLLECTION)
+    .where("userId", "==", userId)
+    .get()
+    .then((querySnapshot) => {
+      if (!querySnapshot.empty) {
+        const dataProfile = querySnapshot.docs[0].data();
+        userName = dataProfile.userName;
+        if (dataProfile.picture) {
+          userPhoto = dataProfile.picture;
+        }
+      }
+    });
+  document.getElementById("UserNamePost").innerHTML = userName;
+  document.getElementById("imagePostUser").src = userPhoto;
+}

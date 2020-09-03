@@ -13,6 +13,7 @@ const descriptionPost = document.getElementById("descriptionPost");
 const placePost = document.getElementById("placePost");
 const imageSelect = document.getElementById("imageSelect");
 const menuContainer = document.getElementById("menuContainer");
+const USER_PROFILE_COLLECTION = "userProfileCollection";
 var image;
 
 closePagePost.addEventListener("click", getBackToTimeline);
@@ -21,28 +22,25 @@ sendPost.addEventListener("click", formPostView);
 placePost.addEventListener("input", capitalize);
 descriptionPost.addEventListener("input", capitalize);
 
-export const showPostUser = () => {
+export const showPostUser = async () => {
   sectionTimeline.style.display = "none";
   formPost.style.display = "flex";
   header.style.display = "none";
   footer.style.display = "none";
-
-  let userPhoto = localStorage.getItem("userPhoto"); // Traemos la foto del usuario del local storage
-  let userName = localStorage.getItem("userName"); // Traemos el nombre del usuario del local storage
-
-  if (!userName) // Si no hay foto ponemos la por defecto
-  {
-    document.getElementById("UserNamePost").innerHTML = "userNameProfile"
-  }
-  else
-  {
-    document.getElementById("UserNamePost").innerHTML = userName
-  }
-
-  if (userPhoto) // Si no hay nombre de usuario se coloca uno por defecto
-  {
-    document.getElementById('imagePostUser').src = userPhoto
-  }
+  const userId = localStorage.getItem("userUID");
+  let userName = "";
+  let userPhoto = "/img/Profile_placeholder.png";
+  const userProfile = await store
+    .collection(USER_PROFILE_COLLECTION)
+    .where("userId", "==", userId)
+    .get()
+    .then((querySnapshot) => {
+      if (!querySnapshot.empty) {
+        const dataProfile = querySnapshot.docs[0].data();
+        userName = dataProfile.userName;
+      }
+    });
+  document.getElementById("UserNamePost").innerHTML = userName;
 };
 
 function capitalize(stringc) {
