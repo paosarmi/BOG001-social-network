@@ -1,8 +1,11 @@
+import { showMyProfile } from "./my-profile.js";
+
 const menuContainer = document.querySelector("#menuContainer");
 const sectionTimeline = document.querySelector("#sectionTimeline");
 const formPost = document.querySelector("#formPost");
 const sectionSignin = document.querySelector("#sectionSignin");
 const sectionLogin = document.querySelector("#sectionLogin");
+const sectionMyProfile = document.getElementById("sectionMyProfile");
 const hamburger = document.querySelector(".hamburger");
 const menu = document.getElementById("menuUList");
 
@@ -31,6 +34,10 @@ function menuHamburguer() {
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
+  document.getElementById("postButton").addEventListener("click", showPost);
+  document
+    .getElementById("myProfileButton")
+    .addEventListener("click", showMyProfile);
   document
     .querySelector(".menu-container")
     .addEventListener("click", function () {
@@ -47,3 +54,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
     });
   });
 });
+
+export function showPost() {
+  sectionTimeline.style.display = "none";
+  formPost.style.display = "flex";
+  sectionMyProfile.style.display = "none";
+  header.style.display = "none";
+  footer.style.display = "none";
+  hideHamburguerBeforePost();
+}
+
+/*   sectionTimeline.innerHTML += `<input id="testIrPost" type="button" value="Ir a post" /> 
+  <input id="testIrMyProfile" type="button" value="Ir a My profile" />`;
+   document.getElementById("testIrPost").onclick = testParaVerPost;
+  document.getElementById("testIrMyProfile").onclick = showMyProfile; */

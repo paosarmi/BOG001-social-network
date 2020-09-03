@@ -90,6 +90,8 @@ body {
   width: 90vw;
   display: flex;
   border-radius: 25px 25px 0 0;
+  max-height: 250px;
+  max-width: 350px;
 }
 
 #descriptionCardDate {
@@ -137,29 +139,28 @@ body {
   height: 20px;
 }
 
-.container-like p{
+.container-like p {
   font-size: 14px;
   font-weight: bold;
   margin-top: 5px;
 }
 
 @media only screen and (min-height: 768px) {
-
   .header-profile img {
     border-radius: 10px 91px 4px 25px;
   }
 
-  .header-card, .description-card {
-  font-size: 20px;
-}
+  .header-card,
+  .description-card {
+    font-size: 20px;
+  }
 
-.like-on {
-  width: 25px;
-  height: 25px;
-}
+  .like-on {
+    width: 25px;
+    height: 25px;
+  }
 
-.container-like p {
-  font-size: 16px;
+  .container-like p {
+    font-size: 16px;
+  }
 }
-}
-

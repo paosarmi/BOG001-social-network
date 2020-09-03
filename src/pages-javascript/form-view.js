@@ -17,15 +17,12 @@ const sectionMyProfile = document.getElementById("sectionMyProfile");
 const userId = localStorage.getItem("userUID");
 
 // console.log(userId)
-if (userId)
-{
+if (userId) {
   sectionTimeline.style.display = "flex";
   loadTimeline();
   showTimelineAfterAuth();
   showHamburgerAfterLogin();
-}
-else
-{
+} else {
   sectionLogin.style.display = "block";
 }
 
@@ -131,6 +128,8 @@ function loginAuth() {
       showHamburgerAfterLogin();
       const uid = userCredential.user.uid;
       localStorage.setItem("userUID", uid);
+      localStorage.setItem("userPhoto", user.photoURL); // Guardamos en el Local Storage la foto
+      localStorage.setItem("userName", user.displayName);
       //mostrar gif
       const loader = document.querySelector(".loader-gif");
       loader.style.display = "flex";

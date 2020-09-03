@@ -1,7 +1,5 @@
-import {
-  getCardPost,
-  showTimelineAfterAuth,
-} from "./timeline.js";
+import { getCardPost, showTimelineAfterAuth } from "./timeline.js";
+import { showPost } from "./menu.js";
 
 const closePagePost = document.getElementById("closePagePost");
 const formPost = document.getElementById("formPost");
@@ -11,10 +9,10 @@ const sendPost = document.getElementById("sendPost");
 const invalidPost = document.getElementById("invalidPost");
 const imgPost = document.getElementById("imgPost");
 const sectionTimeline = document.getElementById("sectionTimeline");
-const myProfile = document.getElementById("myProfile");
 const descriptionPost = document.getElementById("descriptionPost");
 const placePost = document.getElementById("placePost");
 const imageSelect = document.getElementById("imageSelect");
+const menuContainer = document.getElementById("menuContainer");
 var image;
 
 closePagePost.addEventListener("click", getBackToTimeline);
@@ -22,7 +20,6 @@ imgPost.addEventListener("change", getImage);
 sendPost.addEventListener("click", formPostView);
 placePost.addEventListener("input", capitalize);
 descriptionPost.addEventListener("input", capitalize);
-
 
 export const showPostUser = () => {
   sectionTimeline.style.display = "none";
@@ -40,7 +37,7 @@ function capitalize(stringc) {
 
 function getBackToTimeline() {
   sectionTimeline.style.display = "flex";
-  testIrPost.style.display = "flex";
+  menuContainer.style.display = "flex";
   formPost.style.display = "none";
   header.style.display = "none";
   footer.style.display = "none";
@@ -61,7 +58,7 @@ export const saveDataPost = (
   placePost,
   descriptionPost,
   userId,
-  url,
+  url
   //photoURL
 ) => {
   const datePost = new Date();

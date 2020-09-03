@@ -155,13 +155,11 @@
           </div>
           <p id="imageSelect"></p>
           <p id="invalidPost"></p>
-          <button id="sendPost" class="send-Post" type="submit">
-            Post
-          </button>
+          <button id="sendPost" class="send-Post" type="submit">Post</button>
           <div class="logo-dow">
-          <img id="imgPost2" src="img/Logo.png" alt="image post" />
-          <h1>TERRA TOUR</h1>
-          <p>Tourism by your side</p>
+            <img id="imgPost2" src="img/Logo.png" alt="image post" />
+            <h1>TERRA TOUR</h1>
+            <p>Tourism by your side</p>
           </div>
         </div>
       </section>
@@ -182,7 +180,7 @@
 
       <!--Contenedor Menú-->
       <div>
-        <nav>
+        <nav class="nav-container">
           <div id="menuContainer" class="menu-container">
             <div class="hamburger hamburger--spin">
               <div class="hamburger-box">
@@ -190,25 +188,25 @@
               </div>
             </div>
             <ul id="menuUList">
-              <li name="menuItem">
+              <li id="logOutButton" name="menuItem">
                 <a href="#">Log out</a>
                 <div class="hamburger">
                   <img src="/img/boton-de-encendido.png" alt="Log out" />
                 </div>
               </li>
-              <li name="menuItem">
+              <li id="myProfileButton" name="menuItem">
                 <a href="#">My profile</a>
                 <div class="hamburger">
                   <img src="/img/usuario.png" alt="My profile" />
                 </div>
               </li>
-              <li name="menuItem">
+              <li id="timelineButton" name="menuItem">
                 <a href="#">Timeline</a>
                 <div class="hamburger">
                   <img src="/img/noticias.png" alt="Timeline" />
                 </div>
               </li>
-              <li name="menuItem">
+              <li id="postButton" name="menuItem">
                 <a href="#">Post</a>
                 <div class="hamburger">
                   <img src="/img/altavoz.png" alt="Post" />
@@ -232,7 +230,7 @@
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+    <!--  <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script> -->
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
@@ -255,7 +253,7 @@
       const store = firebase.firestore();
       const storage = firebase.storage();
 
-      firebase.analytics();
+      /* firebase.analytics(); */
     </script>
 
     <script type="module" src="/pages-javascript/form-view.js"></script>
