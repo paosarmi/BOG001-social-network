@@ -160,7 +160,7 @@ nav ul li img {
 }
 
 nav ul li:hover {
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
 .menu-bars {

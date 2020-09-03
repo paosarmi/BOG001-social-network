@@ -57,8 +57,8 @@ export const loadMyProfile = async () => {
 
   for (let i = 0; i < querySnapshot.docs.length; i++) {
     const cardPost = querySnapshot.docs[i].data();
-    const likeOnId = "likeOn" + index;
-    const likeOffId = "likeOff" + index;
+    const likeOnId = "likeOnProfile" + index;
+    const likeOffId = "likeOffProfile" + index;
     const deleteButtonId = "deleteButton" + index;
     displayOff = "display: flex;";
     displayOn = "display: none;";
@@ -86,9 +86,18 @@ export const loadMyProfile = async () => {
                 <p>${cardPost.like.length}</p>
               </div>
                 <div>
-                  <button id="${deleteButtonId}" post-id="${querySnapshot.docs[i].id}" class="delete-button">Delete</button>      
+                  <button id="${deleteButtonId}" post-id="${querySnapshot.docs[i].id}" class="delete-button">Delete</button>     
+                    <div id = "modalContainer" class = "modal-container">
+                      <div class = "modal">
+                      <h1>¿Desea eliminar?</h1>
+                        <div class = "modal-button">
+                        <button>Confirmar</button>
+                        <button id = "closeModal" class = "cancel-modal">Cancelar</button>
+                        </div>
+                      </div>
+                      </div>
+                    <div> 
                   <button id="editButton" class="edit-button">Edit</button>
-                </div>
               </div>
             </div>
           </div>
@@ -97,8 +106,8 @@ export const loadMyProfile = async () => {
   }
 
   for (let i = 0; i < index; i++) {
-    const likeOnId = "likeOn" + i;
-    const likeOffId = "likeOff" + i;
+    const likeOnId = "likeOnProfile" + i;
+    const likeOffId = "likeOffProfile" + i;
     const deleteButtonId = "deleteButton" + i;
 
     document.getElementById(likeOnId).addEventListener("click", function () {
@@ -190,14 +199,6 @@ async function deletePost(postId) {
 
 export const getCardPost = () => store.collection(USER_POSTS_COLLECTION).get();
 
-/* function testParaVerPost() {
-  sectionTimeline.style.display = "none";
-  formPost.style.display = "flex";
-  header.style.display = "none";
-  footer.style.display = "none";
-  hideHamburguerBeforePost();
-} */
-function report() {
-  document.getElementById("error404").style.display = "flex";
-  document.getElementById("sectionTimeline").style.display = "none";
+function modal() {
+  let closeModal = 
 }
