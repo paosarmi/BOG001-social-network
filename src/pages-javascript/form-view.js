@@ -22,7 +22,6 @@ const USER_PROFILE_COLLECTION = "userProfileCollection";
 if (userId) {
   sectionTimeline.style.display = "flex";
   loadTimeline();
-  showTimelineAfterAuth();
   showHamburgerAfterLogin();
 } else {
   sectionLogin.style.display = "block";
