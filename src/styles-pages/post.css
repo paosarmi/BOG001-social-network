@@ -27,6 +27,27 @@ body {
   display: none;
 }
 
+.user-head1 {
+  position: absolute;
+  top: 100px;
+  left: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.user-head1 img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.close-page-post{
+  display: flex;
+  flex-direction: row;
+}
+
 .closePost {
   position: absolute;
   width: 13px;

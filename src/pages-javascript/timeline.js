@@ -29,9 +29,9 @@ export const loadTimeline = async () => {
   let userPhoto = localStorage.getItem("userPhoto"); // Traemos la foto del usuario del local storage
   let userName = localStorage.getItem("userName"); // Traemos el nombre del usuario del local storage
 
-  if (!userPhoto) {
-    // Si no hay foto ponemos la por defecto
-    userPhoto = "/img/fotos de prueba/profile.jpeg";
+  if (!userPhoto) // Si no hay foto ponemos la por defecto
+  {
+    userPhoto = "/img/fotos de prueba/profile.png"
   }
 
   if (!userName) {
