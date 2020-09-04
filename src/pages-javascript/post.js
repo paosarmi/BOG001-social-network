@@ -99,6 +99,8 @@ export const saveDataPost = (
 };
 
 function formPostView() {
+  const loader = document.querySelector(".loader-gif");
+  loader.style.display = "flex";
   const placePost = document.querySelector("#placePost").value;
   const descriptionPost = document.querySelector("#descriptionPost").value;
   const userId = localStorage.getItem("userUID");
@@ -136,4 +138,5 @@ function formPostView() {
       console.log("error", error);
     });
   getCardPost();
+  loader.style.display = "none";
 }
