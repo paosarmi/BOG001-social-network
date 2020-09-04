@@ -24,6 +24,10 @@ body {
   height: auto;
 }
 
+main {
+  width: 100%;
+}
+
 #sectionLogin{
   display: none;
 }
