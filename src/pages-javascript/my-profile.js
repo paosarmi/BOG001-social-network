@@ -60,6 +60,9 @@ export const loadMyProfile = async () => {
     const cardPost = querySnapshot.docs[i].data();
     const likeOnId = "likeOnProfile" + index;
     const likeOffId = "likeOffProfile" + index;
+    const modalId = "openModalProfile" + index;
+    const modalContainer = "modalContainerId" + index;
+    const cancelId = "cancelModalProfile" + index;
     const deleteButtonId = "deleteButton" + index;
     displayOff = "display: flex;";
     displayOn = "display: none;";
@@ -82,19 +85,20 @@ export const loadMyProfile = async () => {
                 <p id="descriptionCardDate">${cardPost.dateImg}</p>
                 <p>${cardPost.descriptionPost}</p>
               <div class="container-like">
-                <button id="${likeOffId}" post-id="${querySnapshot.docs[i].id}" style="${displayOff}" ><img src="/img/LikeOff.png" alt="LikeOff" class="like-off" ></button>
-                <button id="${likeOnId}" post-id="${querySnapshot.docs[i].id}" style="${displayOn}" ><img src="/img/LikeOn.png" alt="LikeOn" class="like-on" ></button>
+                <button id="${likeOffId}" post-id="${querySnapshot.docs[i].id}" style="${displayOff} class="btn-like" ><img src="/img/LikeOff.png" alt="LikeOff" class="like-off" ></button>
+                <button id="${likeOnId}" post-id="${querySnapshot.docs[i].id}" style="${displayOn}" class="btn-like"><img src="/img/LikeOn.png" alt="LikeOn" class="like-on" ></button>
                 <p>${cardPost.like.length}</p>
               </div>
                 <div>
-                  <button id="${deleteButtonId}" post-id="${querySnapshot.docs[i].id}" class="delete-button">Delete</button>     
-                    <div id = "modalContainer" class = "modal-container">
+                  <button id="${modalId}" post-id="${querySnapshot.docs[i].id}" class="delete-button">Delete</button>     
+                    <div id = "${modalContainer}" class = "modal-container">
                       <div class = "modal">
-                      <h1>¿Desea eliminar?</h1>
+                      <h1>Delete post!</h1>
                         <div class = "modal-button">
-                        <button>Confirmar</button>
-                        <button id = "closeModal" class = "cancel-modal">Cancelar</button>
+                        <button id="${deleteButtonId}" post-id="${querySnapshot.docs[i].id}" class="confirm-button">Confirm</button>
+                        <button id="${cancelId}" class="cancel-button">Cancel</button>
                         </div>
+                      </div>
                       </div>
                       </div>
                     <div> 
@@ -109,7 +113,11 @@ export const loadMyProfile = async () => {
   for (let i = 0; i < index; i++) {
     const likeOnId = "likeOnProfile" + i;
     const likeOffId = "likeOffProfile" + i;
+    const modalId = "openModalProfile" + i;
+    const modalContainer = "modalContainerId" + i;
+    const cancelId = "cancelModalProfile" + i;
     const deleteButtonId = "deleteButton" + i;
+
 
     document.getElementById(likeOnId).addEventListener("click", function () {
       unLikePost(likeOnId, likeOffId);
@@ -118,15 +126,25 @@ export const loadMyProfile = async () => {
       likePost(likeOffId, likeOnId);
     });
 
+    const modalContainerDOM = document.getElementById(modalContainer);
+
+    document.getElementById(modalId).addEventListener("click", function () {
+      modalContainerDOM.style.display = "flex";
+      modalContainerDOM.style.opacity = "1";
+      modalContainerDOM.style.visibility = "visible";
+    });
+
+    document.getElementById(cancelId).addEventListener("click", function () {
+      modalContainerDOM.style.display = "none";
+    });
+
     const postId = document
       .getElementById(deleteButtonId)
       .getAttribute("post-id");
-    document
-      .getElementById(deleteButtonId)
-      .addEventListener("click", function () {
-        deletePost(postId);
-      });
-  }
+    document.getElementById(deleteButtonId).addEventListener("click", function () {
+      deletePost(postId);
+    });
+  };
 };
 
 async function likePost(likeOffId, likeOnId) {
@@ -197,7 +215,3 @@ async function deletePost(postId) {
 }
 
 export const getCardPost = () => store.collection(USER_POSTS_COLLECTION).get();
-
-/*function modal() {
-  let closeModal =
-}*/

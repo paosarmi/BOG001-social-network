@@ -255,6 +255,7 @@ footer {
 @media only screen and (min-width: 1000px) {
   body {
     background-image: url(/img/background-web3.jpg);
+    flex-direction: column;
   }
 
   .logo {
