@@ -158,15 +158,14 @@ export const getCardPost = () => store.collection(USER_POSTS_COLLECTION).get();
 
 async function likePost(likeOffId, likeOnId) {
   const postId = document.getElementById(likeOffId).getAttribute("post-id");
-  console.log(postId);
-  const postObject = await store
+  const userId = localStorage.getItem("userUID");
+  await store
     .collection(USER_POSTS_COLLECTION)
     .doc(postId)
     .get()
     .then((post) => {
       let likesContainer = post.data().like;
       likesContainer.push(userId);
-      console.log(post.data());
       store.collection(USER_POSTS_COLLECTION).doc(postId).update({
         like: likesContainer,
       });
@@ -177,8 +176,8 @@ async function likePost(likeOffId, likeOnId) {
 
 async function unLikePost(likeOnId, likeOffId) {
   const postId = document.getElementById(likeOffId).getAttribute("post-id");
-  console.log(postId);
-  const postObject = await store
+  const userId = localStorage.getItem("userUID");
+  await store
     .collection(USER_POSTS_COLLECTION)
     .doc(postId)
     .get()
@@ -187,7 +186,6 @@ async function unLikePost(likeOnId, likeOffId) {
       for (let i = 0; i < likesContainer.length; i++) {
         if (likesContainer[i] == userId) {
           likesContainer.splice(i, 1);
-          console.log(likesContainer);
           break;
         }
       }

@@ -20,6 +20,7 @@ export const showMyProfile = () => {
 };
 
 export const loadMyProfile = async () => {
+  const userId = localStorage.getItem("userUID");
   const querySnapshot = await store
     .collection(USER_POSTS_COLLECTION)
     .where("userId", "==", userId)
@@ -81,8 +82,8 @@ export const loadMyProfile = async () => {
                 <p id="descriptionCardDate">${cardPost.dateImg}</p>
                 <p>${cardPost.descriptionPost}</p>
               <div class="container-like">
-                <button class = "btn-like" id="${likeOffId}" post-id="${querySnapshot.docs[i].id}" style="${displayOff}" > <img src="/img/LikeOff.png" alt="LikeOff" class="like-off" ></button>
-                <button class = "btn-like" id="${likeOnId}" post-id="${querySnapshot.docs[i].id}" style="${displayOn}" > <img src="/img/LikeOn.png" alt="LikeOn" class="like-on" ></button>
+                <button id="${likeOffId}" post-id="${querySnapshot.docs[i].id}" style="${displayOff}" ><img src="/img/LikeOff.png" alt="LikeOff" class="like-off" ></button>
+                <button id="${likeOnId}" post-id="${querySnapshot.docs[i].id}" style="${displayOn}" ><img src="/img/LikeOn.png" alt="LikeOn" class="like-on" ></button>
                 <p>${cardPost.like.length}</p>
               </div>
                 <div>
@@ -130,15 +131,14 @@ export const loadMyProfile = async () => {
 
 async function likePost(likeOffId, likeOnId) {
   const postId = document.getElementById(likeOffId).getAttribute("post-id");
-  console.log(postId);
-  const postObject = await store
+  const userId = localStorage.getItem("userUID");
+  await store
     .collection(USER_POSTS_COLLECTION)
     .doc(postId)
     .get()
     .then((post) => {
       let likesContainer = post.data().like;
       likesContainer.push(userId);
-      console.log(post.data());
       store.collection(USER_POSTS_COLLECTION).doc(postId).update({
         like: likesContainer,
       });
@@ -149,8 +149,8 @@ async function likePost(likeOffId, likeOnId) {
 
 async function unLikePost(likeOnId, likeOffId) {
   const postId = document.getElementById(likeOffId).getAttribute("post-id");
-  console.log(postId);
-  const postObject = await store
+  const userId = localStorage.getItem("userUID");
+  await store
     .collection(USER_POSTS_COLLECTION)
     .doc(postId)
     .get()
@@ -159,7 +159,6 @@ async function unLikePost(likeOnId, likeOffId) {
       for (let i = 0; i < likesContainer.length; i++) {
         if (likesContainer[i] == userId) {
           likesContainer.splice(i, 1);
-          console.log(likesContainer);
           break;
         }
       }
