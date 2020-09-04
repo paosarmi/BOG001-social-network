@@ -1,4 +1,5 @@
 import { showMyProfile } from "./my-profile.js";
+import { showTimelineAfterAuth } from "./timeline.js";
 
 const menuContainer = document.querySelector("#menuContainer");
 const sectionTimeline = document.querySelector("#sectionTimeline");
@@ -35,6 +36,15 @@ function menuHamburguer() {
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
+  document
+    .getElementById("timelineButton")
+    .addEventListener("click", showTimelineAfterAuth);
+  document
+    .getElementById("logOutButton")
+    .addEventListener("click", function () {
+      localStorage.removeItem("userUID");
+      location.reload();
+    });
   document.getElementById("postButton").addEventListener("click", showPost);
   document
     .getElementById("myProfileButton")

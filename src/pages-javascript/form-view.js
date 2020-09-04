@@ -17,12 +17,16 @@ const sectionTimeline = document.getElementById("sectionTimeline");
 const sectionMyProfile = document.getElementById("sectionMyProfile");
 const userId = localStorage.getItem("userUID");
 const USER_PROFILE_COLLECTION = "userProfileCollection";
+const header = document.getElementById("header");
+const footer = document.getElementById("footer");
 
 // console.log(userId)
 if (userId) {
   sectionTimeline.style.display = "flex";
   loadTimeline();
   showHamburgerAfterLogin();
+  header.style.display = "none";
+  footer.style.display = "none";
 } else {
   sectionLogin.style.display = "block";
 }
