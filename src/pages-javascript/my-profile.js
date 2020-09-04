@@ -87,9 +87,18 @@ export const loadMyProfile = async () => {
                 <p>${cardPost.like.length}</p>
               </div>
                 <div>
-                  <button id="${deleteButtonId}" post-id="${querySnapshot.docs[i].id}" class="delete-button">Delete</button>      
+                  <button id="${deleteButtonId}" post-id="${querySnapshot.docs[i].id}" class="delete-button">Delete</button>     
+                    <div id = "modalContainer" class = "modal-container">
+                      <div class = "modal">
+                      <h1>¿Desea eliminar?</h1>
+                        <div class = "modal-button">
+                        <button>Confirmar</button>
+                        <button id = "closeModal" class = "cancel-modal">Cancelar</button>
+                        </div>
+                      </div>
+                      </div>
+                    <div> 
                   <button id="editButton" class="edit-button">Edit</button>
-                </div>
               </div>
             </div>
           </div>
@@ -189,7 +198,6 @@ async function deletePost(postId) {
 
 export const getCardPost = () => store.collection(USER_POSTS_COLLECTION).get();
 
-function report() {
-  document.getElementById("error404").style.display = "flex";
-  document.getElementById("sectionTimeline").style.display = "none";
-}
+/*function modal() {
+  let closeModal =
+}*/
