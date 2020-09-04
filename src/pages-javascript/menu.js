@@ -56,11 +56,20 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 export function showPost() {
+  let mediaqueryList = window.matchMedia("(max-width: 500px)");
   sectionTimeline.style.display = "none";
   formPost.style.display = "flex";
   sectionMyProfile.style.display = "none";
   header.style.display = "none";
-  footer.style.display = "none";
+  if(mediaqueryList.matches) {
+    footer.style.display = "none";
+    console.log("entra");
+  }
+  else {
+    footer.style.display = "block";
+    console.log("sale");
+  }
+  
   hideHamburguerBeforePost();
 }
 

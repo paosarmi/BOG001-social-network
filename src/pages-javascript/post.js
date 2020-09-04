@@ -22,10 +22,12 @@ placePost.addEventListener("input", capitalize);
 descriptionPost.addEventListener("input", capitalize);
 
 export const showPostUser = () => {
+ 
+
   sectionTimeline.style.display = "none";
   formPost.style.display = "flex";
   header.style.display = "none";
-  footer.style.display = "none";
+  
 
   let userPhoto = localStorage.getItem("userPhoto"); // Traemos la foto del usuario del local storage
   let userName = localStorage.getItem("userName"); // Traemos el nombre del usuario del local storage
