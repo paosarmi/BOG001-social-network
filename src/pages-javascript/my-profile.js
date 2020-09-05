@@ -56,7 +56,7 @@ export const loadMyProfile = async () => {
   let displayOff = "display: flex;";
   let displayOn = "display: none;";
   let displayDelete = "display: none;";
-  let displayEdit = "display: none;"
+  let displayEdit = "display: none;";
 
   for (let i = 0; i < querySnapshot.docs.length; i++) {
     const cardPost = querySnapshot.docs[i].data();
@@ -72,7 +72,6 @@ export const loadMyProfile = async () => {
     displayOn = "display: none;";
     displayDelete = "display: none;";
     displayEdit = "display: none;";
-
 
     for (let i = 0; i < cardPost.like.length; i++) {
       if (cardPost.like[i] == userId) {
@@ -127,7 +126,6 @@ export const loadMyProfile = async () => {
     const deleteButtonId = "deleteButton" + i;
     const editButton = "editButtonProfile" + i;
 
-
     document.getElementById(likeOnId).addEventListener("click", function () {
       unLikePost(likeOnId, likeOffId);
     });
@@ -155,10 +153,12 @@ export const loadMyProfile = async () => {
     const postId = document
       .getElementById(deleteButtonId)
       .getAttribute("post-id");
-    document.getElementById(deleteButtonId).addEventListener("click", function () {
-      deletePost(postId);
-    });
-  };
+    document
+      .getElementById(deleteButtonId)
+      .addEventListener("click", function () {
+        deletePost(postId);
+      });
+  }
 };
 
 async function likePost(likeOffId, likeOnId) {

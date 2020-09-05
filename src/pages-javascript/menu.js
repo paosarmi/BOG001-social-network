@@ -33,6 +33,9 @@ hamburger.addEventListener("click", menuHamburguer);
 
 function menuHamburguer() {
   hamburger.classList.toggle("is-active");
+  /*  document.html.style.backgroundColor = "red"; */
+  /* document.getElementById("sectionBackground").style.backgroundColor =
+    "lightblue"; */
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {

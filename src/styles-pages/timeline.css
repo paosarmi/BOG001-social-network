@@ -166,3 +166,51 @@ body {
 .dropdown-content a:hover {
   background-color: #ddd;
 }
+
+@media only screen and (min-height: 768px) {
+  body {
+    background-image: url(/img/background-web3.jpg);
+  }
+
+  .section-timeline-view {
+    background-color: var(--color-background);
+    width: 80%;
+    margin-left: 10%;
+  }
+
+  .head-logo-user-container {
+    margin-bottom: 40px;
+  }
+
+  .user-head {
+    justify-content: right;
+  }
+
+  .user-head span {
+    margin: 20px;
+  }
+
+  .head-post-timeline-cont {
+    margin-bottom: 25px;
+  }
+
+  .user-profile-container {
+    justify-content: flex-start;
+  }
+
+  .user-profile-container span {
+    margin-left: 20px;
+  }
+
+  .card-post-container {
+    width: 100%;
+    min-width: 550px;
+    max-width: 450px;
+  }
+}
+
+@media only screen and (min-height: 880px) {
+  body {
+    background-image: url(/img/background-web3.jpg);
+  }
+}
