@@ -55,17 +55,24 @@ export const loadMyProfile = async () => {
   let index = 0;
   let displayOff = "display: flex;";
   let displayOn = "display: none;";
+  let displayDelete = "display: none;";
+  let displayEdit = "display: none;"
 
   for (let i = 0; i < querySnapshot.docs.length; i++) {
     const cardPost = querySnapshot.docs[i].data();
     const likeOnId = "likeOnProfile" + index;
     const likeOffId = "likeOffProfile" + index;
+    const crudEditId = "crudProfile" + index;
     const modalId = "openModalProfile" + index;
     const modalContainer = "modalContainerId" + index;
     const cancelId = "cancelModalProfile" + index;
+    const editButton = "editButtonProfile" + index;
     const deleteButtonId = "deleteButton" + index;
     displayOff = "display: flex;";
     displayOn = "display: none;";
+    displayDelete = "display: none;";
+    displayEdit = "display: none;";
+
 
     for (let i = 0; i < cardPost.like.length; i++) {
       if (cardPost.like[i] == userId) {
@@ -85,12 +92,15 @@ export const loadMyProfile = async () => {
                 <p id="descriptionCardDate">${cardPost.dateImg}</p>
                 <p>${cardPost.descriptionPost}</p>
               <div class="container-like">
-                <button id="${likeOffId}" post-id="${querySnapshot.docs[i].id}" style="${displayOff} class="btn-like" ><img src="/img/LikeOff.png" alt="LikeOff" class="like-off" ></button>
+                <button id="${likeOffId}" post-id="${querySnapshot.docs[i].id}" style="${displayOff}" class="btn-unlike"><img src="/img/LikeOff.png" alt="LikeOff" class="like-off" ></button>
                 <button id="${likeOnId}" post-id="${querySnapshot.docs[i].id}" style="${displayOn}" class="btn-like"><img src="/img/LikeOn.png" alt="LikeOn" class="like-on" ></button>
                 <p>${cardPost.like.length}</p>
-              </div>
-                <div>
-                  <button id="${modalId}" post-id="${querySnapshot.docs[i].id}" class="delete-button">Delete</button>     
+                <div class = "button-crud">
+                  <button id="${crudEditId}" class="btn-crud"><img src="/img/lapiz.png" alt="pencilCRUD" class="pencil-crud"></button>
+                  <button id="${modalId}" post-id="${querySnapshot.docs[i].id}" class="delete-button" style="${displayDelete}">Delete</button>
+                  <button id="${editButton}" class="edit-button" style="${displayEdit}">Edit</button>
+                </div>   
+              </div>  
                     <div id = "${modalContainer}" class = "modal-container">
                       <div class = "modal">
                       <h1>Delete post!</h1>
@@ -101,9 +111,6 @@ export const loadMyProfile = async () => {
                       </div>
                       </div>
                       </div>
-                    <div> 
-                  <button id="editButton" class="edit-button">Edit</button>
-              </div>
             </div>
           </div>
           `;
@@ -113,10 +120,12 @@ export const loadMyProfile = async () => {
   for (let i = 0; i < index; i++) {
     const likeOnId = "likeOnProfile" + i;
     const likeOffId = "likeOffProfile" + i;
+    const crudEditId = "crudProfile" + i;
     const modalId = "openModalProfile" + i;
     const modalContainer = "modalContainerId" + i;
     const cancelId = "cancelModalProfile" + i;
     const deleteButtonId = "deleteButton" + i;
+    const editButton = "editButtonProfile" + i;
 
 
     document.getElementById(likeOnId).addEventListener("click", function () {
@@ -124,6 +133,11 @@ export const loadMyProfile = async () => {
     });
     document.getElementById(likeOffId).addEventListener("click", function () {
       likePost(likeOffId, likeOnId);
+    });
+
+    document.getElementById(crudEditId).addEventListener("click", function () {
+      document.getElementById(modalId).style.display = "flex";
+      document.getElementById(editButton).style.display = "flex";
     });
 
     const modalContainerDOM = document.getElementById(modalContainer);
