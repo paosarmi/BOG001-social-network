@@ -279,6 +279,10 @@ background: none;
     height: 25px;
   }
 
+  .pencil-crud {
+    width: 30px;
+    height: 30px;
+
   .container-like p {
     font-size: 16px;
   }
@@ -340,6 +344,20 @@ background: none;
   .container-like p {
     font-size: 20px;
   }
+
+  .delete-button{
+    width: 150px;
+    margin-left: 30px;
+    padding-left: 51px;
+    font-size: 16px;
+  }
+
+  .edit-button {
+    width: 150px;
+    margin-left: 30px;
+    padding-left: 61px;
+    font-size: 16px;
+  }
 }
 
 @media only screen and (min-width: 1000px) {
@@ -398,13 +416,26 @@ background: none;
   .container-like p {
     font-size: 24px;
   }
+
+  .pencil-crud{
+    width: 40px;
+    height: 40px;
+  }
+  .delete-button {
+    width: 180px;
+    margin-left: 85px;
+  }
+
+  .edit-button {
+    width: 180px;
+  }
 }
 
 @media only screen and (min-width: 1100px){
   .my-profile-view {
     background-color: var(--color-background);
-    width: 60%;
-    margin-left: 18%;
+    width: 50%;
+    margin-left: 25%;
   }
 
   .header-profile img {
@@ -428,8 +459,8 @@ background: none;
 
   .header-card img {
     width: 100%;
-    max-height: 450px;
-    max-width: 580px;
+    max-height: 580px;
+    max-width: 700px;
   }
 
   .card-post-container-profile {
@@ -452,5 +483,17 @@ background: none;
   .container-like p {
     font-size: 16px;
   }
+
+  .pencil-crud {
+    width: 28px;
+    height: 28px;
 }
+
+  .edit-button {
+    padding-left: 78px;
+}
+
+  .delete-button{
+    padding-left: 76px;
+  }
 }
