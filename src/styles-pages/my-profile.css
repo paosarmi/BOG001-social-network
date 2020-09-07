@@ -330,7 +330,7 @@ body {
 
   .header-card,
   .description-card {
-    font-size: 24px;
+    font-size: 20px;
   }
   .like-on {
     width: 30px;
@@ -402,7 +402,7 @@ body {
 
   .header-card,
   .description-card {
-    font-size: 28px;
+    font-size: 20px;
   }
   .like-on {
     width: 35px;
@@ -466,6 +466,7 @@ body {
 
   .card-post-container-profile {
     width: 70%;
+    margin-bottom: 20px;
   }
 
   .header-card,
