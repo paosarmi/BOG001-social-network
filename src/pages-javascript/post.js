@@ -67,6 +67,7 @@ function getImage(event) {
     imageSelect.innerHTML = "File loaded: " + fileName;
   } else imageSelect.innerHTML = "No file";
   image = event.target.files[0];
+  console.log(image)
 }
 
 export const saveDataPost = (
