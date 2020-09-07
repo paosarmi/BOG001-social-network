@@ -231,6 +231,68 @@ background: none;
   justify-content: center;
 }
 
+.modal-container-edit {
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  height: 220vh;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modalEdit {
+  display: flex;
+  width: 80%;
+  height: 20%;
+  background: #ffffff;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50%;
+  align-content: center;
+  border-radius: 25px;
+  position: relative;
+}
+
+.modalEdit h1 {
+  display: flex;
+  justify-content: center;
+  font-size: 23px;
+  color: var(--color-button)
+}
+
+.place-edit-post {
+  background-color: var(--color-input);
+  font-family: var(--font-placeholder);
+  padding: 0px 25px 0px 25px;
+  border-radius: 25px;
+  margin-bottom: 25px;
+  height: 25px;
+  width: 200px;
+  border-style: none;
+}
+
+.description-edit-post {
+  background-color: var(--color-input);
+  font-family: var(--font-placeholder);
+  border-style: none;
+  white-space: initial;
+  padding: 0px 25px 0px 25px;
+  border-radius: 25px;
+  margin-bottom: 25px;
+  height: 100px;
+  width: 200px;
+}
+
+#imgChosse{
+  margin-bottom: 20px;
+}
+
 .cancel-button {
   display: flex;
   background-color: var(--color-button);
