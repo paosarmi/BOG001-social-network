@@ -7,13 +7,19 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="form-view.css" />
-    <link rel="stylesheet" href="post.css" />
+    <link rel="stylesheet" href="/styles-pages/form-view.css" />
+    <link rel="stylesheet" href="/styles-pages/post.css" />
+    <link rel="stylesheet" href="/styles-pages/timeline.css" />
+    <link rel="stylesheet" href="/styles-pages/404.css" />
+    <link rel="stylesheet" href="/styles-pages/my-profile.css" />
+    <link rel="stylesheet" href="/styles-pages/menu.css" />
+    <link rel="stylesheet" href="/styles-pages/loading-gif.css" />
   </head>
   <body>
     <header id="header" class="header">
       <div class="logo">
         <img src="img/Logo.png" alt="Terra Tour" />
+        <h1>TERRA TOUR</h1>
         <p>Tourism by your side</p>
       </div>
     </header>
@@ -96,67 +102,145 @@
       </section>
       <!--Fin inicio de sesión-->
 
-      <!-- timeline -->
-      <!-- <section>
-        <div id="timeline" class="timeline-view">
-          
+      <!-- Timeline -->
+      <section>
+        <div id="sectionTimeline" class="section-timeline-view"></div>
+      </section>
+      <!-- Fin timeline -->
+
+      <!--Gift loading-->
+      <section>
+        <div class="loader-gif" style="display: none">
+          <img src="/img/loadign.gif" alt="Loading" />
         </div>
-      </section> -->
-      <!-- fin timeline -->
+      </section>
+      <!--Fin gift loading-->
 
       <!-- Post -->
-      <section>
+      <section id="formPostSection">
         <div id="formPost" class="form-post">
-          <div>
-            <input
-              id="placePost"
-              class="place-post"
-              type="text"
-              placeholder="Indicate the place you visited"
-              autocomplete="off"
-              required
-            />
-            <label for="imgPost">Upload image</label>
-            <input
-              id="imgPost"
-              class="img-post"
-              type="file"
-              capture="user"
-              accept="image/*"
-            />
-            <textarea
-              id="descriptionPost"
-              class="description-post"
-              placeholder="Tell us your experience"
-              rows="4"
-              autocomplete="off"
-              required
-            >
-            </textarea>
+          <div id="closePagePost" class="close-page-post">
+            <div id="userHead" class="user-head1">
+              <img
+                id="imagePostUser"
+                src="/img/Profile_placeholder.png"
+                alt="profile image"
+              />
+              <span id="UserNamePost"></span>
+            </div>
+            <p class="closePost">X</p>
           </div>
-          <button id="sendPost" class="send-post" type="submit">
-            Post
-          </button>
+          <input
+            id="placePost"
+            class="place-post"
+            type="text"
+            placeholder="Indicate Place "
+            autocomplete="off"
+            required
+          />
+          <textarea
+            id="descriptionPost"
+            class="description-post"
+            type="text"
+            placeholder="Description Place"
+            autocomplete="off"
+            required
+          ></textarea>
+          <div id="imgChosse">
+            <label class="file">
+              <input
+                id="imgPost"
+                class="img-post"
+                type="file"
+                capture="user"
+                accept="image/*"
+                Choose
+                image
+              />
+              <p id="choose">Choose image</p>
+            </label>
+          </div>
+          <p id="imageSelect"></p>
+          <p id="invalidPost"></p>
+          <button id="sendPost" class="send-Post" type="submit">Post</button>
+          <div class="logo-dow">
+            <img id="imgPost2" src="img/Logo.png" alt="image post" />
+            <h1>TERRA TOUR</h1>
+            <p>Tourism by your side</p>
+          </div>
         </div>
       </section>
       <!-- Fin del post -->
+
+      <!--My profile-->
+      <section>
+        <div id="sectionMyProfile" class="my-profile-view"></div>
+      </section>
+      <!--Fin my profile-->
+
+      <!--Error 404-->
+      <section>
+        <div id="error404" class="error-404" style="display: none">
+          <div id="section404" class="section-404-view">404</div>
+        </div>
+      </section>
+
+      <!--Contenedor Menú-->
+      <div>
+        <nav class="nav-container">
+          <div id="menuContainer" class="menu-container">
+            <div class="hamburger hamburger--spin">
+              <div class="hamburger-box">
+                <div class="hamburger-inner"></div>
+              </div>
+            </div>
+            <ul id="menuUList">
+              <li id="logOutButton" name="menuItem">
+                <a href="#">Log out</a>
+                <div class="hamburger">
+                  <img src="/img/boton-de-encendido.png" alt="Log out" />
+                </div>
+              </li>
+              <li id="myProfileButton" name="menuItem">
+                <a href="#">My profile</a>
+                <div class="hamburger">
+                  <img src="/img/usuario.png" alt="My profile" />
+                </div>
+              </li>
+              <li id="timelineButton" name="menuItem">
+                <a href="#">Timeline</a>
+                <div class="hamburger">
+                  <img src="/img/noticias.png" alt="Timeline" />
+                </div>
+              </li>
+              <li id="postButton" name="menuItem">
+                <a href="#">Post</a>
+                <div class="hamburger">
+                  <img src="/img/altavoz.png" alt="Post" />
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <!--Fin contenedor Menú-->
     </main>
     <footer id="footer">
       <div class="footer-bar">
         <a href="#">Know us</a>
-        <p>
-          &copy; Copyright Terra Tour 2020
-        </p>
+        <p>&copy; Copyright Terra Tour 2020</p>
       </div>
     </footer>
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+    <!--  <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script> -->
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
 
     <script>
       // Configuración firebase de la página
@@ -174,10 +258,15 @@
       firebase.initializeApp(firebaseConfig);
       const auth = firebase.auth();
       const store = firebase.firestore();
-      firebase.analytics();
+      const storage = firebase.storage();
+
+      /* firebase.analytics(); */
     </script>
 
-    <script type="module" src="post.js"></script>
-    <script type="module" src="form-view.js"></script>
+    <script type="module" src="/pages-javascript/form-view.js"></script>
+    <script type="module" src="/pages-javascript/post.js"></script>
+    <script type="module" src="/pages-javascript/timeline.js"></script>
+    <script type="module" src="/pages-javascript/menu.js"></script>
+    <script type="module" src="/pages-javascript/my-profile.js"></script>
   </body>
 </html>
