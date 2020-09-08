@@ -1,7 +1,7 @@
 # TERRA TOUR: Tourism by your side (Social Network) 
 
 ## 1. Preámbulo 
-(<img src="img/Logo.png" width = 250px>)
+<img src="src/img/Logo.png" width = 50px>
 __Terra tour - el turismo de tu lado:__  _Red social_ que tiene como objetivo generar espacios de encuentros digitales para el sector del turismo, es decir, establecer recomendaciones de lugares visitados para futuros pasajeros a bordo de su próximo destino. 
 
 
@@ -18,14 +18,15 @@ Para la organización de la aplicación utilizamos metodología SCRUM e [histori
 
 ### 2.2 Diseño de Interfaz: Prototipo de Alta Fidelidad
 
-(<img src="img/Desktop.png">)
-(<img src="img/Mobile.png">)
+<img src="src/img/Mobile.png">
+
+<img src="src/img/Desktop.png">
 
 ## 3. Objetivos de aprendizaje
 
 ### HTML y CSS
 
-* [ ] [Uso de HTML semántico.]
+* [ ] Uso de HTML semántico.
 * [ ] Uso de selectores de CSS.
 * [ ] Construir tu aplicación respetando el diseño realizado (maquetación).
 * [ ] Uso de flexbox en CSS.
@@ -34,10 +35,10 @@ Para la organización de la aplicación utilizamos metodología SCRUM e [histori
 
 * [ ] Uso de selectores del DOM.
 * [ ] Manejo de eventos del DOM.
-* [ ] [Manipulación dinámica del DOM.]
+* [ ] Manipulación dinámica del DOM.
 (appendChild |createElement | createTextNode| innerHTML | textContent | etc.)
-* [ ] [History API.]
-* [ ] [localStorage.]
+* [ ] History API.
+* [ ] localStorage.
 
 ### JavaScript
 
@@ -45,18 +46,18 @@ Para la organización de la aplicación utilizamos metodología SCRUM e [histori
 * [ ] Uso de funciones (parámetros | argumentos | valor de retorno)
 * [ ] Manipular arrays (filter | map | sort | reduce)
 * [ ] Manipular objects (key | value)
-* [ ] Uso ES modules ([`import`]
-| [`export`])
+* [ ] Uso ES modules (`import`
+| `export`)
 * [ ] Diferenciar entre expression y statements.
 * [ ] Diferenciar entre tipos de datos primitivos y no primitivos.
-* [ ] [Uso de callbacks.]
-* [ ] [Consumo de Promesas.]
+* [ ] Uso de callbacks.
+* [ ] Consumo de Promesas.
 
 ### Testing
 
-* [ ] [Testeo unitario.]
-* [ ] [Testeo asíncrono.]
-* [ ] [Uso de librerias de Mock.]
+* [ ] Testeo unitario.
+* [ ] Testeo asíncrono.
+* [ ] Uso de librerias de Mock.
 
 ### Estructura del código y guía de estilo
 
@@ -73,11 +74,11 @@ Para la organización de la aplicación utilizamos metodología SCRUM e [histori
 
 ### Firebase
 
-* [ ] [Firestore.]
-* [ ] [Firebase Auth.]
-* [ ] [Firebase security rules.]
-* [ ] Observadores. ([onAuthStateChanged]
- | [onSnapshot])
+* [ ] Firestore.
+* [ ] Firebase Auth.
+* [ ] Firebase security rules.
+* [ ] Observadores. (onAuthStateChanged
+ | onSnapshot)
 
 ### UX
 
