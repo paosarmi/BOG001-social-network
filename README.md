@@ -86,4 +86,4 @@ Para la organización de la aplicación utilizamos metodología SCRUM e [histori
 * [ ] Diseñar la aplicación pensando y entendiendo al usuario.
 * [ ] Crear prototipos para obtener feedback e iterar.
 * [ ] Aplicar los principios de diseño visual (contraste, alineación, jerarquía)
-* [ ] Planear y ejecutar tests de usabilidad.
+* [ - ] Planear y ejecutar tests de usabilidad.
