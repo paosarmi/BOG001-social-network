@@ -1,7 +1,7 @@
 # TERRA TOUR: Tourism by your side (Social Network) 
 
 ## 1. Preámbulo 
-[Logo](https://github.com/Dayanamm/BOG001-social-network/blob/desarrollo/src/img/Logo.png=100X20)
+(<img src="img/Logo.png" width = 250px>)
 __Terra tour - el turismo de tu lado:__  _Red social_ que tiene como objetivo generar espacios de encuentros digitales para el sector del turismo, es decir, establecer recomendaciones de lugares visitados para futuros pasajeros a bordo de su próximo destino. 
 
 
@@ -18,7 +18,8 @@ Para la organización de la aplicación utilizamos metodología SCRUM e [histori
 
 ### 2.2 Diseño de Interfaz: Prototipo de Alta Fidelidad
 
-<center></center>
+(<img src="img/Desktop.png">)
+(<img src="img/Mobile.png">)
 
 ## 3. Objetivos de aprendizaje
 
