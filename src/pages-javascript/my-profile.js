@@ -55,25 +55,31 @@ export const loadMyProfile = async () => {
   let index = 0;
   let displayOff = "display: flex;";
   let displayOn = "display: none;";
+  let displayDelete = "display: none;";
+  let displayEdit = "display: none;";
 
   for (let i = 0; i < querySnapshot.docs.length; i++) {
     const cardPost = querySnapshot.docs[i].data();
     const likeOnId = "likeOnProfile" + index;
     const likeOffId = "likeOffProfile" + index;
+    const crudEditId = "crudProfile" + index;
     const modalId = "openModalProfile" + index;
-    const modalEditId = "ModalEdit"+ index;
+    const modalEditId = "ModalEdit" + index;
     const modalContainer = "modalContainerId" + index;
     const modalContainerEdit = "modalContainerEditId" + index;
     const cancelId = "cancelModalProfile" + index;
+    const editButton = "editButtonProfile" + index;
     const cancelEditId = "cancelModalEdit" + index;
     const deleteButtonId = "deleteButton" + index;
-    const editButtonId = "editButton"+index;
-    const placeEditPostId = "placeEditPostId"+index;
-    const descriptionEditPostId = "descriptionEditPostId"+index;
-    const imgPostId = "imgPostIdof"+index;
-    const invalidPostId = "invalidPost"+index
+    const editButtonId = "editButton" + index;
+    const placeEditPostId = "placeEditPostId" + index;
+    const descriptionEditPostId = "descriptionEditPostId" + index;
+    const imgPostId = "imgPostIdof" + index;
+    const invalidPostId = "invalidPost" + index;
     displayOff = "display: flex;";
     displayOn = "display: none;";
+    displayDelete = "display: none;";
+    displayEdit = "display: none;";
 
     for (let i = 0; i < cardPost.like.length; i++) {
       if (cardPost.like[i] == userId) {
@@ -93,12 +99,15 @@ export const loadMyProfile = async () => {
                 <p id="descriptionCardDate">${cardPost.dateImg}</p>
                 <p>${cardPost.descriptionPost}</p>
               <div class="container-like">
-                <button id="${likeOffId}" post-id="${querySnapshot.docs[i].id}" style="${displayOff} class="btn-like" ><img src="/img/LikeOff.png" alt="LikeOff" class="like-off" ></button>
+                <button id="${likeOffId}" post-id="${querySnapshot.docs[i].id}" style="${displayOff}" class="btn-unlike"><img src="/img/LikeOff.png" alt="LikeOff" class="like-off" ></button>
                 <button id="${likeOnId}" post-id="${querySnapshot.docs[i].id}" style="${displayOn}" class="btn-like"><img src="/img/LikeOn.png" alt="LikeOn" class="like-on" ></button>
                 <p>${cardPost.like.length}</p>
-              </div>
-                <div>
-                  <button id="${modalId}" post-id="${querySnapshot.docs[i].id}" class="delete-button">Delete</button>     
+                <div class = "button-crud">
+                  <button id="${crudEditId}" class="btn-crud"><img src="/img/lapiz.png" alt="pencilCRUD" class="pencil-crud"></button>
+                  <button id="${modalId}" post-id="${querySnapshot.docs[i].id}" class="delete-button" style="${displayDelete}">Delete</button>
+                  <button id="${modalEditId}" post-id="${querySnapshot.docs[i].id}" class="edit-button" style="${displayEdit}">Edit</button>
+                </div>   
+              </div>  
                     <div id = "${modalContainer}" class = "modal-container">
                       <div class = "modal">
                       <h1>Delete post!</h1>
@@ -110,48 +119,47 @@ export const loadMyProfile = async () => {
                     </div>
                 </div>
                 <div> 
-                  <button id="${modalEditId}" post-id="${querySnapshot.docs[i].id}" class="edit-button">Edit</button>
-                    <div id = "${modalContainerEdit}" class = "modal-container-edit">
-                      <div class = "modalEdit">
-                        <h1>Edit post!</h1>
-                        <input
-                          id="${placeEditPostId}"
-                          class="place-edit-post"
-                          type="text"
-                          placeholder="Indicate Place "
-                          autocomplete="off"
-                          required
-                          value="${cardPost.placePost}"
-                        />
-                        <textarea
-                          id="${descriptionEditPostId}"
-                          class="description-edit-post"
-                          type="text"
-                          placeholder="Description Place"
-                          autocomplete="off"
-                          required
-                        >${cardPost.descriptionPost}</textarea>
-                        <div id="imgChosse">
-                          <label class="file">
-                            <input
-                              id="${imgPostId}"
-                              class="img-post"
-                              type="file"
-                              capture="user"
-                              accept="image/*"
-                              Choose
-                              image
-                            />
-                            <p id="choose">Change image</p>
-                          </label>
-                        </div>
-                        <div class = "modal-button">
-                          <button id="${editButtonId}" post-id="${querySnapshot.docs[i].id}" class="confirm-button">Confirm</button>
-                          <button id="${cancelEditId}" post-id="${querySnapshot.docs[i].id}" class="cancel-button">Cancel</button>
-                        </div>
-                        <p id="${invalidPostId}" class ="invalid-post"></p>
+                  <div id = "${modalContainerEdit}" class = "modal-container-edit">
+                    <div class = "modalEdit">
+                      <h1>Edit post!</h1>
+                      <input
+                        id="${placeEditPostId}"
+                        class="place-edit-post"
+                        type="text"
+                        placeholder="Indicate Place "
+                        autocomplete="off"
+                        required
+                        value="${cardPost.placePost}"
+                      />
+                      <textarea
+                        id="${descriptionEditPostId}"
+                        class="description-edit-post"
+                        type="text"
+                        placeholder="Description Place"
+                        autocomplete="off"
+                        required
+                      >${cardPost.descriptionPost}</textarea>
+                      <div id="imgChosse">
+                        <label class="file">
+                          <input
+                            id="${imgPostId}"
+                            class="img-post"
+                            type="file"
+                            capture="user"
+                            accept="image/*"
+                            Choose
+                            image
+                          />
+                          <p id="choose">Change image</p>
+                        </label>
                       </div>
+                      <div class = "modal-button">
+                        <button id="${editButtonId}" post-id="${querySnapshot.docs[i].id}" class="confirm-button">Confirm</button>
+                        <button id="${cancelEditId}" post-id="${querySnapshot.docs[i].id}" class="cancel-button">Cancel</button>
+                      </div>
+                      <p id="${invalidPostId}" class ="invalid-post"></p>
                     </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -163,24 +171,31 @@ export const loadMyProfile = async () => {
   for (let i = 0; i < index; i++) {
     const likeOnId = "likeOnProfile" + i;
     const likeOffId = "likeOffProfile" + i;
+    const crudEditId = "crudProfile" + i;
     const modalId = "openModalProfile" + i;
     const modalContainer = "modalContainerId" + i;
     const cancelId = "cancelModalProfile" + i;
     const deleteButtonId = "deleteButton" + i;
+    const editButton = "editButtonProfile" + i;
     const modalContainerEdit = "modalContainerEditId" + i;
-    const modalEditId = "ModalEdit"+ i;
+    const modalEditId = "ModalEdit" + i;
     const cancelEditId = "cancelModalEdit" + i;
-    const placeEditPostId = "placeEditPostId"+i;
-    const descriptionEditPostId = "descriptionEditPostId"+i;
-    const imgPostId = "imgPostIdof"+i;
-    const editButtonId = "editButton"+i;
-    const invalidPostId = "invalidPost"+i;
+    const placeEditPostId = "placeEditPostId" + i;
+    const descriptionEditPostId = "descriptionEditPostId" + i;
+    const imgPostId = "imgPostIdof" + i;
+    const editButtonId = "editButton" + i;
+    const invalidPostId = "invalidPost" + i;
 
     document.getElementById(likeOnId).addEventListener("click", function () {
       unLikePost(likeOnId, likeOffId);
     });
     document.getElementById(likeOffId).addEventListener("click", function () {
       likePost(likeOffId, likeOnId);
+    });
+
+    document.getElementById(crudEditId).addEventListener("click", function () {
+      document.getElementById(modalId).style.display = "flex";
+      document.getElementById(modalEditId).style.display = "flex";
     });
 
     const modalContainerDOM = document.getElementById(modalContainer);
@@ -198,9 +213,11 @@ export const loadMyProfile = async () => {
     const postId = document
       .getElementById(deleteButtonId)
       .getAttribute("post-id");
-    document.getElementById(deleteButtonId).addEventListener("click", function () {
-      deletePost(postId);
-    });
+    document
+      .getElementById(deleteButtonId)
+      .addEventListener("click", function () {
+        deletePost(postId);
+      });
 
     // EDIT
     const modalContainerEditDOM = document.getElementById(modalContainerEdit);
@@ -211,14 +228,24 @@ export const loadMyProfile = async () => {
       modalContainerEditDOM.style.visibility = "visible";
     });
 
-    document.getElementById(cancelEditId).addEventListener("click", function () {
-      modalContainerEditDOM.style.display = "none";
-    });
+    document
+      .getElementById(cancelEditId)
+      .addEventListener("click", function () {
+        modalContainerEditDOM.style.display = "none";
+      });
 
-    document.getElementById(editButtonId).addEventListener("click", function () {
-      editPost(postId, imgPostId, descriptionEditPostId, placeEditPostId, invalidPostId);
-    });
-  };
+    document
+      .getElementById(editButtonId)
+      .addEventListener("click", function () {
+        editPost(
+          postId,
+          imgPostId,
+          descriptionEditPostId,
+          placeEditPostId,
+          invalidPostId
+        );
+      });
+  }
 };
 
 async function likePost(likeOffId, likeOnId) {
@@ -288,15 +315,21 @@ async function deletePost(postId) {
   loader.style.display = "none";
 }
 
-async function editPost(postId, imgPostId, descriptionEditPostId, placeEditPostId, invalidPostId){
+async function editPost(
+  postId,
+  imgPostId,
+  descriptionEditPostId,
+  placeEditPostId,
+  invalidPostId
+) {
   const imgPost = document.getElementById(imgPostId).value;
-  const image = document.getElementById(imgPostId).files[0]
+  const image = document.getElementById(imgPostId).files[0];
   const descriptionPost = document.getElementById(descriptionEditPostId).value;
   const placePost = document.getElementById(placeEditPostId).value;
   const invalidPost = document.getElementById(invalidPostId);
-  console.log(imgPost)
-  console.log(descriptionPost)
-  console.log(placePost)
+  // console.log(imgPost)
+  // console.log(descriptionPost)
+  // console.log(placePost)
 
   if (placePost == null || placePost.length == 0 || /^\s+$/.test(placePost)) {
     invalidPost.innerHTML = "You must enter a valid place";
@@ -312,12 +345,7 @@ async function editPost(postId, imgPostId, descriptionEditPostId, placeEditPostI
     return false;
   }
 
-
-
-  
-
-  if (imgPost)
-  {
+  if (imgPost) {
     const prueba = "userCollectionMultimedia/" + userId + "/" + image.name;
     const storageRef = storage.ref(prueba);
     const imageRef = storageRef
@@ -329,48 +357,38 @@ async function editPost(postId, imgPostId, descriptionEditPostId, placeEditPostI
       .catch(function (error) {
         console.log("error", error);
       });
-  }
-  else
-  {
+  } else {
     updateDataPost(placePost, descriptionPost, postId, null, null);
   }
-  
 }
 
-const updateDataPost = (
-  placePost,
-  descriptionPost,
-  postId,
-  url,
-  image
-) => {
-  let data
-  if (url)
-  {
+const updateDataPost = (placePost, descriptionPost, postId, url, image) => {
+  let data;
+  if (url) {
     data = {
       placePost: placePost,
       image: image.name,
       url: url,
       descriptionPost: descriptionPost,
-    }
-  }
-  else
-  {
+    };
+  } else {
     data = {
       placePost: placePost,
       descriptionPost: descriptionPost,
-    }
+    };
   }
-  
-  store.collection(USER_POSTS_COLLECTION).doc(postId).update(data)
-  .then((docRef) => {
-    console.log('Post updated')
-    loadMyProfile();
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-  
+
+  store
+    .collection(USER_POSTS_COLLECTION)
+    .doc(postId)
+    .update(data)
+    .then((docRef) => {
+      console.log("Post updated");
+      loadMyProfile();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 
 export const getCardPost = () => store.collection(USER_POSTS_COLLECTION).get();
