@@ -116,8 +116,8 @@ export const loadTimeline = async () => {
                   <p id="descriptionCardDate">${cardPost.dateImg}</p>
                   <p>${cardPost.descriptionPost}</p>
                 <div class="container-like">
-                  <button id="${likeOffId}" post-id="${querySnapshot.docs[i].id}" style="${displayOff}" > <img src="/img/LikeOff.png" alt="LikeOff" class="like-off" ></button>
-                  <button id="${likeOnId}" post-id="${querySnapshot.docs[i].id}" style="${displayOn}" > <img src="/img/LikeOn.png" alt="LikeOn" class="like-on" ></button>
+                  <button id="${likeOffId}" post-id="${querySnapshot.docs[i].id}" class="like-on-container" style="${displayOff}" > <img src="/img/LikeOff.png" alt="LikeOff" class="like-off" ></button>
+                  <button id="${likeOnId}" post-id="${querySnapshot.docs[i].id}" class="like-off-container" style="${displayOn}" > <img src="/img/LikeOn.png" alt="LikeOn" class="like-on" ></button>
                 </div>
                 <p>${cardPost.like.length}</p>
               </div>

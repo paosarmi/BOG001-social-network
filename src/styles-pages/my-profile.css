@@ -124,7 +124,7 @@ body {
   flex-direction: row;
 }
 
-.btn-unlike{
+.btn-unlike {
   border: none;
   background: none;
 }
@@ -155,10 +155,10 @@ body {
   flex-direction: row;
 }
 
-.btn-crud{
-display: flex;
-border: none;
-background: none;
+.btn-crud {
+  display: flex;
+  border: none;
+  background: none;
 }
 
 .pencil-crud {
@@ -179,7 +179,7 @@ background: none;
   padding-left: 29px;
 }
 
-.delete-button{
+.delete-button {
   display: flex;
   align-items: center;
   font-family: var(--font-placeholder);
@@ -203,7 +203,7 @@ background: none;
   height: 100vh;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.32);
 }
 
 .modal {
@@ -222,7 +222,7 @@ background: none;
   display: flex;
   justify-content: center;
   font-size: 23px;
-  color: var(--color-button)
+  color: var(--color-button);
 }
 
 .modal-button {
@@ -263,7 +263,7 @@ background: none;
   display: flex;
   justify-content: center;
   font-size: 23px;
-  color: var(--color-button)
+  color: var(--color-button);
 }
 
 .place-edit-post {
@@ -289,7 +289,7 @@ background: none;
   width: 200px;
 }
 
-#imgChosse{
+#imgChosse {
   margin-bottom: 20px;
 }
 
@@ -344,6 +344,7 @@ background: none;
   .pencil-crud {
     width: 30px;
     height: 30px;
+  }
 
   .container-like p {
     font-size: 16px;
@@ -351,9 +352,7 @@ background: none;
 }
 
 @media only screen and (min-height: 880px) {
-  
   body {
-    display: flex;
     width: 100%;
   }
 
@@ -390,8 +389,9 @@ background: none;
     max-width: 650px;
   }
 
-  .header-card, .description-card {
-    font-size: 24px;
+  .header-card,
+  .description-card {
+    font-size: 20px;
   }
   .like-on {
     width: 30px;
@@ -407,7 +407,7 @@ background: none;
     font-size: 20px;
   }
 
-  .delete-button{
+  .delete-button {
     width: 150px;
     margin-left: 30px;
     padding-left: 51px;
@@ -423,7 +423,6 @@ background: none;
 }
 
 @media only screen and (min-width: 1000px) {
-
   body {
     display: flex;
     width: 100%;
@@ -462,8 +461,9 @@ background: none;
     max-width: 750px;
   }
 
-  .header-card, .description-card {
-    font-size: 28px;
+  .header-card,
+  .description-card {
+    font-size: 20px;
   }
   .like-on {
     width: 35px;
@@ -479,7 +479,7 @@ background: none;
     font-size: 24px;
   }
 
-  .pencil-crud{
+  .pencil-crud {
     width: 40px;
     height: 40px;
   }
@@ -493,7 +493,7 @@ background: none;
   }
 }
 
-@media only screen and (min-width: 1100px){
+@media only screen and (min-width: 1100px) {
   .my-profile-view {
     background-color: var(--color-background);
     width: 50%;
@@ -527,9 +527,11 @@ background: none;
 
   .card-post-container-profile {
     width: 70%;
+    margin-bottom: 20px;
   }
 
-  .header-card, .description-card {
+  .header-card,
+  .description-card {
     font-size: 16px;
   }
   .like-on {
@@ -549,13 +551,13 @@ background: none;
   .pencil-crud {
     width: 28px;
     height: 28px;
-}
+  }
 
   .edit-button {
     padding-left: 78px;
-}
+  }
 
-  .delete-button{
+  .delete-button {
     padding-left: 76px;
   }
 }

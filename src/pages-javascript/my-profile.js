@@ -56,7 +56,7 @@ export const loadMyProfile = async () => {
   let displayOff = "display: flex;";
   let displayOn = "display: none;";
   let displayDelete = "display: none;";
-  let displayEdit = "display: none;"
+  let displayEdit = "display: none;";
 
   for (let i = 0; i < querySnapshot.docs.length; i++) {
     const cardPost = querySnapshot.docs[i].data();
@@ -64,23 +64,22 @@ export const loadMyProfile = async () => {
     const likeOffId = "likeOffProfile" + index;
     const crudEditId = "crudProfile" + index;
     const modalId = "openModalProfile" + index;
-    const modalEditId = "ModalEdit"+ index;
+    const modalEditId = "ModalEdit" + index;
     const modalContainer = "modalContainerId" + index;
     const modalContainerEdit = "modalContainerEditId" + index;
     const cancelId = "cancelModalProfile" + index;
     const editButton = "editButtonProfile" + index;
     const cancelEditId = "cancelModalEdit" + index;
     const deleteButtonId = "deleteButton" + index;
-    const editButtonId = "editButton"+index;
-    const placeEditPostId = "placeEditPostId"+index;
-    const descriptionEditPostId = "descriptionEditPostId"+index;
-    const imgPostId = "imgPostIdof"+index;
-    const invalidPostId = "invalidPost"+index
+    const editButtonId = "editButton" + index;
+    const placeEditPostId = "placeEditPostId" + index;
+    const descriptionEditPostId = "descriptionEditPostId" + index;
+    const imgPostId = "imgPostIdof" + index;
+    const invalidPostId = "invalidPost" + index;
     displayOff = "display: flex;";
     displayOn = "display: none;";
     displayDelete = "display: none;";
     displayEdit = "display: none;";
-
 
     for (let i = 0; i < cardPost.like.length; i++) {
       if (cardPost.like[i] == userId) {
@@ -179,13 +178,13 @@ export const loadMyProfile = async () => {
     const deleteButtonId = "deleteButton" + i;
     const editButton = "editButtonProfile" + i;
     const modalContainerEdit = "modalContainerEditId" + i;
-    const modalEditId = "ModalEdit"+ i;
+    const modalEditId = "ModalEdit" + i;
     const cancelEditId = "cancelModalEdit" + i;
-    const placeEditPostId = "placeEditPostId"+i;
-    const descriptionEditPostId = "descriptionEditPostId"+i;
-    const imgPostId = "imgPostIdof"+i;
-    const editButtonId = "editButton"+i;
-    const invalidPostId = "invalidPost"+i;
+    const placeEditPostId = "placeEditPostId" + i;
+    const descriptionEditPostId = "descriptionEditPostId" + i;
+    const imgPostId = "imgPostIdof" + i;
+    const editButtonId = "editButton" + i;
+    const invalidPostId = "invalidPost" + i;
 
     document.getElementById(likeOnId).addEventListener("click", function () {
       unLikePost(likeOnId, likeOffId);
@@ -214,9 +213,11 @@ export const loadMyProfile = async () => {
     const postId = document
       .getElementById(deleteButtonId)
       .getAttribute("post-id");
-    document.getElementById(deleteButtonId).addEventListener("click", function () {
-      deletePost(postId);
-    });
+    document
+      .getElementById(deleteButtonId)
+      .addEventListener("click", function () {
+        deletePost(postId);
+      });
 
     // EDIT
     const modalContainerEditDOM = document.getElementById(modalContainerEdit);
@@ -227,14 +228,24 @@ export const loadMyProfile = async () => {
       modalContainerEditDOM.style.visibility = "visible";
     });
 
-    document.getElementById(cancelEditId).addEventListener("click", function () {
-      modalContainerEditDOM.style.display = "none";
-    });
+    document
+      .getElementById(cancelEditId)
+      .addEventListener("click", function () {
+        modalContainerEditDOM.style.display = "none";
+      });
 
-    document.getElementById(editButtonId).addEventListener("click", function () {
-      editPost(postId, imgPostId, descriptionEditPostId, placeEditPostId, invalidPostId);
-    });
-  };
+    document
+      .getElementById(editButtonId)
+      .addEventListener("click", function () {
+        editPost(
+          postId,
+          imgPostId,
+          descriptionEditPostId,
+          placeEditPostId,
+          invalidPostId
+        );
+      });
+  }
 };
 
 async function likePost(likeOffId, likeOnId) {
@@ -304,9 +315,15 @@ async function deletePost(postId) {
   loader.style.display = "none";
 }
 
-async function editPost(postId, imgPostId, descriptionEditPostId, placeEditPostId, invalidPostId){
+async function editPost(
+  postId,
+  imgPostId,
+  descriptionEditPostId,
+  placeEditPostId,
+  invalidPostId
+) {
   const imgPost = document.getElementById(imgPostId).value;
-  const image = document.getElementById(imgPostId).files[0]
+  const image = document.getElementById(imgPostId).files[0];
   const descriptionPost = document.getElementById(descriptionEditPostId).value;
   const placePost = document.getElementById(placeEditPostId).value;
   const invalidPost = document.getElementById(invalidPostId);
@@ -328,8 +345,7 @@ async function editPost(postId, imgPostId, descriptionEditPostId, placeEditPostI
     return false;
   }
 
-  if (imgPost)
-  {
+  if (imgPost) {
     const prueba = "userCollectionMultimedia/" + userId + "/" + image.name;
     const storageRef = storage.ref(prueba);
     const imageRef = storageRef
@@ -341,48 +357,38 @@ async function editPost(postId, imgPostId, descriptionEditPostId, placeEditPostI
       .catch(function (error) {
         console.log("error", error);
       });
-  }
-  else
-  {
+  } else {
     updateDataPost(placePost, descriptionPost, postId, null, null);
   }
-  
 }
 
-const updateDataPost = (
-  placePost,
-  descriptionPost,
-  postId,
-  url,
-  image
-) => {
-  let data
-  if (url)
-  {
+const updateDataPost = (placePost, descriptionPost, postId, url, image) => {
+  let data;
+  if (url) {
     data = {
       placePost: placePost,
       image: image.name,
       url: url,
       descriptionPost: descriptionPost,
-    }
-  }
-  else
-  {
+    };
+  } else {
     data = {
       placePost: placePost,
       descriptionPost: descriptionPost,
-    }
+    };
   }
-  
-  store.collection(USER_POSTS_COLLECTION).doc(postId).update(data)
-  .then((docRef) => {
-    console.log('Post updated')
-    loadMyProfile();
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-  
+
+  store
+    .collection(USER_POSTS_COLLECTION)
+    .doc(postId)
+    .update(data)
+    .then((docRef) => {
+      console.log("Post updated");
+      loadMyProfile();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 
 export const getCardPost = () => store.collection(USER_POSTS_COLLECTION).get();
