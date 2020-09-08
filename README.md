@@ -1,4 +1,4 @@
-# TERRA TOUR: Tourism by your side. (Social Network)
+# TERRA TOUR: Tourism by your side (Social Network) 
 
 ## 1. Preámbulo 
 
@@ -15,6 +15,7 @@ Además, permite tener un rol activo en la red social generando espacios digital
 
 ### 2.1 Diseño de Interfaz: Prototipo de Alta Fidelidad
 
+![Screenshot](lapiz.png)
 
 ## 3. Objetivos de aprendizaje
 
@@ -23,9 +24,7 @@ Además, permite tener un rol activo en la red social generando espacios digital
 * [ ] [Uso de HTML semántico.]
 * [ ] Uso de selectores de CSS.
 * [ ] Construir tu aplicación respetando el diseño realizado (maquetación).
-* [ [
-  >_
-]] [Uso de flexbox en CSS.]
+* [ ] Uso de flexbox en CSS.
 
 ### DOM y Web APIs
 
