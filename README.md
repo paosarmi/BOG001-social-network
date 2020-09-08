@@ -1,28 +1,29 @@
 # TERRA TOUR: Tourism by your side (Social Network) 
 
-## 1. Preámbulo 
+## 1. Preámbulo 🌎
 <img src="src/img/Logo.png" width = 50px>
-__Terra tour - el turismo de tu lado:__  _Red social_ que tiene como objetivo generar espacios de encuentros digitales para el sector del turismo, es decir, establecer recomendaciones de lugares visitados para futuros pasajeros a bordo de su próximo destino. 
+
+__Terra tour - el turismo de tu lado:__   _Red social_ que tiene como objetivo generar espacios de encuentros digitales para el sector del turismo, es decir, establecer recomendaciones de lugares visitados para futuros pasajeros a bordo de su próximo destino. 
 
 
-## 2. Definición del producto
+## 2. Definición del producto 👩🏻‍💻
 
  __Usuarios:__ Los principales usuarios de Terra Tour, son los turistas, quienes se encuentran en diferentes momentos planeando su próximo viaje.
  La aplicación permite generar recomendaciones pertinentes de lugares a visitar desde experiencias propias, estableciendo así expectativas claras del siguiente destino.
 
 Además, permite tener un rol activo en la red social generando espacios digitales para recomendar y/o leer recomendaciones, dar like a las publicaciones favoritas y dedicarse a conocer el mundo. 
 
-### 2.1 Historias de usuario.
+### 2.1 Historias de usuario. 📚
 
 Para la organización de la aplicación utilizamos metodología SCRUM e [historias de usuarios](https://trello.com/b/MkSm3wi1/social-network) mediante la herramienta Trello.
 
-### 2.2 Diseño de Interfaz: Prototipo de Alta Fidelidad
+### 2.2 Diseño de Interfaz: Prototipo de Alta Fidelidad 🎨
 
 <img src="src/img/Mobile.png">
 
 <img src="src/img/Desktop.png">
 
-## 3. Objetivos de aprendizaje
+## 3. Objetivos de aprendizaje 🚦
 
 ### HTML y CSS
 
