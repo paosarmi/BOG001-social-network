@@ -13,7 +13,7 @@ __Terra tour - el turismo de tu lado:__  _Red social_ que tiene como objetivo ge
 Además, permite tener un rol activo en la red social generando espacios digitales para recomendar y/o leer recomendaciones, dar like a las publicaciones favoritas y dedicarse a conocer el mundo. 
 
 
-# 2.1 Diseño de Interfaz: Prototipo de Alta Fidelidad
+### 2.1 Diseño de Interfaz: Prototipo de Alta Fidelidad
 
 
 ## 3. Objetivos de aprendizaje
