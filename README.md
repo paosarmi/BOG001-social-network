@@ -27,8 +27,8 @@ Para la organización de la aplicación utilizamos metodología SCRUM e [histori
 
 ### HTML y CSS
 
-* [ ] Uso de HTML semántico.
-* [ ] Uso de selectores de CSS.
+* [x] Uso de HTML semántico.
+* [x] Uso de selectores de CSS.
 * [ ] Construir tu aplicación respetando el diseño realizado (maquetación).
 * [ ] Uso de flexbox en CSS.
 
